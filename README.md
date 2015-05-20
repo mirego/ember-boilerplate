@@ -1,24 +1,18 @@
-# ember-boilerplate
+# Boilerplate code for Ember.js
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+## Browser support
 
-## Prerequisites
+| Browser            | OS      | Constraint        |
+|--------------------|---------|-------------------|
+| …                  | …       | …                 |
 
-You will need the following things properly installed on your computer.
+## Heroku buildpack
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+To successfully deploy applications from this boilerplate code on Heroku, you must use a custom buildpack:
 
-## Installation
-
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+```shell
+$ heroku config:set BUILDPACK_URL=https://github.com/tonycoco/heroku-buildpack-ember-cli.git
+```
 
 ## Environment variables
 
@@ -27,6 +21,16 @@ Before running the project, you need to have the following variables defined in 
 ```
 API_HOST
 API_NAMESPACE
+```
+
+## Managing dependencies
+
+We use ember-cli which depends on node.js, npm and Bower.
+
+```shell
+$ brew install node
+$ npm install
+$ bower install
 ```
 
 ## Running / Development
@@ -48,15 +52,11 @@ Make use of the many generators for code, try `ember help generate` for more det
 * `ember build` (development)
 * `ember build --environment production` (production)
 
-### Deploying
-
-Specify what it takes to deploy your app.
-
 ## Further Reading / Useful Links
 
 * [ember.js](http://emberjs.com/)
 * [ember-cli](http://www.ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+* Development browser extensions
+  * [Ember inspector for Chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
+  * [Ember inspector for Firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
