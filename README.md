@@ -1,4 +1,4 @@
-# Ember-boilerplate
+# ember-boilerplate
 
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
@@ -19,6 +19,15 @@ You will need the following things properly installed on your computer.
 * change into the new directory
 * `npm install`
 * `bower install`
+
+## Environment variables
+
+Before running the project, you need to have the following variables defined in a `.env` file:
+
+```
+API_HOST
+API_NAMESPACE
+```
 
 ## Running / Development
 
