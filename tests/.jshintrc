@@ -23,29 +23,27 @@
     "currentPath",
     "currentRouteName"
   ],
-  "node": false,
-  "browser": false,
-  "boss": true,
-  "curly": false,
-  "debug": false,
-  "devel": false,
+
+  "camelcase": true,
   "eqeqeq": true,
-  "evil": true,
-  "forin": false,
-  "immed": false,
-  "laxbreak": false,
+  "freeze": true,
+  "immed": true,
+  "indent": 2,
+  "latedef": true,
   "newcap": true,
   "noarg": true,
-  "noempty": false,
-  "nonew": false,
-  "nomen": false,
-  "onevar": false,
-  "plusplus": false,
-  "regexp": false,
+  "noempty": true,
+  "noarg": true,
+  "quotmark": "single",
   "undef": true,
-  "sub": true,
-  "strict": false,
-  "white": false,
+  "unused": true,
+  "maxcomplexity": 6,
+
   "eqnull": true,
-  "esnext": true
+
+  "debug": false,
+  "devel": false,
+
+  "esnext": true,
+  "browser": true
 }

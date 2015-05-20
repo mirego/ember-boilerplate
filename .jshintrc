@@ -4,29 +4,27 @@
     "window",
     "-Promise"
   ],
-  "browser": true,
-  "boss": true,
-  "curly": true,
-  "debug": false,
-  "devel": true,
+
+  "camelcase": true,
   "eqeqeq": true,
-  "evil": true,
-  "forin": false,
-  "immed": false,
-  "laxbreak": false,
+  "freeze": true,
+  "immed": true,
+  "indent": 2,
+  "latedef": true,
   "newcap": true,
   "noarg": true,
-  "noempty": false,
-  "nonew": false,
-  "nomen": false,
-  "onevar": false,
-  "plusplus": false,
-  "regexp": false,
+  "noempty": true,
+  "noarg": true,
+  "quotmark": "single",
   "undef": true,
-  "sub": true,
-  "strict": false,
-  "white": false,
+  "unused": true,
+  "maxcomplexity": 6,
+
   "eqnull": true,
+
+  "debug": false,
+  "devel": false,
+
   "esnext": true,
-  "unused": true
+  "browser": true
 }
