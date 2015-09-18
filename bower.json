@@ -2,14 +2,14 @@
   "name": "ember-boilerplate",
   "dependencies": {
     "jquery": "2.1.4",
-    "ember": "1.13.3",
-    "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
-    "ember-cli-test-loader": "ember-cli-test-loader#0.2.0",
-    "ember-data": "1.13.7",
-    "ember-load-initializers": "ember-cli/ember-load-initializers#0.1.5",
-    "ember-mocha": "0.8.0",
+    "ember": "2.0.2",
+    "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.6",
+    "ember-cli-test-loader": "ember-cli-test-loader#0.2.1",
+    "ember-data": "2.0.1",
+    "ember-load-initializers": "ember-cli/ember-load-initializers#0.1.7",
+    "ember-mocha": "0.8.3",
     "ember-qunit-notifications": "0.0.7",
-    "ember-resolver": "0.1.18",
+    "ember-resolver": "0.1.21",
     "loader.js": "ember-cli/loader.js#3.3.0",
     "simple-css-reset": "2.0.3"
   }

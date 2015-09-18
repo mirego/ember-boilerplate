@@ -3,15 +3,11 @@ import Resolver from 'ember/resolver';
 import loadInitializers from 'ember/load-initializers';
 import config from './config/environment';
 
-let App;
-
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
-let modulePrefix = config.modulePrefix;
-let podModulePrefix = config.podModulePrefix;
+let {modulePrefix, podModulePrefix} = config;
+let App = Ember.Application.extend({modulePrefix, podModulePrefix, Resolver});
 
-App = Ember.Application.extend({modulePrefix, podModulePrefix, Resolver});
-
-loadInitializers(App, config.modulePrefix);
+loadInitializers(App, modulePrefix);
 
 export default App;
