@@ -1,4 +1,6 @@
-// jshint node:true
+/* eslint no-var:0 */
+/* eslint prefer-template:0 */
+/* eslint object-shorthand:0 */
 
 module.exports = function(environment) {
   var ENV = {
@@ -17,10 +19,9 @@ module.exports = function(environment) {
 
   ENV.API = {
     HOST: process.env.API_HOST,
-    NAMESPACE: process.env.API_NAMESPACE,
+    NAMESPACE: process.env.API_NAMESPACE
   };
 
-  // jshint ignore:start
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'script-src': "'self' 'unsafe-inline'",
@@ -28,12 +29,11 @@ module.exports = function(environment) {
     'font-src': "'self' http://fonts.gstatic.com",
     // Allow data (ajax/websocket)
     'connect-src': "'self' https://www.googleapis.com " + ENV.API.HOST,
-    'img-src': "*",
+    'img-src': '*',
     // Allow inline styles and loaded CSS from http://fonts.googleapis.com
     'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
     'media-src': "'self'"
   };
-  // jshint ignore:end
 
   if (environment === 'test') {
     ENV.baseURL = '/';
