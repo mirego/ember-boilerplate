@@ -1,3 +1,4 @@
+/* eslint-disable */
 import resolver from './helpers/resolver';
 import { setResolver } from 'ember-mocha';
 
@@ -6,7 +7,6 @@ setResolver(resolver);
 // PhantomJS needs this polyfill
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
 
-// jshint ignore:start
 if (!Function.prototype.bind) {
   Function.prototype.bind = function(oThis) {
     if (typeof this !== 'function') {
@@ -31,4 +31,3 @@ if (!Function.prototype.bind) {
     return fBound;
   };
 }
-// jshint ignore:end
