@@ -36,6 +36,7 @@
     "ember-cli-uglify": "1.2.0",
     "ember-data": "2.0.1",
     "ember-export-application-global": "1.0.4",
+    "ember-component-css": "0.1.6",
     "eslint": "1.4.3"
   }
 }
