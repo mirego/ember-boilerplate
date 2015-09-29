@@ -5,6 +5,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-boilerplate',
+    podModulePrefix: 'ember-boilerplate/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto'
