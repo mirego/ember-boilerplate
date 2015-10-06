@@ -38,6 +38,7 @@
     "no-sparse-arrays": 2,
     "no-throw-literal": 2,
     "no-unreachable": 2,
+    "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
     "no-useless-call": 2,
     "no-useless-concat": 2,
     "no-var": 2,
