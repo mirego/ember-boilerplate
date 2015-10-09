@@ -3,3 +3,4 @@ node_modules/*
 vendor/**/*.js
 bower_components/**/*.js
 dist/**/*.js
+tmp/*
