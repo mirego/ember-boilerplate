@@ -1,16 +1,18 @@
 {
-  "name": "ember-boilerplate",
+  "name": "accent-webapp",
   "dependencies": {
     "jquery": "2.1.4",
-    "ember": "2.0.2",
+    "ember": "components/ember#canary",
     "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.6",
     "ember-cli-test-loader": "ember-cli-test-loader#0.2.1",
     "ember-data": "2.0.1",
     "ember-load-initializers": "ember-cli/ember-load-initializers#0.1.7",
     "ember-mocha": "0.8.3",
-    "ember-qunit-notifications": "0.0.7",
     "ember-resolver": "0.1.21",
     "loader.js": "ember-cli/loader.js#3.3.0",
     "simple-css-reset": "2.0.3"
+  },
+  "resolutions": {
+    "ember": "canary"
   }
 }
