@@ -4,17 +4,15 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'accent-webapp',
-    podModulePrefix: 'accent-webapp/pods',
+    modulePrefix: 'ember-boilerplate',
+    podModulePrefix: 'ember-boilerplate/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto'
   };
 
   ENV.EmberENV = {
-    FEATURES: {
-      'ember-htmlbars-component-generation': true
-    },
+    FEATURES: {},
     LOG_VERSION: false
   };
 
