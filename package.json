@@ -37,6 +37,7 @@
     "ember-component-css": "0.1.6",
     "ember-data": "2.1.0",
     "ember-export-application-global": "1.0.5",
+    "ember-i18n": "4.1.4",
     "eslint": "1.7.3"
   }
 }
