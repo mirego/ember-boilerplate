@@ -38,6 +38,7 @@
     "no-obj-calls": 2,
     "no-sparse-arrays": 2,
     "no-throw-literal": 2,
+    "no-undef": 2,
     "no-unreachable": 2,
     "no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_", "vars": "all", "varsIgnorePattern": "^_"}],
     "no-useless-call": 2,
@@ -63,8 +64,11 @@
     "wrap-iife": [2, "inside"]
   },
   "env": {
-    "node": true,
-    "es6": true
+    "browser": true,
+    "es6": true,
+    "jquery": true,
+    "mocha": true,
+    "node": true
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
