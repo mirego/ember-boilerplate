@@ -21,7 +21,10 @@ install:
 
 script:
   - npm run lint
-  - npm test
+  # NOTE: This line must be disabled in the boilerplate code because it fails
+  # even if we don’t have any tests (it needs at least one passing test to
+  # exit successfully). We need to uncomment it when we add tests.
+  # - npm test
 
 notifications:
   email:
