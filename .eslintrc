@@ -65,25 +65,9 @@
   },
   "env": {
     "browser": true,
-    "es6": true,
-    "jquery": true,
-    "mocha": true,
-    "node": true
+    "es6": true
   },
   "ecmaFeatures": {
-    "arrowFunctions": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "destructuring": true,
-    "forOf": true,
-    "modules": true,
-    "objectLiteralComputedProperties": true,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "regexUFlag": true,
-    "spread": true,
-    "superInFunctions": true,
-    "templateStrings": true
+    "modules": true
   }
 }

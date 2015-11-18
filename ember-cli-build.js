@@ -1,4 +1,7 @@
+/* eslint-env node */
+/* eslint-env es6:false */
 /* eslint no-var:0 */
+
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
