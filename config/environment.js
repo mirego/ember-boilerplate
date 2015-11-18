@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint-env es6:false */
 /* eslint no-var:0 */
 /* eslint prefer-template:0 */
 /* eslint object-shorthand:0 */

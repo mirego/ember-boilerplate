@@ -3,4 +3,5 @@ node_modules/*
 vendor/**/*.js
 bower_components/**/*.js
 dist/**/*.js
-tmp/*
+tmp/**/*.js
+app/locales/*/translations.js
