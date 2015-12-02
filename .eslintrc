@@ -14,7 +14,7 @@
     "dot-notation": 2,
     "dot-location": [2, "property"],
     "eqeqeq": [2, "smart"],
-    "func-style": [2, "declaration"],
+    "func-style": [2, "expression"],
     "indent": [2, 2, {"SwitchCase": 1, "VariableDeclarator": 2}],
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
     "linebreak-style": [2, "unix"],
