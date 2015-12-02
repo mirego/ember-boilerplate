@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
 
-export default function startApp(attrs) {
+const startApp = function(attrs) {
   let application;
 
   let attributes = Ember.merge({}, config.APP);
@@ -15,4 +15,6 @@ export default function startApp(attrs) {
   });
 
   return application;
-}
+};
+
+export default startApp;
