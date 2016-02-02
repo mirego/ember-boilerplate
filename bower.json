@@ -8,8 +8,6 @@
     "ember-load-initializers": "0.1.7",
     "loader.js": "3.5.0",
     "ember-mocha": "0.8.11",
-    "ember-qunit-notifications": "0.0.7",
-    "ember-resolver": "0.1.21",
     "simple-css-reset": "2.0.4"
   },
   "resolutions": {
