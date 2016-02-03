@@ -1,14 +1,12 @@
 /* eslint-env node */
-/* eslint-env es6:false */
-/* eslint no-var:0 */
-/* eslint prefer-template:0 */
-/* eslint object-shorthand:0 */
+
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'ember-boilerplate',
     podModulePrefix: 'ember-boilerplate/pods',
-    environment: environment,
+    environment,
     baseURL: '/',
     locationType: 'auto'
   };
@@ -31,7 +29,7 @@ module.exports = function(environment) {
     // Allow fonts to be loaded from http://fonts.gstatic.com
     'font-src': "'self' http://fonts.gstatic.com",
     // Allow data (ajax/websocket)
-    'connect-src': "'self' https://www.googleapis.com " + ENV.API.HOST,
+    'connect-src': `'self' https://www.googleapis.com ${ENV.API.HOST}`,
     'img-src': '*',
     // Allow inline styles and loaded CSS from http://fonts.googleapis.com
     'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",

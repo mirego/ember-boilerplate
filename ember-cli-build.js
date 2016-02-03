@@ -1,11 +1,11 @@
 /* eslint-env node */
-/* eslint-env es6:false */
-/* eslint no-var:0 */
 
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+'use strict';
+
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
+  const app = new EmberApp(defaults, {
     hinting: false,
     autoprefixer: {
       browsers: [
