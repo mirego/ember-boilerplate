@@ -14,7 +14,9 @@ module.exports = function(environment) {
   };
 
   ENV.EmberENV = {
-    FEATURES: {},
+    FEATURES: {
+      'ember-htmlbars-component-generation': true
+    },
     LOG_VERSION: false
   };
 
