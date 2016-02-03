@@ -30,13 +30,13 @@ module.exports = function(environment) {
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'script-src': "'self' 'unsafe-inline'",
-    // Allow fonts to be loaded from http://fonts.gstatic.com
-    'font-src': "'self' http://fonts.gstatic.com",
+    // Allow fonts to be loaded from fonts.gstatic.com
+    'font-src': "'self' fonts.gstatic.com",
     // Allow data (ajax/websocket)
     'connect-src': "'self' https://www.googleapis.com " + ENV.API.HOST,
     'img-src': '*',
-    // Allow inline styles and loaded CSS from http://fonts.googleapis.com
-    'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
+    // Allow inline styles and loaded CSS from fonts.googleapis.com
+    'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
     'media-src': "'self'"
   };
 
