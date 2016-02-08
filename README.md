@@ -1,5 +1,12 @@
 # Boilerplate code for Ember.js
 
+## A note about Ember.js version
+
+We [currently lock](https://github.com/mirego/ember-boilerplate/blob/master/bower.json)
+Ember’s version to a specific commit in its `canary` release
+channel in order to use the new angle-bracket components. This is temporary
+until the feature is part of an official release.
+
 ## Browser support
 
 | Browser            | OS      | Constraint        |

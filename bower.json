@@ -2,7 +2,7 @@
   "name": "ember-boilerplate",
   "dependencies": {
     "jquery": "2.2.0",
-    "ember": "components/ember#canary",
+    "ember": "components/ember#4084604c1dc565402bdd665f92438287b03bb25a",
     "ember-cli-shims": "0.1.0",
     "ember-cli-test-loader": "0.2.2",
     "ember-load-initializers": "0.1.7",
@@ -11,7 +11,7 @@
     "simple-css-reset": "2.0.4"
   },
   "resolutions": {
-    "ember": "canary",
+    "ember": "4084604c1dc565402bdd665f92438287b03bb25a",
     "jquery": "2.2.0"
   }
 }
