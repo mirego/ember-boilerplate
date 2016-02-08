@@ -15,7 +15,7 @@
   },
   "repository": "https://github.com/mirego/",
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 5.5.0"
   },
   "devDependencies": {
     "bower": "1.7.7",
