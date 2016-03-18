@@ -2,6 +2,7 @@
 
 'use strict';
 
+const Funnel = require('broccoli-funnel');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
@@ -20,7 +21,9 @@ module.exports = function(defaults) {
     }
   });
 
-  app.import('bower_components/simple-css-reset/reset.css');
+  const simpleCSSResetTree = new Funnel('bower_components/simple-css-reset/reset.css', {
+    destDir: 'assets/vendor.css'
+  });
 
-  return app.toTree();
+  return app.toTree([simpleCSSResetTree]);
 };
