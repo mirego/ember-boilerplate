@@ -1,3 +1,3 @@
 import Ember from 'ember';
 
-export default Ember.GlimmerComponent.extend();
+export default Ember.Component.extend();
