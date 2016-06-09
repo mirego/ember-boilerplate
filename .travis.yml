@@ -1,7 +1,7 @@
 ---
 language: node_js
 node_js:
-  - 5.5
+  - 5.11
 
 sudo: false
 
@@ -9,10 +9,6 @@ cache:
   directories:
     - node_modules
     - bower_components
-
-before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - npm config set progress false
 
 install:
   - npm install
