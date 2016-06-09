@@ -1,12 +1,5 @@
 # Boilerplate code for Ember.js
 
-## A note about Ember.js version
-
-We [currently lock](https://github.com/mirego/ember-boilerplate/blob/master/bower.json)
-Ember’s version to a specific commit in its `canary` release
-channel in order to use the new angle-bracket components. This is temporary
-until the feature is part of an official release.
-
 ## Browser support
 
 | Browser            | OS      | Constraint        |
@@ -18,16 +11,7 @@ until the feature is part of an official release.
 To successfully deploy applications from this boilerplate code on Heroku, you must use a custom buildpack:
 
 ```shell
-$ heroku config:set BUILDPACK_URL=https://github.com/tonycoco/heroku-buildpack-ember-cli.git
-```
-
-## Environment variables
-
-Before running the project, you need to have the following variables defined in a `.env` file:
-
-```
-API_HOST
-API_NAMESPACE
+$ heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-ember-cli.git
 ```
 
 ## Managing dependencies
@@ -39,6 +23,10 @@ $ brew install node
 $ npm install
 $ bower install
 ```
+
+### Updating dependencies
+
+To make sure we always have frozen dependencies which we have tested and know to work together, we use the [npm shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) command. What that means is that every time you update a dependency, you must run the `npm shrinkwrap` command to make sure to update the `npm-shrinkwrap.json` file so that when your coworkers install the dependencies, they get *exactly* the same ones as you.
 
 ## Running / Development
 
