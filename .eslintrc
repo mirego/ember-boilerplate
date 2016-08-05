@@ -42,6 +42,7 @@
     "no-obj-calls": 2,
     "no-sparse-arrays": 2,
     "no-throw-literal": 2,
+    "no-trailing-spaces": 2,
     "no-undef": 2,
     "no-unreachable": 2,
     "no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_", "vars": "all", "varsIgnorePattern": "^_"}],
