@@ -1,0 +1,7 @@
+{
+  "globals": {
+    "visit": true,
+    "andThen": true,
+    "currentPath": true
+  }
+}
