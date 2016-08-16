@@ -14,6 +14,27 @@ To successfully deploy applications from this boilerplate code on Heroku, you mu
 $ heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-ember-cli.git
 ```
 
+## eslint
+
+All projects using the `ember-boilerplate` must include the latest `eslint` configuration. You will need the following files:
+
+* [.eslintignore](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintignore)
+* [.eslintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintrc)
+
+After you have copied these two files, open `.travis.yml` and remove the comment for the lines below `script` (line 17):
+
+```yaml
+# Before
+script:
+  # - npm run lint
+  # - npm test
+
+# After
+script:
+  - npm run lint
+  - npm test
+```
+
 ## Managing dependencies
 
 We use ember-cli which depends on node.js, npm and Bower.
