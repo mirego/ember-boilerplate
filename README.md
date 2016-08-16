@@ -35,6 +35,10 @@ script:
   - npm test
 ```
 
+## Stylelint
+ 
+All project using the `ember-boilerplate` must include the latest `.stylelintrc` file. You can access it [here](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.stylelintrc).
+
 ## Managing dependencies
 
 We use ember-cli which depends on node.js, npm and Bower.
