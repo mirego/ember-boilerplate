@@ -7,7 +7,7 @@ module.exports = function(environment) {
     modulePrefix: 'ember-boilerplate',
     podModulePrefix: 'ember-boilerplate/pods',
     environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto'
   };
 
@@ -58,7 +58,6 @@ module.exports = function(environment) {
   };
 
   if (environment === 'test') {
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     ENV.APP.LOG_ACTIVE_GENERATION = false;
