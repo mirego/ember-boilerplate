@@ -8,11 +8,7 @@
 
 ## Heroku buildpack
 
-To successfully deploy applications from this boilerplate code on Heroku, you must use a custom buildpack:
-
-```shell
-$ heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-ember-cli.git
-```
+To successfully deploy applications from this boilerplate code on Heroku, you must use the ember-cli custom buildpack: https://github.com/heroku/heroku-buildpack-ember-cli .  Follow the documentation to ensure you install all required packs. 
 
 ## Managing dependencies
 
