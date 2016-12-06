@@ -44,8 +44,8 @@
     "ember-i18n": "4.2.2",
     "ember-load-initializers": "0.5.1",
     "ember-resolver": "2.0.3",
-    "eslint": "3.3.0",
+    "eslint": "3.11.1",
     "loader.js": "4.0.11",
-    "stylelint": "7.1.0"
+    "stylelint": "7.6.0"
   }
 }

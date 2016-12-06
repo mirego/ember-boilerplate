@@ -3,7 +3,7 @@
 'use strict';
 
 module.exports = function(environment) {
-  let ENV = {
+  const ENV = {
     modulePrefix: 'ember-boilerplate',
     podModulePrefix: 'ember-boilerplate/pods',
     environment,
