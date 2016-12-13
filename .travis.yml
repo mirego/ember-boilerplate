@@ -1,14 +1,18 @@
 ---
 language: node_js
 node_js:
-  - 5.11
+  - 6.9.2
 
 sudo: false
 
 cache:
   directories:
-    - node_modules
-    - bower_components
+    - $HOME/.npm
+    - $HOME/.cache # includes Bower’s cache
+
+before_install:
+  - npm install phantomjs-prebuilt
+  - node_modules/phantomjs-prebuilt/bin/phantomjs --version
 
 install:
   - npm install
