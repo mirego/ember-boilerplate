@@ -10,9 +10,7 @@ module.exports = function(defaults) {
     autoprefixer: {
       browsers: [
         'ie >= 10',
-        'safari >= 7',
-        'last 2 versions',
-        'ios >= 7'
+        'last 2 versions'
       ]
     },
     babel: {
