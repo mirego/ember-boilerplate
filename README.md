@@ -8,7 +8,7 @@
 
 ## Heroku buildpack
 
-To successfully deploy applications from this boilerplate code on Heroku, you must use the ember-cli custom buildpack: https://github.com/heroku/heroku-buildpack-ember-cli .  Follow the documentation to ensure you install all required packs. 
+To successfully deploy applications from this boilerplate code on Heroku, you must use the ember-cli custom buildpack: https://github.com/heroku/heroku-buildpack-ember-cli .  Follow the documentation to ensure you install all required packs.
 
 ## eslint
 
@@ -32,17 +32,16 @@ script:
 ```
 
 ## Stylelint
- 
+
 All project using the `ember-boilerplate` must include the latest `.stylelintrc` file. You can access it [here](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.stylelintrc).
 
 ## Managing dependencies
 
-We use ember-cli which depends on node.js, npm and Bower.
+We use ember-cli which depends on node.js, npm.
 
 ```shell
 $ brew install node
 $ npm install
-$ bower install
 ```
 
 ### Updating dependencies
@@ -75,4 +74,3 @@ Make use of the many generators for code, try `ember help generate` for more det
 * Development browser extensions
   * [Ember inspector for Chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [Ember inspector for Firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-

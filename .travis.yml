@@ -8,7 +8,7 @@ sudo: false
 cache:
   directories:
     - $HOME/.npm
-    - $HOME/.cache # includes Bower’s cache
+    - $HOME/.cache
 
 before_install:
   - npm install phantomjs-prebuilt
@@ -16,7 +16,6 @@ before_install:
 
 install:
   - npm install
-  - bower install
 
 script:
   # - npm run lint

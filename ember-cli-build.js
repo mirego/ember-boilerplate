@@ -15,10 +15,13 @@ module.exports = function(defaults) {
     },
     'ember-cli-babel': {
       includePolyfill: true
+    },
+    nodeAssets: {
+      'simple-css-reset': {
+        import: ['reset.css']
+      }
     }
   });
-
-  app.import('bower_components/simple-css-reset/reset.css');
 
   return app.toTree();
 };
