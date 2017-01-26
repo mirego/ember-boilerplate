@@ -13,7 +13,7 @@ module.exports = function(defaults) {
         'last 2 versions'
       ]
     },
-    babel: {
+    'ember-cli-babel': {
       includePolyfill: true
     }
   });
