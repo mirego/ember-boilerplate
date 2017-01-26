@@ -720,6 +720,11 @@
         }
       }
     },
+    "broccoli-unwatched-tree": {
+      "version": "0.1.1",
+      "from": "broccoli-unwatched-tree@>=0.1.1 <0.2.0",
+      "resolved": "https://registry.npmjs.org/broccoli-unwatched-tree/-/broccoli-unwatched-tree-0.1.1.tgz"
+    },
     "broccoli-writer": {
       "version": "0.1.1",
       "from": "broccoli-writer@>=0.1.1 <0.2.0",
@@ -1558,6 +1563,18 @@
           "version": "0.2.7",
           "from": "walk-sync@>=0.2.5 <0.3.0",
           "resolved": "https://registry.npmjs.org/walk-sync/-/walk-sync-0.2.7.tgz"
+        }
+      }
+    },
+    "ember-cli-node-assets": {
+      "version": "0.1.6",
+      "from": "ember-cli-node-assets@latest",
+      "resolved": "https://registry.npmjs.org/ember-cli-node-assets/-/ember-cli-node-assets-0.1.6.tgz",
+      "dependencies": {
+        "lodash": {
+          "version": "4.17.4",
+          "from": "lodash@>=4.5.1 <5.0.0",
+          "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz"
         }
       }
     },
@@ -7563,6 +7580,11 @@
       "version": "1.0.1",
       "from": "silent-error@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/silent-error/-/silent-error-1.0.1.tgz"
+    },
+    "simple-css-reset": {
+      "version": "2.0.5",
+      "from": "simple-css-reset@latest",
+      "resolved": "https://registry.npmjs.org/simple-css-reset/-/simple-css-reset-2.0.5.tgz"
     },
     "simple-dom": {
       "version": "0.3.2",
