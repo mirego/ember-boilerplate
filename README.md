@@ -22,13 +22,13 @@ After you have copied these two files, open `.travis.yml` and remove the comment
 ```yaml
 # Before
 script:
-  # - npm run lint
-  # - npm test
+  # - yarn run lint
+  # - yarn test
 
 # After
 script:
-  - npm run lint
-  - npm test
+  - yarn run lint
+  - yarn test
 ```
 
 ## Stylelint
@@ -37,16 +37,12 @@ All project using the `ember-boilerplate` must include the latest `.stylelintrc`
 
 ## Managing dependencies
 
-We use ember-cli which depends on node.js, npm.
+We use ember-cli which depends on node.js, yarn.
 
 ```shell
 $ brew install node
-$ npm install
+$ yarn install
 ```
-
-### Updating dependencies
-
-To make sure we always have frozen dependencies which we have tested and know to work together, we use the [npm shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap) command. What that means is that every time you update a dependency, you must run the `npm shrinkwrap` command to make sure to update the `npm-shrinkwrap.json` file so that when your coworkers install the dependencies, they get *exactly* the same ones as you.
 
 ## Running / Development
 
