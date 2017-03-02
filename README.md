@@ -44,29 +44,9 @@ $ brew install node
 $ yarn install
 ```
 
+Everytime a new package is added or an update is made in `package.json` file, you **must** update the `yarn.lock` file by running `yarn install`.
+
 ## Running / Development
 
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
-* Development browser extensions
-  * [Ember inspector for Chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [Ember inspector for Firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
