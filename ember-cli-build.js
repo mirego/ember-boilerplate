@@ -9,8 +9,10 @@ module.exports = function(defaults) {
     hinting: false,
     autoprefixer: {
       browsers: [
-        'ie >= 10',
-        'last 2 versions'
+        'ie >= 11',
+        'last 2 Chrome versions',
+        'last 2 Firefox versions',
+        'last 2 Safari versions'
       ]
     },
     'ember-cli-babel': {
