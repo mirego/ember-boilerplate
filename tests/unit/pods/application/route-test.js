@@ -3,21 +3,19 @@ import {expect} from 'chai';
 import {describe, beforeEach, it} from 'mocha';
 import {setupTest} from 'ember-mocha';
 import sinon from 'sinon';
-import Service from '@ember/service';
 
 describe('Unit | Routes | application', () => {
-  setupTest('route:application');
+  setupTest();
 
   let route;
 
   beforeEach(function() {
-    const IntlStub = Service.extend({
-      setLocale: sinon.stub()
-    });
+    // We need to do this because ember-intl somehow always
+    // overwrites our `this.owner.register` when trying to stub it.
+    const intl = this.owner.lookup('service:intl');
+    intl.setLocale = sinon.stub();
 
-    this.register('service:intl', IntlStub);
-
-    route = this.subject();
+    route = this.owner.lookup('route:application');
   });
 
   it('should exist', () => {
