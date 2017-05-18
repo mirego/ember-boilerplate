@@ -8,14 +8,14 @@
 
 ## Heroku buildpack
 
-To successfully deploy applications from this boilerplate code on Heroku, you must use the ember-cli custom buildpack: https://github.com/heroku/heroku-buildpack-ember-cli .  Follow the documentation to ensure you install all required packs.
+To successfully deploy applications from this boilerplate code on Heroku, you must use Heroku’s [emberjs buildpack](https://github.com/heroku/heroku-buildpack-emberjs) (follow instructions under _Usage_).
 
 ## eslint
 
 All projects using the `ember-boilerplate` must include the latest `eslint`, `stylelint` and `svgo` configurations. You will need the following files:
 
 * [.eslintignore](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintignore)
-* [.eslintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintrc)
+* [.eslintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintrc-browser)
 * [.stylelintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.stylelintrc)
 * [.svgo.yml](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.svgo.yml)
 
@@ -50,5 +50,8 @@ Everytime a new package is added or an update is made in `package.json` file, yo
 
 ## Running / Development
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* `yarn start`
+
+## Running / Production
+
+* `yarn server`

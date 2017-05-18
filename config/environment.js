@@ -8,7 +8,10 @@ module.exports = function(environment) {
     podModulePrefix: 'ember-boilerplate/pods',
     environment,
     rootURL: '/',
-    locationType: 'auto'
+    locationType: 'auto',
+    fastboot: {
+      fastbootHeaders: true
+    }
   };
 
   ENV.EmberENV = {
