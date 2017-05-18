@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {PropTypes as T} from 'ember-prop-types';
+import T from 'prop-types';
 
 export default Ember.Component.extend({
   propTypes: {
