@@ -12,10 +12,12 @@ To successfully deploy applications from this boilerplate code on Heroku, you mu
 
 ## eslint
 
-All projects using the `ember-boilerplate` must include the latest `eslint` configuration. You will need the following files:
+All projects using the `ember-boilerplate` must include the latest `eslint`, `stylelint` and `svgo` configurations. You will need the following files:
 
 * [.eslintignore](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintignore)
 * [.eslintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintrc)
+* [.stylelintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.stylelintrc)
+* [.svgo.yml](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.svgo.yml)
 
 After you have copied these two files, open `.travis.yml` and remove the comment for the lines below `script` (line 17):
 
