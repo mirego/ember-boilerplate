@@ -57,6 +57,7 @@
     "loader.js": "^4.4.0",
     "simple-css-reset": "^2.0.5",
     "stylelint": "^7.10.1",
+    "stylelint-order": "^0.4.4",
     "svgo": "^0.7.2"
   }
 }
