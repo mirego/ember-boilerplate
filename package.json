@@ -58,6 +58,7 @@
     "simple-css-reset": "^2.0.5",
     "stylelint": "^7.10.1",
     "stylelint-order": "^0.4.4",
+    "stylelint-value-border-zero": "^1.0.2",
     "svgo": "^0.7.2"
   }
 }
