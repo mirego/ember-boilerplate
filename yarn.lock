@@ -2311,10 +2311,6 @@ dot-prop@^4.1.0:
   dependencies:
     is-obj "^1.0.0"
 
-dotenv@^1.0.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-1.2.0.tgz#7cd73e16e07f057c8072147a5bc3a8677f0ab5c6"
-
 duplexer2@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
@@ -2432,13 +2428,6 @@ ember-cli-dependency-checker@^1.4.0:
     chalk "^0.5.1"
     is-git-url "^0.2.0"
     semver "^4.1.0"
-
-ember-cli-dotenv@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-dotenv/-/ember-cli-dotenv-1.2.0.tgz#11aab75ee3d98305799778dad58072fca97c57f1"
-  dependencies:
-    dotenv "^1.0.0"
-    exists-sync "0.0.3"
 
 ember-cli-fastboot@^1.0.0-rc.1:
   version "1.0.0-rc.1"
