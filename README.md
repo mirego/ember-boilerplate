@@ -48,10 +48,19 @@ $ yarn install
 
 Everytime a new package is added or an update is made in `package.json` file, you **must** update the `yarn.lock` file by running `yarn install`.
 
-## Running / Development
+## Running
+
+When running the application, you should always make sure that the required system environment variables are present.
+You can use `source`, [nv](https://github.com/jcouture/nv) or a custom l33t bash script.
+
+### Development
+
+This starts a FastBoot-enabled development server with live code reloading.
 
 * `yarn start`
 
-## Running / Production
+## Production
+
+This starts a FastBoot-enabled production-ready server (`app/server.js`) with support for canonical host, SSL and `Basic` authentication.
 
 * `yarn server`
