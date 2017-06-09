@@ -30,6 +30,10 @@ module.exports = function(environment) {
     NAMESPACE: process.env.API_NAMESPACE
   };
 
+  ENV.SENTRY = {
+    DSN: process.env.SENTRY_DSN
+  };
+
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'media-src': "'self'",
@@ -50,6 +54,7 @@ module.exports = function(environment) {
     'connect-src': [
       "'self'",
       'https://www.googleapis.com',
+      'https://sentry.io',
       ENV.API.HOST
     ],
     // Allow inline styles and loaded CSS from fonts.googleapis.com
