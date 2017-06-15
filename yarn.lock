@@ -710,6 +710,12 @@ babel-plugin-inline-environment-variables@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-inline-environment-variables/-/babel-plugin-inline-environment-variables-1.0.1.tgz#1f58ce91207ad6a826a8bf645fafe68ff5fe3ffe"
 
+babel-plugin-inline-replace-variables@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-inline-replace-variables/-/babel-plugin-inline-replace-variables-1.3.1.tgz#9fbb8dd43229c777695e14ea0d3d781f048fdc0f"
+  dependencies:
+    babylon "^6.17.0"
+
 babel-plugin-jscript@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/babel-plugin-jscript/-/babel-plugin-jscript-1.0.4.tgz#8f342c38276e87a47d5fa0a8bd3d5eb6ccad8fcc"
@@ -2911,12 +2917,13 @@ ember-cli-preprocess-registry@^3.1.0:
     process-relative-require "^1.0.0"
     silent-error "^1.0.0"
 
-ember-cli-prop-types@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-prop-types/-/ember-cli-prop-types-1.0.0.tgz#4925ac29ee0935c4ce0a335bd9402f8441a34479"
+ember-cli-prop-types@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-prop-types/-/ember-cli-prop-types-1.5.0.tgz#624dc3e6ef57312e0438c0ca8ad5dbc7b0349466"
   dependencies:
+    babel-plugin-inline-replace-variables "^1.3.1"
     ember-cli-babel "^6.0.0"
-    prop-types "^15.5.10"
+    prop-types "15.5.10"
 
 ember-cli-release@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -6450,7 +6457,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.5.10:
+prop-types@15.5.10:
   version "15.5.10"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
   dependencies:
