@@ -6,6 +6,15 @@
 |--------------------|---------|-------------------|
 | …                  | …       | …                 |
 
+## Environment variables
+
+```
+API_HOST=
+API_NAMESPACE=
+
+SENTRY_DSN=
+```
+
 ## Heroku buildpack
 
 To successfully deploy applications from this boilerplate code on Heroku, you must use Heroku’s [emberjs buildpack](https://github.com/heroku/heroku-buildpack-emberjs) (follow instructions under _Usage_).
@@ -47,6 +56,16 @@ $ yarn install
 ```
 
 Everytime a new package is added or an update is made in `package.json` file, you **must** update the `yarn.lock` file by running `yarn install`.
+
+## Sentry
+
+[Sentry’s real-time error tracking](https://sentry.io/) gives you insight into production deployments and information to reproduce and fix crashes.
+
+We use it through Mirego's account (see IT to get access) for QA and Staging environments. A team must be created for each client and a project per `app+enviroment` (eg. `accent-qa`, `accent-staging`).
+
+For production, the account to use must be evaluated depending on your client's needs.
+
+N.B.: Error reporting under FastBoot is currently disabled. The `ember-cli-sentry` project is currently working on the support of Sentry under FastBoot.
 
 ## Running
 
