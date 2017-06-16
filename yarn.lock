@@ -7549,14 +7549,7 @@ stylelint-order@^0.4.4:
     postcss "^5.2.16"
     stylelint "^7.9.0"
 
-stylelint-value-border-zero@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/stylelint-value-border-zero/-/stylelint-value-border-zero-1.0.2.tgz#b05a4bc92ab524de387bb6918fd85d01b7043ce2"
-  dependencies:
-    object-assign "^4.0.1"
-    stylelint ">=3.0.2"
-
-stylelint@>=3.0.2, stylelint@^7.10.1, stylelint@^7.9.0:
+stylelint@^7.10.1, stylelint@^7.9.0:
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-7.10.1.tgz#209a7ce5e781fc2a62489fbb31ec0201ec675db2"
   dependencies:
