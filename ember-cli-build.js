@@ -16,6 +16,11 @@ module.exports = function(defaults) {
         'last 2 Safari versions'
       ]
     },
+    babel: {
+      plugins: [
+        'transform-object-rest-spread'
+      ]
+    },
     'ember-cli-babel': {
       includePolyfill: true
     },
