@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "babel-eslint": "^7.2.3",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "broccoli-asset-rev": "^2.5.0",
     "ember-browserify": "^1.1.13",
     "ember-cli": "^2.13.1",
