@@ -16,7 +16,8 @@ module.exports = function(environment) {
 
   ENV.EmberENV = {
     FEATURES: {},
-    LOG_VERSION: false
+    LOG_VERSION: false,
+    EXTEND_PROTOTYPES: false
   };
 
   ENV.i18n = {
