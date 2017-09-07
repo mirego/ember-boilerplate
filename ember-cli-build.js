@@ -28,6 +28,10 @@ module.exports = function(defaults) {
       'simple-css-reset': {
         import: ['reset.css']
       }
+    },
+    fingerprint: {
+      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
+      generateAssetMap: true
     }
   });
 
