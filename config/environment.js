@@ -28,7 +28,8 @@ module.exports = function(environment) {
 
   ENV.API = {
     HOST: process.env.API_HOST,
-    NAMESPACE: process.env.API_NAMESPACE
+    GRAPHQL_PATH: process.env.GRAPHQL_PATH,
+    JSON_API_PATH: process.env.JSON_API_PATH
   };
 
   ENV.SENTRY = {
