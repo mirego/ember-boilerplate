@@ -1,5 +1,5 @@
 import Raven from 'npm:raven-js';
-import config from 'ember-boilerplate/config/environment';
+import config from 'peakapp/config/environment';
 
 export const initialize = (application) => {
   // FastBoot supports not yet present, work in progress for 3.0.0

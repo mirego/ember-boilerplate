@@ -1,5 +1,5 @@
 {
-  "name": "ember-boilerplate",
+  "name": "peakapp",
   "version": "0.0.1",
   "description": "Small description for ember-boilerplate goes here",
   "private": true,
@@ -41,7 +41,8 @@
     "ember-cli-shims": "^1.1.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-uglify": "^2.0.0",
-    "ember-component-css": "^0.3.5",
+    "ember-css-modules": "latest",
+    "ember-css-modules-sass": "latest",
     "ember-data": "^2.15.3",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^3.4.0",
