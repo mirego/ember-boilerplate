@@ -21,18 +21,6 @@ module.exports = function(defaults) {
         'transform-object-rest-spread'
       ]
     },
-    'ember-cli-babel': {
-      includePolyfill: true
-    },
-    nodeAssets: {
-      'simple-css-reset': {
-        import: ['reset.css']
-      }
-    },
-    fingerprint: {
-      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
-      generateAssetMap: true
-    },
     cssModules: {
       // Emit a combined SCSS file for ember-cli-sass to compile
       intermediateOutputPath: 'app/styles/app.scss',
@@ -44,6 +32,23 @@ module.exports = function(defaults) {
       postcssOptions: {
         syntax: require('postcss-scss')
       }
+    },
+    'ember-cli-babel': {
+      includePolyfill: true
+    },
+    fingerprint: {
+      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
+      generateAssetMap: true
+    },
+    nodeAssets: {
+      'simple-css-reset': {
+        import: ['reset.css']
+      }
+    },
+    svg: {
+      paths: [
+        'public/assets/inline-svgs'
+      ]
     }
   });
 
