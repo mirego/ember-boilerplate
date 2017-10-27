@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import {run} from '@ember/runloop';
+import {assign} from '@ember/polyfills';
 import Application from '../../app';
 import config from '../../config/environment';
 
@@ -6,9 +7,9 @@ const startApp = (attrs) => {
   let application;
 
   // Use defaults, but you can override
-  const attributes = Ember.assign({}, config.APP, attrs);
+  const attributes = assign({}, config.APP, attrs);
 
-  Ember.run(() => {
+  run(() => {
     application = Application.create(attributes);
     application.setupForTesting();
     application.injectTestHelpers();
