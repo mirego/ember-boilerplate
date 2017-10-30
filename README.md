@@ -47,6 +47,33 @@ script:
 
 All project using the `ember-boilerplate` must include the latest `.stylelintrc` file. You can access it [here](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.stylelintrc).
 
+## SVGs
+
+All project using the `ember-boilerplate` must use the `ember-inline-svg` addon to inline SVGs in the HTML.
+
+**If you do not need to style the SVG e.g. change its fill property, you should use the `<img>` tag.**
+
+### SVG with dynamic styling
+
+* Use the `inline-svg` helper from the `ember-inline-svg` addon;
+* Do not specify the extension;
+* Do not specify the full path. The configuration in `ember-cli-build.js` already defines the default folder for SVGs to `public/assets/inline-svgs`;
+* File must be located at `public/assets/inline-svgs`;
+
+```
+{{inline-svg 'icon-arrow'}}
+```
+
+### SVG without dynamic styling
+
+* Use the `<img>` tag;
+* Must specify extension and full path;
+* File must be located at `public/assets/images`:
+
+```
+<img src="/assets/images/icon-arrow.svg">
+```
+
 ## Managing dependencies
 
 We use ember-cli which depends on node.js and npm.
