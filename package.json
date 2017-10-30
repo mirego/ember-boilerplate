@@ -16,7 +16,7 @@
   },
   "repository": "https://github.com/mirego/",
   "engines": {
-    "node": ">= 6.9.2"
+    "node": "^7.0.0"
   },
   "dependencies": {
     "babel-eslint": "^8.0.1",
