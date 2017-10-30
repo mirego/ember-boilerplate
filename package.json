@@ -1,5 +1,5 @@
 {
-  "name": "peakapp",
+  "name": "ember-boilerplate",
   "version": "0.0.1",
   "description": "Small description for ember-boilerplate goes here",
   "private": true,
@@ -16,7 +16,8 @@
   },
   "repository": "https://github.com/mirego/",
   "engines": {
-    "node": "^7.0.0"
+    "node": "^8.5.0",
+    "npm": "^5.5.0"
   },
   "dependencies": {
     "babel-eslint": "^8.0.1",

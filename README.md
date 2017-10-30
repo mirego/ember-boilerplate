@@ -34,13 +34,13 @@ After you have copied these two files, open `.travis.yml` and remove the comment
 ```yaml
 # Before
 script:
-  # - yarn run lint
-  # - yarn test
+  # - npm run lint
+  # - npm test
 
 # After
 script:
-  - yarn run lint
-  - yarn test
+  - npm run lint
+  - npm test
 ```
 
 ## Stylelint
@@ -49,14 +49,14 @@ All project using the `ember-boilerplate` must include the latest `.stylelintrc`
 
 ## Managing dependencies
 
-We use ember-cli which depends on node.js, yarn.
+We use ember-cli which depends on node.js and npm.
 
 ```shell
 $ brew install node
-$ yarn install
+$ npm install
 ```
 
-Everytime a new package is added or an update is made in `package.json` file, you **must** update the `yarn.lock` file by running `yarn install`.
+Everytime a new package is added or an update is made in `package.json` file, you **must** update the `package-lock.json` file by running `npm install`.
 
 ## Sentry
 
@@ -77,10 +77,10 @@ You can use `source`, [nv](https://github.com/jcouture/nv) or a custom l33t bash
 
 This starts a FastBoot-enabled development server with live code reloading.
 
-* `yarn start`
+* `npm start`
 
 ## Production
 
 This starts a FastBoot-enabled production-ready server (`app/server.js`) with support for canonical host, SSL and `Basic` authentication.
 
-* `yarn server`
+* `npm run server`

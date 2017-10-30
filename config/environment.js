@@ -4,8 +4,8 @@
 
 module.exports = function(environment) {
   const ENV = {
-    modulePrefix: 'peakapp',
-    podModulePrefix: 'peakapp/pods',
+    modulePrefix: 'ember-boilerplate',
+    podModulePrefix: 'ember-boilerplate/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
