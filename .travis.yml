@@ -13,6 +13,7 @@ cache:
   npm: true
 
 install:
+  - npm install npm@5.5
   - npm install
 
 script:
