@@ -12,7 +12,9 @@
     "start": "ember server",
     "build": "ember build",
     "test": "ember test",
-    "lint": "./node_modules/.bin/stylelint './app/**/*.scss' && ./node_modules/.bin/eslint './app/**/*.js' './config/**/*.js' './mirage/**/*.js' './public/**/*.js' './tests/**/*.js' './ember-cli-build.js' './testem.js'"
+    "svgo": "svgo --config=.svgo.yml",
+    "lint": "./node_modules/.bin/stylelint './app/**/*.scss' && ./node_modules/.bin/eslint './app/**/*.js' './config/**/*.js' './mirage/**/*.js' './public/**/*.js' './tests/**/*.js' './ember-cli-build.js' './testem.js'",
+    "precommit": "lint-staged"
   },
   "repository": "https://github.com/mirego/",
   "engines": {
@@ -57,12 +59,14 @@
     "express-force-ssl": "^0.3.2",
     "fastboot-app-server": "^1.1.0",
     "forcedomain": "^0.8.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
     "loader.js": "^4.6.0",
     "raven": "^2.2.1",
     "raven-js": "^3.19.1",
     "simple-css-reset": "^2.0.5",
     "stylelint": "^8.2.0",
     "stylelint-order": "^0.7.0",
-    "svgo": "^0.7.2"
+    "svgo": "^1.0.2"
   }
 }
