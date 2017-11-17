@@ -3,5 +3,8 @@
     "visit": true,
     "andThen": true,
     "currentPath": true
+  },
+  "rules": {
+    "no-magic-numbers": 0
   }
 }
