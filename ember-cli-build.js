@@ -4,6 +4,11 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_CDN_PATH}) => {
+  if (!ASSETS_CDN_HOST || !ASSETS_CDN_PROTOCOL) return '';
+  return `${ASSETS_CDN_PROTOCOL}://${ASSETS_CDN_HOST}/${ASSETS_CDN_PATH}`;
+};
+
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     hinting: false,
@@ -38,7 +43,8 @@ module.exports = function(defaults) {
     },
     fingerprint: {
       extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
-      generateAssetMap: true
+      generateAssetMap: true,
+      prepend: buildFingerPrintPrepend(process.env)
     },
     nodeAssets: {
       'simple-css-reset': {
