@@ -9,11 +9,23 @@
 ## Environment variables
 
 ```
+# API
 API_HOST=
 GRAPHQL_PATH=
-JSON_API_PAT
+JSON_API_PATH=
 
+# Sentry
 SENTRY_DSN=
+SENTRY_SECRET_DSN=
+
+# Server
+CANONICAL_HOST=
+FORCE_SSL=
+
+# Assets
+ASSETS_CDN_HOST=
+ASSETS_CDN_PROTOCOL=
+ASSETS_CDN_PATH=
 ```
 
 ## Heroku buildpack
