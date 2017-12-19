@@ -32,16 +32,17 @@ ASSETS_CDN_PATH=
 
 To successfully deploy applications from this boilerplate code on Heroku, you must use Heroku’s [emberjs buildpack](https://github.com/heroku/heroku-buildpack-emberjs) (follow instructions under _Usage_).
 
-## eslint
+## Linting
 
 All projects using the `ember-boilerplate` must include the latest `eslint`, `stylelint` and `svgo` configurations. You will need the following files:
 
-* [.eslintignore](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintignore)
-* [.eslintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.eslintrc-browser)
-* [.stylelintrc](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.stylelintrc)
-* [.svgo.yml](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.svgo.yml)
+* `.eslintrc`
+* `.stylelintrc`
+* `.svgo.yml`
 
-After you have copied these two files, open `.travis.yml` and remove the comment for the lines below `script` (line 17):
+They all are stored in the [mirego-horizontal-web](https://github.com/mirego/mirego-horizontal-web) repository.
+
+After you have copied the files, open `.travis.yml` and remove the comment for the lines below `script`:
 
 ```yaml
 # Before
@@ -55,15 +56,11 @@ script:
   - npm test
 ```
 
-## Stylelint
-
-All project using the `ember-boilerplate` must include the latest `.stylelintrc` file. You can access it [here](https://github.com/mirego/mirego-guidelines/blob/master/http/configs/.stylelintrc).
-
 ## SVGs
 
-All project using the `ember-boilerplate` must use the `ember-inline-svg` addon to inline SVGs in the HTML.
+All projects using `ember-boilerplate` must use the `ember-inline-svg` addon to inline SVGs in the HTML output.
 
-**If you do not need to style the SVG e.g. change its fill property, you should use the `<img>` tag.**
+_If you do not need to style the SVG (eg. change its `fill` property), you should use the `<img>` tag._
 
 ### SVG with dynamic styling
 
@@ -83,7 +80,7 @@ All project using the `ember-boilerplate` must use the `ember-inline-svg` addon 
 * File must be located at `public/assets/images`:
 
 ```
-<img src="/assets/images/icon-arrow.svg">
+<img src="/assets/images/icon-arrow.svg" />
 ```
 
 ## Managing dependencies
