@@ -12,6 +12,16 @@ const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_C
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     hinting: false,
+    'ember-cli-webpack-imports': {
+      expose: [
+        'apollo-client',
+        'apollo-link',
+        'apollo-link-http',
+        'apollo-cache-inmemory',
+        'graphql',
+        'raven-js'
+      ]
+    },
     autoprefixer: {
       browsers: [
         'ie >= 11',

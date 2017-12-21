@@ -1,4 +1,4 @@
-import Raven from 'npm:raven-js';
+import Raven from 'raven-js';
 import config from 'ember-boilerplate/config/environment';
 
 export const initialize = (application) => {
