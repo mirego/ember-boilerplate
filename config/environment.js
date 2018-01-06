@@ -38,6 +38,7 @@ module.exports = function(environment) {
 
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
+    'form-action': "'self'",
     'media-src': "'self'",
     'img-src': [
       "'self'",
