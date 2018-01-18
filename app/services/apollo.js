@@ -9,7 +9,7 @@ import fetch from 'fetch';
 // Config
 import config from 'ember-boilerplate/config/environment';
 
-const URI = `${config.API.HOST}${config.API.GRAPHQL_PATH}`;
+const URI = `${config.API.BASE_URL}${config.API.GRAPHQL_PATH}`;
 
 export default Service.extend({
   sessionFetcher: service('session/fetcher'),

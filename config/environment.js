@@ -27,9 +27,8 @@ module.exports = function(environment) {
   ENV.APP = {};
 
   ENV.API = {
-    HOST: process.env.API_HOST,
-    GRAPHQL_PATH: process.env.GRAPHQL_PATH,
-    JSON_API_PATH: process.env.JSON_API_PATH
+    BASE_URL: process.env.API_BASE_URL,
+    GRAPHQL_PATH: process.env.API_GRAPHQL_PATH,
   };
 
   ENV.SENTRY = {
@@ -58,7 +57,7 @@ module.exports = function(environment) {
       "'self'",
       'https://www.googleapis.com',
       'https://sentry.io',
-      ENV.API.HOST
+      ENV.API.BASE_URL
     ],
     // Allow inline styles and loaded CSS from fonts.googleapis.com
     'style-src': [
