@@ -9,6 +9,12 @@ module.exports = {
   launch_in_ci: ['Chrome'],
   launch_in_dev: ['Chrome'],
   browser_args: {
-    Chrome: ['--headless', '--disable-gpu', '--remote-debugging-port=9222']
+    Chrome: [
+      // --no-sandbox is needed when running Chrome inside a container
+      process.env.TRAVIS ? '--no-sandbox' : null,
+      '--headless',
+      '--disable-gpu',
+      '--remote-debugging-port=9222'
+    ].filter(Boolean)
   }
 };
