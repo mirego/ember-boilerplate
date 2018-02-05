@@ -20,9 +20,6 @@ module.exports = function(environment) {
     EXTEND_PROTOTYPES: false
   };
 
-  ENV.i18n = {
-    defaultLocale: 'en'
-  };
 
   ENV.APP = {};
 
@@ -33,6 +30,10 @@ module.exports = function(environment) {
 
   ENV.SENTRY = {
     DSN: process.env.SENTRY_DSN
+  };
+
+  ENV.i18n = {
+    defaultLocale: 'en'
   };
 
   ENV.contentSecurityPolicy = {

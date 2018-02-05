@@ -1,7 +1,7 @@
 export default {
   general: {
     application: {
-      name: 'Ember Boilerplate'
+      name: 'ember-boilerplate'
     }
   }
 };
