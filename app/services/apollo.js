@@ -11,33 +11,37 @@ import config from 'ember-boilerplate/config/environment';
 
 const URI = `${config.API.BASE_URL}${config.API.GRAPHQL_PATH}`;
 
+const dataIdFromObject = (result) => {
+  if (result.id && result.__typename) {
+    return `${result.__typename}${result.id}`;
+  }
+
+  return null;
+};
+
 export default Service.extend({
   sessionFetcher: service('session/fetcher'),
 
   init() {
     this._super(...arguments);
 
-    const authMiddleware = this.createAuthMiddleware();
+    const authenticationLink = this.createAuthenticationLink();
     const httpLink = new HttpLink({uri: URI, fetch});
-    const link = concat(authMiddleware, httpLink);
-    const cache = new InMemoryCache();
+    const link = from([authenticationLink, httpLink]);
+    const cache = new InMemoryCache({dataIdFromObject});
 
     this.set('client', new ApolloClient({link, cache}));
   },
 
-  createAuthMiddleware() {
-    return new ApolloLink((operation, forward) => {
-      const {token} = this.get('sessionFetcher').fetch();
+  createAuthenticationLink() {
+    return setContext(async (_request) => {
+      const {token} = await this.get('sessionFetcher').fetch();
 
-      if (token) {
-        operation.setContext({
-          headers: {
-            authorization: `Bearer ${token}`
-          }
-        });
-      }
-
-      return forward(operation);
+      return {
+        headers: {
+          authorization: `Bearer ${token}`,
+        }
+      };
     });
   }
 });
