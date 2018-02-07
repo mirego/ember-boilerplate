@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    "mirego"
+  ],
+  "extends": [
+    "plugin:mirego/recommended"
+  ]
+}
