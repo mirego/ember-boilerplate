@@ -20,12 +20,11 @@ module.exports = function(environment) {
     EXTEND_PROTOTYPES: false
   };
 
-
   ENV.APP = {};
 
   ENV.API = {
     BASE_URL: process.env.API_BASE_URL,
-    GRAPHQL_PATH: process.env.API_GRAPHQL_PATH,
+    GRAPHQL_PATH: process.env.API_GRAPHQL_PATH
   };
 
   ENV.SENTRY = {

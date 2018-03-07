@@ -1,7 +1,7 @@
 // Vendor
 import Service, {inject as service} from '@ember/service';
 import ApolloClient from 'apollo-client';
-import {ApolloLink, concat} from 'apollo-link';
+import {setContext, from} from 'apollo-link-context';
 import {HttpLink} from 'apollo-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import fetch from 'fetch';
@@ -39,7 +39,7 @@ export default Service.extend({
 
       return {
         headers: {
-          authorization: `Bearer ${token}`,
+          authorization: `Bearer ${token}`
         }
       };
     });
