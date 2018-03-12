@@ -18,8 +18,7 @@ module.exports = function(defaults) {
         'apollo-link',
         'apollo-link-http',
         'apollo-cache-inmemory',
-        'graphql',
-        'raven-js'
+        'graphql'
       ]
     },
     autoprefixer: {
