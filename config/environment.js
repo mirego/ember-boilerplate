@@ -27,8 +27,12 @@ module.exports = function(environment) {
     GRAPHQL_PATH: process.env.API_GRAPHQL_PATH
   };
 
-  ENV.SENTRY = {
-    DSN: process.env.SENTRY_DSN
+  ENV.sentry = {
+    dsn: process.env.SENTRY_DSN,
+    // If set to true, it will prevent Raven.js from being initialized.
+    // Errors and logs will be logged to the console (default) instead of
+    // being reported by Raven.
+    development: !process.env.SENTRY_DSN
   };
 
   ENV.i18n = {
