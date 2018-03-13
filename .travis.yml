@@ -19,6 +19,7 @@ install:
 script:
   - npm run lint
   - npm test
+  - npm run check-coverage
 
 notifications:
   email:
