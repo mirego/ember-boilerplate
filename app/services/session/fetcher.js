@@ -3,6 +3,6 @@ import Service from '@ember/service';
 
 export default Service.extend({
   async fetch() {
-    throw new Error('[session/fetcher] fetch not implemented.');
+    return new Error('[session/fetcher] fetch not implemented.');
   }
 });
