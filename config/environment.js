@@ -35,10 +35,6 @@ module.exports = function(environment) {
     development: !process.env.SENTRY_DSN
   };
 
-  ENV.i18n = {
-    defaultLocale: 'en'
-  };
-
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'form-action': "'self'",
