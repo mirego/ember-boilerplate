@@ -21,6 +21,9 @@ module.exports = function(defaults) {
         'graphql'
       ]
     },
+    vendorFiles: {
+      'jquery.js': null
+    },
     autoprefixer: {
       browsers: [
         'ie >= 11',
