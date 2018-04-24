@@ -35,7 +35,7 @@ export default Service.extend({
 
   createAuthenticationLink() {
     return setContext(async (_request) => {
-      const {token} = await this.get('sessionFetcher').fetch();
+      const {token} = await this.sessionFetcher.fetch();
 
       return {
         headers: {
