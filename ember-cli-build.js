@@ -3,6 +3,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const targets = require('./config/targets');
 
 const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_CDN_PATH}) => {
   if (!ASSETS_CDN_HOST || !ASSETS_CDN_PROTOCOL) return '';
@@ -12,63 +13,61 @@ const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_C
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     hinting: false,
+
+    // Dependencies
     'ember-cli-webpack-imports': {
       expose: [
         'apollo-client',
-        'apollo-link',
+        'apollo-link-context',
         'apollo-link-http',
-        'apollo-cache-inmemory',
-        'graphql'
+        'apollo-cache-inmemory'
       ]
     },
+
     vendorFiles: {
       'jquery.js': null
     },
+
+    // SCSS compilation
     autoprefixer: {
-      browsers: [
-        'ie >= 11',
-        'last 2 Edge versions',
-        'last 2 Chrome versions',
-        'last 2 Firefox versions',
-        'last 2 Safari versions'
-      ]
+      browsers: targets.browsers
     },
+
+    cssModules: {
+      intermediateOutputPath: 'app/styles/app.scss',
+      extension: 'scss',
+      postcssOptions: {
+        syntax: require('postcss-scss')
+      }
+    },
+
+    // JavaScript compilation
     babel: {
       plugins: [
         'transform-object-rest-spread'
       ]
     },
-    cssModules: {
-      // Emit a combined SCSS file for ember-cli-sass to compile
-      intermediateOutputPath: 'app/styles/app.scss',
 
-      // Use .scss as the extension for CSS modules instead of the default .css
-      extension: 'scss',
-
-      // Pass a custom parser/stringifyer through to PostCSS for processing modules
-      postcssOptions: {
-        syntax: require('postcss-scss')
-      }
-    },
     'ember-cli-babel': {
       includePolyfill: true
     },
+
+    // Fingerprinting
     fingerprint: {
       extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
       generateAssetMap: true,
       prepend: buildFingerPrintPrepend(process.env)
     },
-    nodeAssets: {
-      'simple-css-reset': {
-        import: ['reset.css']
-      }
-    },
+
+    // Inline SVGs
     svg: {
       paths: [
         'public/assets/inline-svgs'
       ]
     }
   });
+
+  app.import('node_modules/simple-css-reset/reset.css');
 
   return app.toTree();
 };
