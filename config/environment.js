@@ -22,17 +22,8 @@ module.exports = function(environment) {
 
   ENV.APP = {};
 
-  ENV.API = {
-    BASE_URL: process.env.API_BASE_URL,
-    GRAPHQL_PATH: process.env.API_GRAPHQL_PATH
-  };
-
-  ENV.sentry = {
-    dsn: process.env.SENTRY_DSN,
-    // If set to true, it will prevent Raven.js from being initialized.
-    // Errors and logs will be logged to the console (default) instead of
-    // being reported by Raven.
-    development: !process.env.SENTRY_DSN
+  ENV.apollo = {
+    apiURL: `${process.env.API_BASE_URL}${process.env.API_GRAPHQL_PATH}`
   };
 
   ENV.contentSecurityPolicy = {
@@ -57,7 +48,7 @@ module.exports = function(environment) {
       "'self'",
       'https://www.googleapis.com',
       'https://sentry.io',
-      ENV.API.BASE_URL
+      process.env.API_BASE_URL
     ],
     // Allow inline styles and loaded CSS from fonts.googleapis.com
     'style-src': [
@@ -65,6 +56,14 @@ module.exports = function(environment) {
       "'unsafe-inline'",
       'fonts.googleapis.com'
     ]
+  };
+
+  ENV.sentry = {
+    dsn: process.env.SENTRY_DSN,
+    // If set to true, it will prevent Raven.js from being initialized.
+    // Errors and logs will be logged to the console (default) instead of
+    // being reported by Raven.
+    development: !process.env.SENTRY_DSN
   };
 
   if (environment === 'test') {
