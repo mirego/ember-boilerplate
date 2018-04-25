@@ -17,9 +17,7 @@ install:
   - npm install
 
 script:
-  - npm run lint
-  - npm test
-  - npm run check-coverage
+  - ./scripts/ci-check.sh
 
 notifications:
   email:
