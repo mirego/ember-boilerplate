@@ -16,8 +16,7 @@
     "svgo": "./node_modules/.bin/svgo --config=.svgo.yml",
     "lint-scripts": "./node_modules/.bin/eslint './app/**/*.js' './config/**/*.js' './mirage/**/*.js' './public/**/*.js' './tests/**/*.js' './ember-cli-build.js' './testem.js'",
     "lint-styles": "./node_modules/.bin/stylelint './app/**/*.scss'",
-    "lint-templates": "./node_modules/.bin/ember-template-lint './app/**/*.hbs'",
-    "lint": "npm run lint-scripts && npm run lint-styles && npm run lint-templates"
+    "lint-templates": "./node_modules/.bin/ember-template-lint './app/**/*.hbs'"
   },
   "repository": "https://github.com/mirego/ember-boilerplate",
   "engines": {
