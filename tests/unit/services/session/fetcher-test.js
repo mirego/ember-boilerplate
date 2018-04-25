@@ -4,12 +4,12 @@ import {describe, beforeEach, it} from 'mocha';
 import {setupTest} from 'ember-mocha';
 
 describe('Unit | Services | Session | fetcher', () => {
-  setupTest('service:session/fetcher');
+  setupTest();
 
   let service;
 
   beforeEach(function() {
-    service = this.subject();
+    service = this.owner.lookup('service:session/fetcher');
   });
 
   it('should exist', () => {
