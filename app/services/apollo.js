@@ -14,6 +14,7 @@ const dataIdFromObject = (result) => {
 };
 
 export default ApolloService.extend({
+  apolloShoeboxReader: service('apollo/shoebox-reader'),
   fastboot: service('fastboot'),
   sessionFetcher: service('session/fetcher'),
 
@@ -27,14 +28,17 @@ export default ApolloService.extend({
 
   link: computed(function() {
     const httpLink = this._super(...arguments);
-
     const authenticationLink = this._createAuthenticationLink();
 
     return authenticationLink.concat(httpLink);
   }),
 
-  cache: computed(() => {
-    return new InMemoryCache({dataIdFromObject});
+  cache: computed(function() {
+    const cache = new InMemoryCache({dataIdFromObject});
+
+    const cachedContent = this.apolloShoeboxReader.read();
+
+    return cache.restore(cachedContent);
   }),
 
   _createAuthenticationLink() {

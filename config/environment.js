@@ -23,7 +23,8 @@ module.exports = function(environment) {
   ENV.APP = {};
 
   ENV.apollo = {
-    apiURL: `${process.env.API_BASE_URL}${process.env.API_GRAPHQL_PATH}`
+    apiURL: `${process.env.API_BASE_URL}${process.env.API_GRAPHQL_PATH}`,
+    SSR_CACHE_KEY: 'apollo-cache'
   };
 
   ENV.contentSecurityPolicy = {
@@ -74,6 +75,11 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+
+    ENV.apollo = {
+      apiURL: 'graphql://fake/endpoint',
+      SSR_CACHE_KEY: 'test-apollo-cache'
+    };
   }
 
   return ENV;
