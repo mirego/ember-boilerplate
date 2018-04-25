@@ -15,12 +15,13 @@ module.exports = function(defaults) {
     hinting: false,
 
     // Dependencies
-    'ember-cli-webpack-imports': {
-      expose: [
-        'apollo-client',
-        'apollo-link-context',
-        'apollo-link-http',
-        'apollo-cache-inmemory'
+    apollo: {
+      exclude: [
+        'apollo-cache',
+        'apollo-link',
+        'graphql',
+        'graphql-tag',
+        'graphql-tools'
       ]
     },
 

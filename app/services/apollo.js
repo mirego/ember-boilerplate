@@ -1,15 +1,9 @@
 // Vendor
-import Service, {inject as service} from '@ember/service';
-import ApolloClient from 'apollo-client';
-import {setContext, from} from 'apollo-link-context';
-import {HttpLink} from 'apollo-link-http';
+import {inject as service} from '@ember/service';
+import {computed} from '@ember/object';
+import ApolloService from 'ember-apollo-client/services/apollo';
+import {setContext} from 'apollo-link-context';
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import fetch from 'fetch';
-
-// Config
-import config from 'ember-boilerplate/config/environment';
-
-const URI = `${config.API.BASE_URL}${config.API.GRAPHQL_PATH}`;
 
 const dataIdFromObject = (result) => {
   if (result.id && result.__typename) {
@@ -19,21 +13,31 @@ const dataIdFromObject = (result) => {
   return null;
 };
 
-export default Service.extend({
+export default ApolloService.extend({
+  fastboot: service('fastboot'),
   sessionFetcher: service('session/fetcher'),
 
-  init() {
-    this._super(...arguments);
+  clientOptions: computed(function() {
+    return {
+      ssrMode: this.fastboot.isFastBoot,
+      link: this.link,
+      cache: this.cache
+    };
+  }),
 
-    const authenticationLink = this.createAuthenticationLink();
-    const httpLink = new HttpLink({uri: URI, fetch});
-    const link = from([authenticationLink, httpLink]);
-    const cache = new InMemoryCache({dataIdFromObject});
+  link: computed(function() {
+    const httpLink = this._super(...arguments);
 
-    this.set('client', new ApolloClient({link, cache}));
-  },
+    const authenticationLink = this._createAuthenticationLink();
 
-  createAuthenticationLink() {
+    return authenticationLink.concat(httpLink);
+  }),
+
+  cache: computed(() => {
+    return new InMemoryCache({dataIdFromObject});
+  }),
+
+  _createAuthenticationLink() {
     return setContext(async (_request) => {
       const {token} = await this.sessionFetcher.fetch();
 
