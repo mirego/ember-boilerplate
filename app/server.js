@@ -6,6 +6,7 @@ const FastBootAppServer = require('fastboot-app-server');
 const ExpressHTTPServer = require('fastboot-app-server/src/express-http-server');
 const Raven = require('raven');
 const basicAuth = require('express-basic-auth');
+const compression = require('compression');
 const forceSSL = require('express-force-ssl');
 const forceDomain = require('forcedomain');
 
@@ -53,6 +54,8 @@ if (process.env.BASIC_AUTH_USERNAME && process.env.BASIC_AUTH_PASSWORD) {
 if (process.env.CANONICAL_HOST) {
   app.use(forceDomain({hostname: process.env.CANONICAL_HOST}));
 }
+
+app.use(compression());
 
 const server = new FastBootAppServer({
   distPath: 'dist',
