@@ -2,6 +2,8 @@
 
 'use strict';
 
+const PACKAGE = require('../package.json');
+
 module.exports = function(environment) {
   const ENV = {
     modulePrefix: 'ember-boilerplate',
@@ -20,7 +22,9 @@ module.exports = function(environment) {
     EXTEND_PROTOTYPES: false
   };
 
-  ENV.APP = {};
+  ENV.APP = {
+    version: PACKAGE.version
+  };
 
   ENV.apollo = {
     apiURL: `${process.env.API_BASE_URL}${process.env.API_GRAPHQL_PATH}`,
