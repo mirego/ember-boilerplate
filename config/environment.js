@@ -4,6 +4,12 @@
 
 const PACKAGE = require('../package.json');
 
+// This function is used to build an `ENV` variable from environment variables
+// when running `ember build`. This variable will be injected into the browser
+// running the application and used by the server-side process that renders
+// FastBoot responses.
+//
+// Therefore, it MUST NOT be used to store secret keys and values.
 module.exports = function(environment) {
   const ENV = {
     modulePrefix: 'ember-boilerplate',
