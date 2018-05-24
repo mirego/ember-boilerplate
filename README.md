@@ -8,24 +8,7 @@
 
 ## Environment variables
 
-```
-# API
-API_BASE_URL=
-API_GRAPHQL_PATH=
-
-# Sentry
-SENTRY_DSN=
-SENTRY_SECRET_DSN=
-
-# Server
-CANONICAL_HOST=
-FORCE_SSL=
-
-# Assets
-ASSETS_CDN_HOST=
-ASSETS_CDN_PROTOCOL=
-ASSETS_CDN_PATH=
-```
+All environment variables needed (or supported) to run this application are listed in [`.env.dev`](./.env.dev).
 
 ## Heroku buildpack
 
