@@ -15,7 +15,10 @@ describe('Unit | Routes | application', () => {
       write: sinon.stub()
     });
 
-    this.owner.register('service:apollo/shoebox-writer', ApolloShoeboxWriterStub);
+    this.owner.register(
+      'service:apollo/shoebox-writer',
+      ApolloShoeboxWriterStub
+    );
 
     // We need to do this because ember-intl somehow always
     // overwrites our `this.owner.register` when trying to stub it.

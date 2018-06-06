@@ -5,7 +5,11 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const targets = require('./config/targets');
 
-const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_CDN_PATH}) => {
+const buildFingerPrintPrepend = ({
+  ASSETS_CDN_HOST,
+  ASSETS_CDN_PROTOCOL,
+  ASSETS_CDN_PATH
+}) => {
   if (!ASSETS_CDN_HOST || !ASSETS_CDN_PROTOCOL) return '';
   return `${ASSETS_CDN_PROTOCOL}://${ASSETS_CDN_HOST}/${ASSETS_CDN_PATH}`;
 };
@@ -44,9 +48,7 @@ module.exports = function(defaults) {
 
     // JavaScript compilation
     babel: {
-      plugins: [
-        'transform-object-rest-spread'
-      ]
+      plugins: ['transform-object-rest-spread']
     },
 
     'ember-cli-babel': {
@@ -62,9 +64,7 @@ module.exports = function(defaults) {
 
     // Inline SVGs
     svg: {
-      paths: [
-        'public/assets/inline-svgs'
-      ]
+      paths: ['public/assets/inline-svgs']
     }
   });
 

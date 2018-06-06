@@ -26,7 +26,9 @@ describe('Unit | Services | Session | fetcher', () => {
       const returnValue = await service.fetch();
 
       expect(returnValue).to.be.an.instanceOf(Error);
-      expect(returnValue.message).to.equal('[session/fetcher] fetch not implemented.');
+      expect(returnValue.message).to.equal(
+        '[session/fetcher] fetch not implemented.'
+      );
     });
   });
 });

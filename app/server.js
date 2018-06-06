@@ -23,7 +23,9 @@ const BASIC_AUTH_OPTIONS = {
 const INTERNAL_SERVER_ERROR_HANDLER = (_error, _request, response, next) => {
   if (response.statusCode !== INTERNAL_SERVER_ERROR_STATUS_CODE) return next();
 
-  response.writeHead(response.statusCode, {'Content-Type': 'text/html; charset=UTF-8'});
+  response.writeHead(response.statusCode, {
+    'Content-Type': 'text/html; charset=UTF-8'
+  });
   response.end('Internal server error');
 };
 
