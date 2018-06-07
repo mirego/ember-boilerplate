@@ -10,7 +10,9 @@ export default Service.extend({
   read() {
     if (this.fastboot.isFastBoot) return;
 
-    const cachedContent = this.fastboot.shoebox.retrieve(config.apollo.SSR_CACHE_KEY);
+    const cachedContent = this.fastboot.shoebox.retrieve(
+      config.apollo.SSR_CACHE_KEY
+    );
 
     try {
       return JSON.parse(cachedContent || '{}');

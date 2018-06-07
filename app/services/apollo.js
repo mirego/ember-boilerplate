@@ -5,7 +5,7 @@ import ApolloService from 'ember-apollo-client/services/apollo';
 import {setContext} from 'apollo-link-context';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 
-const dataIdFromObject = (result) => {
+const dataIdFromObject = result => {
   if (result.id && result.__typename) {
     return `${result.__typename}${result.id}`;
   }
@@ -42,7 +42,7 @@ export default ApolloService.extend({
   }),
 
   _createAuthenticationLink() {
-    return setContext(async (_request) => {
+    return setContext(async _request => {
       const {token} = await this.sessionFetcher.fetch();
 
       return {

@@ -64,7 +64,10 @@ describe('Unit | Services | Apollo | shoebox-writer', () => {
           service.write();
 
           expect(service.fastboot.shoebox.put).to.have.been.calledOnce;
-          expect(service.fastboot.shoebox.put).to.have.been.calledWith('test-apollo-cache', '{"foo":"bar"}');
+          expect(service.fastboot.shoebox.put).to.have.been.calledWith(
+            'test-apollo-cache',
+            '{"foo":"bar"}'
+          );
         });
       });
     });

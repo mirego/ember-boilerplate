@@ -41,19 +41,10 @@ module.exports = function(environment) {
     'default-src': "'none'",
     'form-action': "'self'",
     'media-src': "'self'",
-    'img-src': [
-      "'self'",
-      'data:'
-    ],
-    'script-src': [
-      "'self'",
-      "'unsafe-inline'"
-    ],
+    'img-src': ["'self'", 'data:'],
+    'script-src': ["'self'", "'unsafe-inline'"],
     // Allow fonts to be loaded from fonts.gstatic.com
-    'font-src': [
-      "'self'",
-      'fonts.gstatic.com'
-    ],
+    'font-src': ["'self'", 'fonts.gstatic.com'],
     // Allow data (ajax/websocket)
     'connect-src': [
       "'self'",
@@ -62,11 +53,7 @@ module.exports = function(environment) {
       process.env.API_BASE_URL
     ],
     // Allow inline styles and loaded CSS from fonts.googleapis.com
-    'style-src': [
-      "'self'",
-      "'unsafe-inline'",
-      'fonts.googleapis.com'
-    ]
+    'style-src': ["'self'", "'unsafe-inline'", 'fonts.googleapis.com']
   };
 
   ENV.sentry = {
