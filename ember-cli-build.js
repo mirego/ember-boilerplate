@@ -18,11 +18,20 @@ module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     hinting: false,
 
+    autoImport: {
+      modules: {
+        'apollo-client': {include: false},
+        'apollo-link-http': {include: false}
+      }
+    },
+
     // Dependencies
     apollo: {
       exclude: [
         'apollo-cache',
+        'apollo-cache-inmemory',
         'apollo-link',
+        'apollo-link-context',
         'graphql',
         'graphql-tag',
         'graphql-tools'
@@ -48,7 +57,7 @@ module.exports = function(defaults) {
 
     // JavaScript compilation
     babel: {
-      plugins: ['transform-object-rest-spread']
+      plugins: ['transform-object-rest-spread', 'graphql-tag']
     },
 
     'ember-cli-babel': {
