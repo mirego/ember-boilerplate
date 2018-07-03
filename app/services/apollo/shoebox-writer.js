@@ -1,12 +1,13 @@
 // Vendor
-import Service, {inject as service} from '@ember/service';
+import Service from '@ember/service';
+import {service} from '@ember-decorators/service';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
 
-export default Service.extend({
-  apollo: service('apollo'),
-  fastboot: service('fastboot'),
+export default class ShoeboxWriter extends Service {
+  @service('apollo') apollo;
+  @service('fastboot') fastboot;
 
   write() {
     if (!this.fastboot.isFastBoot) return;
@@ -15,4 +16,4 @@ export default Service.extend({
 
     this.fastboot.shoebox.put(config.apollo.SSR_CACHE_KEY, cache);
   }
-});
+}

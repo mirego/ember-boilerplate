@@ -1,5 +1,7 @@
 /* eslint-env node */
 
+'use strict';
+
 module.exports = {
   rules: {
     'attribute-indentation': {'open-invocation-max-len': 80},

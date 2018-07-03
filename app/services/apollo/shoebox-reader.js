@@ -1,11 +1,12 @@
 // Vendor
-import Service, {inject as service} from '@ember/service';
+import Service from '@ember/service';
+import {service} from '@ember-decorators/service';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
 
-export default Service.extend({
-  fastboot: service('fastboot'),
+export default class ShoeboxReader extends Service {
+  @service('fastboot') fastboot;
 
   read() {
     if (this.fastboot.isFastBoot) return;
@@ -20,4 +21,4 @@ export default Service.extend({
       return {};
     }
   }
-});
+}

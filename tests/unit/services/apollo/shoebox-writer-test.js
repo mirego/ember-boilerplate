@@ -4,7 +4,7 @@ import {describe, beforeEach, it} from 'mocha';
 import {setupTest} from 'ember-mocha';
 import sinon from 'sinon';
 import Service from '@ember/service';
-import {computed} from '@ember/object';
+import {computed} from '@ember-decorators/object';
 
 describe('Unit | Services | Apollo | shoebox-writer', () => {
   setupTest();
@@ -13,14 +13,18 @@ describe('Unit | Services | Apollo | shoebox-writer', () => {
 
   describe('when executing inside the browser', () => {
     beforeEach(function() {
-      const ApolloStub = Service.extend();
+      const ApolloStub = class extends Service {};
 
-      const FastBootStub = Service.extend({
-        isFastBoot: false,
-        shoebox: computed(() => ({
-          put: sinon.stub()
-        }))
-      });
+      const FastBootStub = class extends Service {
+        isFastBoot = false;
+
+        @computed
+        get shoebox() {
+          return {
+            put: sinon.stub()
+          };
+        }
+      };
 
       this.owner.register('service:fastboot', FastBootStub);
       this.owner.register('service:apollo', ApolloStub);
@@ -40,18 +44,25 @@ describe('Unit | Services | Apollo | shoebox-writer', () => {
   describe('when executing inside FastBoot', () => {
     describe('with no content in the shoebox', () => {
       beforeEach(function() {
-        const ApolloStub = Service.extend({
-          cache: computed(() => ({
-            extract: sinon.stub().returns({foo: 'bar'})
-          }))
-        });
+        const ApolloStub = class extends Service {
+          @computed
+          get cache() {
+            return {
+              extract: sinon.stub().returns({foo: 'bar'})
+            };
+          }
+        };
 
-        const FastBootStub = Service.extend({
-          isFastBoot: true,
-          shoebox: computed(() => ({
-            put: sinon.stub()
-          }))
-        });
+        const FastBootStub = class extends Service {
+          isFastBoot = true;
+
+          @computed
+          get shoebox() {
+            return {
+              put: sinon.stub()
+            };
+          }
+        };
 
         this.owner.register('service:fastboot', FastBootStub);
         this.owner.register('service:apollo', ApolloStub);

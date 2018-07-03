@@ -1,18 +1,18 @@
 // Vendor
 import Route from '@ember/routing/route';
-import {inject as service} from '@ember/service';
+import {service} from '@ember-decorators/service';
+import {action} from '@ember-decorators/object';
 
-export default Route.extend({
-  apolloShoeboxWriter: service('apollo/shoebox-writer'),
-  intl: service('intl'),
+export default class ApplicationRoute extends Route {
+  @service('apollo/shoebox-writer') apolloShoeboxWriter;
+  @service('intl') intl;
 
   beforeModel() {
     this.intl.setLocale('en-ca');
-  },
-
-  actions: {
-    didTransition() {
-      this.apolloShoeboxWriter.write();
-    }
   }
-});
+
+  @action
+  didTransition() {
+    this.apolloShoeboxWriter.write();
+  }
+}
