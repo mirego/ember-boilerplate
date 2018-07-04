@@ -23,7 +23,6 @@ module.exports = function(environment) {
   };
 
   ENV.EmberENV = {
-    FEATURES: {},
     LOG_VERSION: false,
     EXTEND_PROTOTYPES: false
   };
@@ -42,10 +41,11 @@ module.exports = function(environment) {
     'form-action': "'self'",
     'media-src': "'self'",
     'img-src': ["'self'", 'data:'],
-    'script-src': ["'self'", "'unsafe-inline'"],
-    // Allow fonts to be loaded from fonts.gstatic.com
+    'script-src':
+      environment === 'production'
+        ? ["'self'"]
+        : ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
     'font-src': ["'self'", 'fonts.gstatic.com'],
-    // Allow data (ajax/websocket)
     'connect-src': [
       "'self'",
       'https://www.googleapis.com',
@@ -66,9 +66,6 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     ENV.locationType = 'none';
-
-    ENV.APP.LOG_ACTIVE_GENERATION = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;

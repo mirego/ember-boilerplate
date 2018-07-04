@@ -19,10 +19,7 @@ module.exports = function(defaults) {
     hinting: false,
 
     autoImport: {
-      modules: {
-        'apollo-client': {include: false},
-        'apollo-link-http': {include: false}
-      }
+      exclude: ['apollo-client', 'apollo-link-http']
     },
 
     // Dependencies

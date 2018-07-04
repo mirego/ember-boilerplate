@@ -11,9 +11,9 @@ describe('Unit | Routes | application', () => {
   let route;
 
   beforeEach(function() {
-    const ApolloShoeboxWriterStub = Service.extend({
-      write: sinon.stub()
-    });
+    const ApolloShoeboxWriterStub = class extends Service {
+      write = sinon.stub();
+    };
 
     this.owner.register(
       'service:apollo/shoebox-writer',

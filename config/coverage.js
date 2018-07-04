@@ -15,7 +15,7 @@ module.exports = {
     '*/services/apollo.js',
     '*/translations.js',
     '*/config/**/*',
-    '*/mirage/**/*',
-    '*/tests/**/*'
+    '*/tests/**/*',
+    '*/graphql/**/*'
   ]
 };
