@@ -14,8 +14,8 @@
     "test": "COVERAGE=true ember exam --split 5 --parallel",
     "check-coverage": "./node_modules/.bin/nyc check-coverage",
     "svgo": "./node_modules/.bin/svgo --config=.svgo.yml",
-    "prettier": "prettier --single-quote --no-bracket-spacing --write ember-cli-build.js testem.js '{app,tests,config}/**/*.{js,graphql,scss}'",
-    "prettier-check": "prettier --single-quote --no-bracket-spacing -l ember-cli-build.js testem.js '{app,tests,config}/**/*.{js,graphql,scss}'",
+    "prettier": "prettier --write ember-cli-build.js testem.js '{app,tests,config}/**/*.{js,graphql,scss}'",
+    "prettier-check": "prettier -l ember-cli-build.js testem.js '{app,tests,config}/**/*.{js,graphql,scss}'",
     "lint-scripts": "./node_modules/.bin/eslint ember-cli-build.js testem.js app/ tests/ config/",
     "lint-styles": "./node_modules/.bin/stylelint './app/**/*.scss'",
     "lint-templates": "./node_modules/.bin/ember-template-lint './app/**/*.hbs'"

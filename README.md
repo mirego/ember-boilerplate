@@ -16,9 +16,10 @@ To successfully deploy applications from this boilerplate code on Heroku, you mu
 
 ## Linting
 
-All projects using the `ember-boilerplate` must include the latest `eslint`, `stylelint` and `svgo` configurations. You will need the following files:
+All projects using the `ember-boilerplate` must include the latest `eslint`, `prettier`, `stylelint` and `svgo` configurations. You will need the following files:
 
 * `.eslintrc`
+* `.prettierrc`
 * `.stylelintrc`
 * `.svgo.yml`
 
