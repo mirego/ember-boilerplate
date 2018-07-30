@@ -5,6 +5,8 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const targets = require('./config/targets');
 
+const IS_TEST_ENVIRONMENT = EmberApp.env() === 'test';
+
 const buildFingerPrintPrepend = ({
   ASSETS_CDN_HOST,
   ASSETS_CDN_PROTOCOL,
@@ -17,6 +19,7 @@ const buildFingerPrintPrepend = ({
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     hinting: false,
+    tests: IS_TEST_ENVIRONMENT,
 
     autoImport: {
       exclude: ['apollo-client', 'apollo-link-http']
@@ -41,7 +44,8 @@ module.exports = function(defaults) {
 
     // SCSS compilation
     autoprefixer: {
-      browsers: targets.browsers
+      browsers: targets.browsers,
+      sourcemap: false
     },
 
     cssModules: {
@@ -59,6 +63,10 @@ module.exports = function(defaults) {
 
     'ember-cli-babel': {
       includePolyfill: true
+    },
+
+    sourcemaps: {
+      enabled: !IS_TEST_ENVIRONMENT
     },
 
     // Fingerprinting
