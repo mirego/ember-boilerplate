@@ -1,14 +1,18 @@
 // Vendor
 import {expect} from 'chai';
-import {describe, beforeEach, it} from 'mocha';
+import {describe, beforeEach, afterEach, it} from 'mocha';
 import {setupTest} from 'ember-mocha';
 import sinon from 'sinon';
 import Service from '@ember/service';
+
+// Config
+import config from 'ember-boilerplate/config/environment';
 
 describe('Unit | Routes | application', () => {
   setupTest();
 
   let route;
+  const originalConfig = config;
 
   beforeEach(function() {
     const ApolloShoeboxWriterStub = class extends Service {
@@ -23,6 +27,7 @@ describe('Unit | Routes | application', () => {
     // We need to do this because ember-intl somehow always
     // overwrites our `this.owner.register` when trying to stub it.
     const intl = this.owner.lookup('service:intl');
+    intl.addTranslations = sinon.stub();
     intl.setLocale = sinon.stub();
 
     route = this.owner.lookup('route:application');
@@ -38,6 +43,39 @@ describe('Unit | Routes | application', () => {
 
       expect(route.intl.setLocale).to.have.been.calledOnce;
       expect(route.intl.setLocale).to.have.been.calledWith('en-ca');
+    });
+
+    describe('when `config.intl.ASYNC_TRANSLATIONS` is true', () => {
+      beforeEach(() => {
+        config.intl.ASYNC_TRANSLATIONS = true;
+      });
+
+      afterEach(() => {
+        config.intl.ASYNC_TRANSLATIONS = originalConfig.intl.ASYNC_TRANSLATIONS;
+      });
+
+      it('should load translations asynchronously', async () => {
+        await route.beforeModel();
+
+        expect(route.intl.addTranslations).to.have.been.calledOnce;
+      });
+    });
+
+    describe('when `config.intl.ASYNC_TRANSLATIONS` is false', () => {
+      beforeEach(() => {
+        config.intl.ASYNC_TRANSLATIONS = false;
+        route.intl.setLocale('en-ca');
+      });
+
+      afterEach(() => {
+        config.intl.ASYNC_TRANSLATIONS = originalConfig.intl.ASYNC_TRANSLATIONS;
+      });
+
+      it('should have translations bundled in the build', async () => {
+        await route.beforeModel();
+
+        expect(route.intl.addTranslations).to.not.have.been.called;
+      });
     });
   });
 

@@ -49,7 +49,7 @@ module.exports = function() {
      * @type {Boolean}
      * @default "false"
      */
-    publicOnly: false,
+    publicOnly: process.env.ASYNC_TRANSLATIONS,
 
     /**
      * Path where translations are kept.  This is relative to the project root.

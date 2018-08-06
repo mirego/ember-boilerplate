@@ -16,10 +16,7 @@ module.exports = function(environment) {
     podModulePrefix: 'ember-boilerplate/pods',
     environment,
     rootURL: '/',
-    locationType: 'auto',
-    fastboot: {
-      fastbootHeaders: true
-    }
+    locationType: 'auto'
   };
 
   ENV.EmberENV = {
@@ -28,6 +25,8 @@ module.exports = function(environment) {
   };
 
   ENV.APP = {
+    FORCE_SSL:
+      process.env.FORCE_SSL === 'true' || process.env.FORCE_SSL === '1',
     version: PACKAGE.version
   };
 
@@ -56,6 +55,21 @@ module.exports = function(environment) {
     'style-src': ["'self'", "'unsafe-inline'", 'fonts.googleapis.com']
   };
 
+  let currentHostname = process.env.CANONICAL_HOST;
+
+  if (process.env.PORT) {
+    currentHostname += `:${process.env.PORT}`;
+  }
+
+  ENV.fastboot = {
+    fastbootHeaders: true,
+    hostWhitelist: [currentHostname]
+  };
+
+  ENV.intl = {
+    ASYNC_TRANSLATIONS: process.env.ASYNC_TRANSLATIONS
+  };
+
   ENV.sentry = {
     dsn: process.env.SENTRY_DSN,
     // If set to true, it will prevent Raven.js from being initialized.
@@ -73,6 +87,11 @@ module.exports = function(environment) {
     ENV.apollo = {
       apiURL: 'graphql://fake/endpoint',
       SSR_CACHE_KEY: 'test-apollo-cache'
+    };
+
+    ENV.fastboot = {
+      fastbootHeaders: true,
+      hostWhitelist: [/.*/]
     };
   }
 
