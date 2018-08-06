@@ -1,5 +1,3 @@
 {
-  "rules": {
-    # Use the .stylelintrc provided here: https://github.com/mirego/mirego-horizontal-web
-  }
+  "extends": "stylelint-config-mirego"
 }
