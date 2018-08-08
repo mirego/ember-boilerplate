@@ -16,28 +16,13 @@ To successfully deploy applications from this boilerplate code on Heroku, you mu
 
 ## Linting
 
-All projects using the `ember-boilerplate` must include the latest `eslint`, `prettier`, `stylelint` and `svgo` configurations. You will need the following files:
+You will need to add these files to you project root:
 
-* `.eslintrc`
-* `.prettierrc`
-* `.stylelintrc`
 * `.svgo.yml`
 
-They all are stored in the [mirego-horizontal-web](https://github.com/mirego/mirego-horizontal-web) repository.
+Their latest version can be found [here](https://github.com/mirego/mirego-horizontal-web/blob/master/configurations).
 
-After you have copied the files, open `.travis.yml` and remove the comment for the lines below `script`:
-
-```yaml
-# Before
-script:
-  # - npm run lint
-  # - npm test
-
-# After
-script:
-  - npm run lint
-  - npm test
-```
+The linting/testing script can be ran with `./scripts/ci-check.sh`.
 
 ## SVGs
 
