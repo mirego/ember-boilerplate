@@ -10,6 +10,8 @@ const PACKAGE = require('../package.json');
 // FastBoot responses.
 //
 // Therefore, it MUST NOT be used to store secret keys and values.
+//
+// eslint-disable-next-line complexity
 module.exports = function(environment) {
   const ENV = {
     modulePrefix: 'ember-boilerplate',
@@ -72,6 +74,7 @@ module.exports = function(environment) {
 
   ENV.sentry = {
     dsn: process.env.SENTRY_DSN,
+    whitelistUrls: [process.env.ASSETS_CDN_HOST || process.env.CANONICAL_HOST],
     // If set to true, it will prevent Raven.js from being initialized.
     // Errors and logs will be logged to the console (default) instead of
     // being reported by Raven.
