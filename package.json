@@ -36,7 +36,7 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "broccoli-asset-rev": "2.7.0",
     "compression": "1.7.2",
-    "ember-angle-bracket-invocation-polyfill": "1.1.5",
+    "ember-angle-bracket-invocation-polyfill": "1.2.2",
     "ember-apollo-client": "1.0.1",
     "ember-cli": "3.1.4",
     "ember-cli-autoprefixer": "0.8.1",
