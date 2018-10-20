@@ -7,7 +7,8 @@ import window from 'ember-window-mock';
 import config from 'ember-boilerplate/config/environment';
 
 export default class AppUrlBuilder extends Service {
-  @service('fastboot') fastboot;
+  @service('fastboot')
+  fastboot;
 
   build(path = '/') {
     if (!this.get('fastboot.isFastBoot')) {

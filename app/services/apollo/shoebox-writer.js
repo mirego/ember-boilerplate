@@ -6,8 +6,11 @@ import {service} from '@ember-decorators/service';
 import config from 'ember-boilerplate/config/environment';
 
 export default class ShoeboxWriter extends Service {
-  @service('apollo') apollo;
-  @service('fastboot') fastboot;
+  @service('apollo')
+  apollo;
+
+  @service('fastboot')
+  fastboot;
 
   write() {
     if (!this.fastboot.isFastBoot) return;

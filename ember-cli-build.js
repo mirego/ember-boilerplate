@@ -21,23 +21,6 @@ module.exports = function(defaults) {
     hinting: false,
     tests: IS_TEST_ENVIRONMENT,
 
-    autoImport: {
-      exclude: ['apollo-client', 'apollo-link-http']
-    },
-
-    // Dependencies
-    apollo: {
-      exclude: [
-        'apollo-cache',
-        'apollo-cache-inmemory',
-        'apollo-link',
-        'apollo-link-context',
-        'graphql',
-        'graphql-tag',
-        'graphql-tools'
-      ]
-    },
-
     vendorFiles: {
       'jquery.js': null
     },

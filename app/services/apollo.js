@@ -14,9 +14,14 @@ const dataIdFromObject = result => {
 };
 
 export default class Apollo extends ApolloService {
-  @service('apollo/shoebox-reader') apolloShoeboxReader;
-  @service('fastboot') fastboot;
-  @service('session/fetcher') sessionFetcher;
+  @service('apollo/shoebox-reader')
+  apolloShoeboxReader;
+
+  @service('fastboot')
+  fastboot;
+
+  @service('session/fetcher')
+  sessionFetcher;
 
   @computed
   get clientOptions() {

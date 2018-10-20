@@ -6,7 +6,8 @@ import {service} from '@ember-decorators/service';
 import config from 'ember-boilerplate/config/environment';
 
 export default class ShoeboxReader extends Service {
-  @service('fastboot') fastboot;
+  @service('fastboot')
+  fastboot;
 
   read() {
     if (this.fastboot.isFastBoot) return;
