@@ -8,9 +8,14 @@ import fetch from 'fetch';
 import config from 'ember-boilerplate/config/environment';
 
 export default class ApplicationRoute extends Route {
-  @service('apollo/shoebox-writer') apolloShoeboxWriter;
-  @service('app-url/builder') appUrlBuilder;
-  @service('intl') intl;
+  @service('apollo/shoebox-writer')
+  apolloShoeboxWriter;
+
+  @service('app-url/builder')
+  appUrlBuilder;
+
+  @service('intl')
+  intl;
 
   async beforeModel() {
     const locale = 'en-ca';
