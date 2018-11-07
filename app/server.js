@@ -45,6 +45,10 @@ if (process.env.SENTRY_SECRET_DSN) {
   app.use(Raven.requestHandler());
 }
 
+if (process.env.CANONICAL_HOST) {
+  app.use(forceDomain({hostname: process.env.CANONICAL_HOST}));
+}
+
 if (process.env.FORCE_SSL) {
   app.set('forceSSLOptions', FORCE_SSL_OPTIONS);
   app.use(forceSSL);
@@ -52,10 +56,6 @@ if (process.env.FORCE_SSL) {
 
 if (process.env.BASIC_AUTH_USERNAME && process.env.BASIC_AUTH_PASSWORD) {
   app.use(basicAuth(BASIC_AUTH_OPTIONS));
-}
-
-if (process.env.CANONICAL_HOST) {
-  app.use(forceDomain({hostname: process.env.CANONICAL_HOST}));
 }
 
 app.use(compression());
