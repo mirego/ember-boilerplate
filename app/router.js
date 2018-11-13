@@ -6,6 +6,9 @@ const Router = EmberRouter.extend({
   rootURL: config.rootURL
 });
 
-Router.map(() => {});
+Router.map(function() {
+  // Catch-all error page, put your routes above this one
+  this.route('not-found', {path: '/*path'});
+});
 
 export default Router;
