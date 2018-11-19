@@ -23,12 +23,14 @@ describe('Unit | Services | Session | fetcher', () => {
     });
 
     it('should return an error because it has no implementation', async () => {
-      const returnValue = await service.fetch();
-
-      expect(returnValue).to.be.an.instanceOf(Error);
-      expect(returnValue.message).to.equal(
-        '[session/fetcher] fetch not implemented.'
-      );
+      try {
+        await service.fetch();
+      } catch (error) {
+        expect(error).to.be.an.instanceOf(Error);
+        expect(error.message).to.equal(
+          '[session/fetcher] fetch not implemented.'
+        );
+      }
     });
   });
 });

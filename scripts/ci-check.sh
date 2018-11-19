@@ -28,6 +28,9 @@ header() {
 header "Linting scripts…"
 run npm run lint-scripts
 
+header "Linting TypeScript…"
+run npm run lint-typescript
+
 header "Linting stylesheets…"
 run npm run lint-styles
 

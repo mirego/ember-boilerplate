@@ -1,11 +1,16 @@
 // Vendor
-import {service} from '@ember-decorators/service';
 import {computed} from '@ember-decorators/object';
-import ApolloService from 'ember-apollo-client/services/apollo';
-import {setContext} from 'apollo-link-context';
+import {service} from '@ember-decorators/service';
 import {InMemoryCache} from 'apollo-cache-inmemory';
+import {setContext} from 'apollo-link-context';
+import ApolloService from 'ember-apollo-client/services/apollo';
 
-const dataIdFromObject = result => {
+// Types
+import ShoeBoxReader from 'ember-boilerplate/services/apollo/shoebox-reader';
+import SessionFetcher from 'ember-boilerplate/services/session/fetcher';
+import FastBoot from 'ember-cli-fastboot/services/fastboot';
+
+const dataIdFromObject = (result: any): string | null => {
   if (result.id && result.__typename) {
     return `${result.__typename}${result.id}`;
   }
@@ -15,27 +20,27 @@ const dataIdFromObject = result => {
 
 export default class Apollo extends ApolloService {
   @service('apollo/shoebox-reader')
-  apolloShoeboxReader;
+  apolloShoeboxReader!: ShoeBoxReader;
 
   @service('fastboot')
-  fastboot;
+  fastboot!: FastBoot;
 
   @service('session/fetcher')
-  sessionFetcher;
+  sessionFetcher!: SessionFetcher;
 
   @computed
   get clientOptions() {
     return {
-      ssrMode: this.fastboot.isFastBoot,
+      cache: this.cache,
       link: this.link,
-      cache: this.cache
+      ssrMode: this.fastboot.isFastBoot
     };
   }
 
   @computed
   get link() {
     const httpLink = super.link;
-    const authenticationLink = this._createAuthenticationLink();
+    const authenticationLink = this.createAuthenticationLink();
 
     return authenticationLink.concat(httpLink);
   }
@@ -46,10 +51,12 @@ export default class Apollo extends ApolloService {
 
     const cachedContent = this.apolloShoeboxReader.read();
 
+    if (!cachedContent) return cache;
+
     return cache.restore(cachedContent);
   }
 
-  _createAuthenticationLink() {
+  private createAuthenticationLink() {
     return setContext(async _request => {
       const {token} = await this.sessionFetcher.fetch();
 

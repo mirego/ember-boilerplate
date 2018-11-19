@@ -1,21 +1,26 @@
 // Vendor
-import Route from '@ember/routing/route';
-import {service} from '@ember-decorators/service';
 import {action} from '@ember-decorators/object';
+import {service} from '@ember-decorators/service';
+import Route from '@ember/routing/route';
 import fetch from 'fetch';
+
+// Types
+import ShoeboxWriter from 'ember-boilerplate/services/apollo/shoebox-writer';
+import AppUrlBuilder from 'ember-boilerplate/services/app-url/builder';
+import IntlService from 'ember-intl/services/intl';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
 
 export default class ApplicationRoute extends Route {
   @service('apollo/shoebox-writer')
-  apolloShoeboxWriter;
+  apolloShoeboxWriter!: ShoeboxWriter;
 
   @service('app-url/builder')
-  appUrlBuilder;
+  appUrlBuilder!: AppUrlBuilder;
 
   @service('intl')
-  intl;
+  intl!: IntlService;
 
   async beforeModel() {
     const locale = 'en-ca';

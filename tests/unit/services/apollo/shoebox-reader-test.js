@@ -24,7 +24,7 @@ describe('Unit | Services | Apollo | shoebox-reader', () => {
 
     describe('read', () => {
       it('should return `undefined` because we don’t want to restore anything when we’re server-side rendering', () => {
-        expect(service.read()).to.equal(undefined);
+        expect(service.read()).to.equal(null);
       });
     });
   });
