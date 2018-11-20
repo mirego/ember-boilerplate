@@ -1,90 +1,165 @@
-# Boilerplate code for Ember.js
+***
 
-## Browser support
+⚠️ Ces instructions concernent le _boilerplate_ seulement et devrait être retirées une fois un nouveau projet démarré.
 
-| Browser            | OS      | Constraint        |
-|--------------------|---------|-------------------|
-| …                  | …       | …                 |
+1. Cloner ce projet
+2. Supprimer le repository Git (`rm -rf .git`)
+3. Exécuter le script de renommage de projet (`./project-renamer.sh YourProjectName`)
+4. Supprimer le script de renommage de projet
+5. Créer un nouveau repository Git (`git init`)
+6. Supprimer cette section du fichier `README.md`
+7. Créer le premier commit du repository (`git commit -a -m "Initial commit"`)
 
-## Environment variables
+***
 
-All environment variables needed (or supported) to run this application are listed in [`.env.dev`](./.env.dev).
+# ember-boilerplate
 
-## Heroku buildpack
+| Section                                                  | Description                                                            |
+|----------------------------------------------------------|------------------------------------------------------------------------|
+| [🎯 Objectifs et contexte](#-objectifs-et-contexte)      | DoDs, KPIs, objectifs et contexte de développement initial             |
+| [🚧 Dépendances](#-dépendances)                          | Les dépendances techniques du projet et comment les installer          |
+| [🏎 Démarrage](#-démarrage)                              | Les détails de mise en route le projet                                 |
+| [⌨️ Commandes](#️-commandes)                             | Les commandes utiles au développement et à la mise en production       |
+| [🏗 Code et architecture](#-code-et-architecture)        | Les différents modules et particularités du _codebase_                 |
+| [🔭 Améliorations possibles](#-améliorations-possibles)  | Les différents _refactors_ possibles ainsi que des pistes potentielles |
+| [🚑 Résolution de problèmes](#-résolution-de-problèmes)  | Les problèmes récurrents et les solutions reliées                      |
+| [🚀 Déploiement](#-déploiement)                          | Les détails du setup de déploiement dans les différents environnements |
 
-To successfully deploy applications from this boilerplate code on Heroku, you must use Heroku’s [emberjs buildpack](https://github.com/heroku/heroku-buildpack-emberjs) (follow instructions under _Usage_).
+## 🎯 Objectifs et contexte
 
-## Linting
+…
 
-You will need to add these files to you project root:
+### Browser support
 
-* `.svgo.yml`
+| Browser       | OS          | Constraint             |
+| ------------- | ----------- | ---------------------- |
+| …             | …           | …                      |
 
-Their latest version can be found [here](https://github.com/mirego/mirego-horizontal-web/blob/master/configurations).
+## 🚧 Dépendances
 
-The linting/testing script can be ran with `./scripts/ci-check.sh`.
+- Node.js (`10.12.0`)
+- NPM (`6.4.1`)
 
-## SVGs
+## 🏎 Démarrage
 
-All projects using `ember-boilerplate` must use the `ember-inline-svg` addon to inline SVGs in the HTML output.
+Toutes les variables d’environnement nécessaires au démarrage de l’application sont documentées dans le fichier `.env.dev.`
 
-_If you do not need to style the SVG (eg. change its `fill` property), you should use the `<img>` tag._
+Lors d’exécutions de scripts ou de commandes npm, il est impératif que toutes ces variables soient présentes dans l’environnement. Pour ce faire, on peut utiliser `source`, `nv` ou un autre script personnalisé.
 
-### SVG with dynamic styling
+### Setup initial
 
-* Use the `inline-svg` helper from the `ember-inline-svg` addon;
-* Do not specify the extension;
-* Do not specify the full path. The configuration in `ember-cli-build.js` already defines the default folder for SVGs to `public/assets/inline-svgs`;
-* File must be located at `public/assets/inline-svgs`;
+1. Créer le fichier `.env` à partir du fichier `.env.dev`
+2. Installer les dépendances Node.js avec `npm install`
 
+## ⌨️ Commandes
+
+### Servir l’app en développement avec FastBoot
+
+```sh
+$ nv .env npm run start
 ```
-{{inline-svg 'icon-arrow'}}
+
+### Tests
+
+Les tests peuvent être exécutés avec le script suivant et devraient toujours pouvoir rouler sans spécifier de variables d’environnement puisqu’ils ne devraient jamais faire de “side effects”, par exemple: pas de call network, pas de lecture des cookies, etc.
+
+```sh
+$ npm test
 ```
 
-### SVG without dynamic styling
+### Code coverage
 
-* Use the `<img>` tag;
-* Must specify extension and full path;
-* File must be located at `public/assets/images`:
+Ce projet respecte des métriques de coverage définies dans le fichier `.nycrc`. Pour valider que les barèmes sont bien respectés, on peut rouler la commande suivante **après avoir rouler les tests**:
 
-```
-<img src="/assets/images/icon-arrow.svg" />
+```sh
+$ npm run check-coverage
 ```
 
-## Managing dependencies
+Les résultats d’instrumentation du code sont aussi disponibles dans le dossier `coverage` du projet.
 
-We use ember-cli which depends on node.js and npm.
+### Linting
 
-```shell
-$ brew install node
-$ npm install
+Cinq outils de linting/formattage peuvent être exécutés pour s’assurer de la constance du code :
+
+- Pour s’assurer que le code est bien formatté:
+
+	```sh
+	$ npm run prettier
+	```
+
+- Pour s’assurer que le code respecte nos bonnes pratiques TypeScript:
+
+	```sh
+	$ npm run lint-typescript
+	```
+
+- Pour s’assurer que le code respecte nos bonnes pratiques JavaScript:
+
+	```sh
+	$ npm run lint-scripts
+	```
+
+- Pour s’assurer que le code respecte nos bonnes pratiques SCSS:
+
+	```sh
+	$ npm run lint-styles
+	```
+
+- Pour s’assurer que le code respecte nos bonnes pratiques Handlebars:
+
+	```sh
+	$ npm run lint-templates
+	```
+
+### CI check
+
+Pour rouler la suite de tests et de checks qui est exécutée sur Travis CI on peut utiliser la commande suivante:
+
+```sh
+$ nv .env scripts/ci-check.sh
 ```
 
-Everytime a new package is added or an update is made in `package.json` file, you **must** update the `package-lock.json` file by running `npm install`.
+### “Builder” l’app pour la production
 
-## Sentry
+```sh
+$ nv .env npm run build -prod
+```
 
-[Sentry’s real-time error tracking](https://sentry.io/) gives you insight into production deployments and information to reproduce and fix crashes.
+### Servir l’app en production
 
-We use it through Mirego's account (see IT to get access) for QA and Staging environments. A team must be created for each client and a project per `app+enviroment` (eg. `accent-qa`, `accent-staging`).
+Pour démarrer un “FastBoot-enabled production-ready server” avec support de canonical host, SSL and `Basic` authentication, on peut rouler la commande suivante _après_ avoir “buildé” l’app en mode “production”.
 
-For production, the account to use must be evaluated depending on your client's needs.
+```sh
+$ nv .env npm run server
+```
 
-N.B.: Error reporting under FastBoot is currently disabled. The `ember-cli-sentry` project is currently working on the support of Sentry under FastBoot.
+## 🏗 Code et architecture
 
-## Running
+…
 
-When running the application, you should always make sure that the required system environment variables are present.
-You can use `source`, [nv](https://github.com/jcouture/nv) or a custom l33t bash script.
+## 🔭 Améliorations possibles
 
-### Development
+| Description                                                      | Priorité | Complexité | Pistes                                                                                                                                   |
+|------------------------------------------------------------------|----------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| …                                                                | …        | …          | …                                                                                                                                        |
 
-This starts a FastBoot-enabled development server with live code reloading.
+## 🚑 Résolution de problèmes
 
-* `npm start`
+### Page de « santé » de l’application
 
-## Production
+Le “health check“ de l’application se trouve à l'URL `/health`
 
-This starts a FastBoot-enabled production-ready server (`app/server.js`) with support for canonical host, SSL and `Basic` authentication.
+### Sentry
 
-* `npm run server`
+Les erreurs sont rapportées dans [Sentry](https://sentry.io/mirego).
+
+
+## 🚀 Déploiement
+
+…
+
+### Versions et branches
+
+Chaque version pointe sur un tag Git effectué sur une branche de release (correspondant à l’environnement qu’on déploie).
+
+La version du codebase est gérée avec [incr](https://github.com/jcouture/incr).

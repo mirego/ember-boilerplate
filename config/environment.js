@@ -58,15 +58,9 @@ module.exports = function(environment) {
     'style-src': ["'self'", "'unsafe-inline'", 'fonts.googleapis.com']
   };
 
-  let currentHostname = process.env.CANONICAL_HOST;
-
-  if (process.env.PORT) {
-    currentHostname += `:${process.env.PORT}`;
-  }
-
   ENV.fastboot = {
     fastbootHeaders: true,
-    hostWhitelist: [currentHostname]
+    hostWhitelist: [process.env.CANONICAL_HOST]
   };
 
   ENV.intl = {

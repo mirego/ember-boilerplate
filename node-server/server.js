@@ -55,7 +55,7 @@ if (process.env.CANONICAL_HOST) {
 }
 
 // Force SSL
-if (process.env.FORCE_SSL === 'true') {
+if (process.env.FORCE_SSL === 'true' || process.env.FORCE_SSL === '1') {
   app.set('forceSSLOptions', FORCE_SSL_OPTIONS);
   app.use(forceSSL);
 }
