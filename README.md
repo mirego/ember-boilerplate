@@ -1,6 +1,6 @@
 ***
 
-⚠️ Ces instructions concernent le _boilerplate_ seulement et devrait être retirées une fois un nouveau projet démarré.
+⚠️ Ces instructions concernent le _boilerplate_ seulement et devraient être retirées une fois le nouveau projet démarré.
 
 1. Cloner ce projet
 2. Supprimer le repository Git (`rm -rf .git`)
@@ -21,7 +21,7 @@
 | [🏎 Démarrage](#-démarrage)                              | Les détails de mise en route le projet                                 |
 | [⌨️ Commandes](#️-commandes)                             | Les commandes utiles au développement et à la mise en production       |
 | [🏗 Code et architecture](#-code-et-architecture)        | Les différents modules et particularités du _codebase_                 |
-| [🔭 Améliorations possibles](#-améliorations-possibles)  | Les différents _refactors_ possibles ainsi que des pistes potentielles |
+| [🔭 Améliorations possibles](#-améliorations-possibles)  | Les différents _refactors_ possibles ainsi que les pistes potentielles |
 | [🚑 Résolution de problèmes](#-résolution-de-problèmes)  | Les problèmes récurrents et les solutions reliées                      |
 | [🚀 Déploiement](#-déploiement)                          | Les détails du setup de déploiement dans les différents environnements |
 
