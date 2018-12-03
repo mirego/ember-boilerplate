@@ -19,6 +19,7 @@ const buildFingerPrintPrepend = ({
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     hinting: false,
+    storeConfigInMeta: false,
     tests: IS_TEST_ENVIRONMENT,
 
     vendorFiles: {
