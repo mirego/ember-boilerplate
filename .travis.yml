@@ -3,8 +3,6 @@ language: node_js
 node_js:
   - 10.12.0
 
-sudo: false
-
 dist: trusty
 addons:
   chrome: stable
@@ -19,8 +17,3 @@ install:
 
 script:
   - ./scripts/ci-check.sh
-
-notifications:
-  email:
-    on_success: 'change'
-    on_failure: 'change'
