@@ -17,6 +17,9 @@ const HTTPServer = require('./express-http-server');
 // Middleware
 const internalServerErrorMiddleware = require('./middlewares/internal-server-error');
 
+// Utils
+const {asBoolean, asInteger} = require('../config/utils');
+
 // Constants
 const OK_HTTP_CODE = 200;
 const FORCE_SSL_OPTIONS = {trustXFPHeader: true, httpsPort: 443};
@@ -55,7 +58,7 @@ if (process.env.CANONICAL_HOST) {
 }
 
 // Force SSL
-if (process.env.FORCE_SSL === 'true' || process.env.FORCE_SSL === '1') {
+if (asBoolean(process.env.FORCE_SSL)) {
   app.set('forceSSLOptions', FORCE_SSL_OPTIONS);
   app.use(forceSSL);
 }
@@ -72,7 +75,7 @@ app.use(compression());
 if (process.env.PAGES_CACHE_DURATION_IN_SECONDS) {
   app.use(
     cacheControl({
-      maxAge: parseInt(process.env.PAGES_CACHE_DURATION_IN_SECONDS, 10)
+      maxAge: asInteger(process.env.PAGES_CACHE_DURATION_IN_SECONDS)
     })
   );
 } else {
@@ -87,8 +90,9 @@ app.use('/assets/*', (_, response, next) => {
 
 const server = new FastBootAppServer({
   distPath: 'dist',
-  workerCount: process.env.WORKER_COUNT,
-  httpServer
+  workerCount: asInteger(process.env.WORKER_COUNT),
+  httpServer,
+  chunkedResponse: true
 });
 
 server.start();
