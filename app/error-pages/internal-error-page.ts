@@ -1,4 +1,4 @@
-export default `
+export default (error: Error | string) => `
 <html>
   <head>
     <title>Erreur 500 / Error 500</title>
@@ -6,5 +6,7 @@ export default `
   </head>
 
   <body>Internal Server Error</body>
+
+  <script>console.error('${error}');</script>
 </html>
 `;

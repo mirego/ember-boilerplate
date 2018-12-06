@@ -52,7 +52,6 @@
     "ember-cli-inject-live-reload": "2.0.1",
     "ember-cli-sass": "8.0.1",
     "ember-cli-sentry": "4.0.0",
-    "ember-cli-shims": "1.2.0",
     "ember-cli-sri": "2.1.1",
     "ember-cli-typescript": "1.5.0",
     "ember-cli-uglify": "2.1.0",

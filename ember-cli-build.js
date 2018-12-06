@@ -42,7 +42,8 @@ module.exports = function(defaults) {
 
     // JavaScript compilation
     babel: {
-      plugins: ['transform-object-rest-spread', 'graphql-tag']
+      plugins: ['transform-object-rest-spread', 'graphql-tag'],
+      sourceMaps: 'inline'
     },
 
     'ember-cli-babel': {

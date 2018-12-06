@@ -4,18 +4,21 @@
 
 const fs = require('fs');
 
-module.exports = (_error, _request, response, _next) => {
-  fs.readFile('app/error-pages/internal-error-page.js', 'utf8', (_, data) => {
-    // Remove anything before and after the main <html> element
-    data = data
-      .replace(/\n/g, ' ')
-      .replace(/<\/html>.*/, '</html>')
-      .replace(/.*<html>/, '<html>');
+// Remove anything before and after the main <html> element
+const template = fs.readFileSync('app/error-pages/internal-error-page.ts', 'utf8')
+  .replace(/\n/g, ' ')
+  .replace(/<\/html>.*/, '</html>')
+  .replace(/.*<html>/, '<html>');
 
-    response.writeHead(response.statusCode, {
-      'Content-Type': 'text/html; charset=UTF-8'
-    });
+module.exports = (error, _request, response, _next) => {
+  // eslint-disable-next-line no-console
+  console.error(error);
 
-    response.end(data);
+  const responseHTML = template.replace(/\$\{error\}/, error);
+
+  response.writeHead(response.statusCode, {
+    'Content-Type': 'text/html; charset=UTF-8'
   });
+
+  response.end(responseHTML);
 };

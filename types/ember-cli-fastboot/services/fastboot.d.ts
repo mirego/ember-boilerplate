@@ -25,6 +25,7 @@ declare module 'ember-cli-fastboot/services/fastboot' {
     isFastBoot: boolean;
     shoebox: ShoeBox;
     request: Request
+    response: Response
   }
 }
 
