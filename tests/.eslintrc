@@ -1,9 +1,4 @@
 {
-  "globals": {
-    "visit": true,
-    "andThen": true,
-    "currentPath": true
-  },
   "rules": {
     "no-magic-numbers": 0,
     "max-nested-callbacks": 0,

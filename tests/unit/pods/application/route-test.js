@@ -48,6 +48,8 @@ describe('Unit | Routes | application', () => {
     describe('when `config.intl.ASYNC_TRANSLATIONS` is true', () => {
       beforeEach(() => {
         config.intl.ASYNC_TRANSLATIONS = true;
+
+        route.fetchTranslations = sinon.stub().returns({});
       });
 
       afterEach(() => {

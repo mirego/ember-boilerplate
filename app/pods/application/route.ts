@@ -6,46 +6,53 @@ import fetch from 'fetch';
 
 // Types
 import ShoeboxWriter from 'ember-boilerplate/services/apollo/shoebox-writer';
-import AppUrlBuilder from 'ember-boilerplate/services/app-url/builder';
+import Location from 'ember-boilerplate/services/location';
 import IntlService from 'ember-intl/services/intl';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
 
 export default class ApplicationRoute extends Route {
-  @service('apollo/shoebox-writer')
-  apolloShoeboxWriter!: ShoeboxWriter;
-
-  @service('app-url/builder')
-  appUrlBuilder!: AppUrlBuilder;
-
   @service('intl')
   intl!: IntlService;
 
+  @service('apollo/shoebox-writer')
+  apolloShoeboxWriter!: ShoeboxWriter;
+
+  @service('location')
+  location!: Location;
+
   async beforeModel() {
-    const locale = 'en-ca';
+    const locale = this.determineLocale();
+    this.intl.setLocale(locale);
 
     if (config.intl.ASYNC_TRANSLATIONS) {
-      const translationsUrl = this.appUrlBuilder.build(
-        `/translations/${locale}.json`
-      );
-
-      let translations;
-      try {
-        const response = await fetch(translationsUrl);
-        translations = await response.json();
-      } catch (error) {
-        translations = {};
-      }
+      const translations = await this.fetchTranslations(locale);
 
       this.intl.addTranslations(locale, translations);
     }
-
-    this.intl.setLocale(locale);
   }
 
   @action
   didTransition() {
     this.apolloShoeboxWriter.write();
+  }
+
+  private determineLocale(): string {
+    return 'en-ca';
+  }
+
+  private async fetchTranslations(locale: string): Promise<object> {
+    const translationsURL = `${
+      this.location.fullURL
+    }/translations/${locale}.json`;
+
+    try {
+      const response = await fetch(translationsURL);
+
+      return response.json();
+    } catch (error) {
+      return {};
+    }
   }
 }

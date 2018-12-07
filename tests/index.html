@@ -14,6 +14,25 @@
     <link rel="stylesheet" href="{{rootURL}}assets/ember-boilerplate.css">
     <link rel="stylesheet" href="{{rootURL}}assets/test-support.css">
 
+    <style>
+      html,
+      body {
+        background: #fff;
+      }
+
+      h1 {
+        color: #000;
+      }
+
+      .pass h2 {
+        color: #000;
+      }
+
+      .fail h2 {
+        color: #c00;
+      }
+    </style>
+
     {{content-for 'head-footer'}}
     {{content-for 'test-head-footer'}}
   </head>

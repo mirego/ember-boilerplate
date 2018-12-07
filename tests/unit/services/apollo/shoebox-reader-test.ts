@@ -1,22 +1,24 @@
 // Vendor
-import {expect} from 'chai';
-import {describe, beforeEach, it} from 'mocha';
-import {setupTest} from 'ember-mocha';
-import sinon from 'sinon';
 import Service from '@ember/service';
-import {computed} from '@ember-decorators/object';
+import {expect} from 'chai';
+import {setupTest} from 'ember-mocha';
+import {beforeEach, describe, it} from 'mocha';
+import sinon from 'sinon';
+
+// Types
+import ShoeboxReader from 'ember-boilerplate/services/apollo/shoebox-reader';
 
 describe('Unit | Services | Apollo | shoebox-reader', () => {
   setupTest();
 
-  let service;
+  let service: ShoeboxReader;
 
   describe('when executing inside FastBoot', () => {
-    const FastBootStub = class extends Service {
-      isFastBoot = true;
-    };
-
     beforeEach(function() {
+      class FastBootStub extends Service {
+        isFastBoot = true;
+      }
+
       this.owner.register('service:fastboot', FastBootStub);
 
       service = this.owner.lookup('service:apollo/shoebox-reader');
@@ -31,18 +33,17 @@ describe('Unit | Services | Apollo | shoebox-reader', () => {
 
   describe('when executing inside the browser', () => {
     describe('with content in the shoebox', () => {
-      const FastBootStub = class extends Service {
-        isFastBoot = false;
-
-        @computed
-        get shoebox() {
-          return {
-            retrieve: sinon.stub().returns('{"foo": "bar"}')
-          };
-        }
-      };
-
       beforeEach(function() {
+        class FastBootStub extends Service {
+          isFastBoot = false;
+
+          get shoebox() {
+            return {
+              retrieve: sinon.stub().returns('{"foo": "bar"}')
+            };
+          }
+        }
+
         this.owner.register('service:fastboot', FastBootStub);
 
         service = this.owner.lookup('service:apollo/shoebox-reader');
@@ -56,16 +57,15 @@ describe('Unit | Services | Apollo | shoebox-reader', () => {
     });
 
     describe('with no content in the shoebox', () => {
-      const FastBootStub = class extends Service {
+      class FastBootStub extends Service {
         isFastBoot = false;
 
-        @computed
         get shoebox() {
           return {
             retrieve: sinon.stub().returns(undefined)
           };
         }
-      };
+      }
 
       beforeEach(function() {
         this.owner.register('service:fastboot', FastBootStub);
@@ -81,16 +81,15 @@ describe('Unit | Services | Apollo | shoebox-reader', () => {
     });
 
     describe('with unparseable content in the shoebox', () => {
-      const FastBootStub = class extends Service {
+      class FastBootStub extends Service {
         isFastBoot = false;
 
-        @computed
         get shoebox() {
           return {
             retrieve: sinon.stub().returns("{invalid_json: 'bar'}")
           };
         }
-      };
+      }
 
       beforeEach(function() {
         this.owner.register('service:fastboot', FastBootStub);

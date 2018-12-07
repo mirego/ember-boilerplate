@@ -11,8 +11,6 @@ const PACKAGE = require('../package.json');
 //
 // Therefore, it MUST NOT be used to store secret keys and values.
 
-const {asBoolean} = require('./utils');
-
 // eslint-disable-next-line complexity
 module.exports = function(environment) {
   const ENV = {
@@ -29,7 +27,6 @@ module.exports = function(environment) {
   };
 
   ENV.APP = {
-    FORCE_SSL: asBoolean(process.env.FORCE_SSL),
     version: PACKAGE.version
   };
 
@@ -102,6 +99,8 @@ module.exports = function(environment) {
       fastbootHeaders: true,
       hostWhitelist: [/.*/]
     };
+
+    ENV.intl.ASYNC_TRANSLATIONS = false;
   }
 
   return ENV;

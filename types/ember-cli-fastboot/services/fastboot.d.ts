@@ -21,7 +21,7 @@ declare class Response {
 }
 
 declare module 'ember-cli-fastboot/services/fastboot' {
-  export default class FastBootService {
+  export default class FastBoot {
     isFastBoot: boolean;
     shoebox: ShoeBox;
     request: Request

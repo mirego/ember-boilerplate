@@ -1,19 +1,18 @@
 // Vendor
 import {expect} from 'chai';
-import {describe, beforeEach, it} from 'mocha';
 import {setupTest} from 'ember-mocha';
+import {beforeEach, describe, it} from 'mocha';
+
+// Types
+import SessionFetcher from 'ember-boilerplate/services/session/fetcher';
 
 describe('Unit | Services | Session | fetcher', () => {
   setupTest();
 
-  let service;
+  let service: SessionFetcher;
 
   beforeEach(function() {
     service = this.owner.lookup('service:session/fetcher');
-  });
-
-  it('should exist', () => {
-    expect(service).to.be.ok;
   });
 
   describe('fetch', () => {

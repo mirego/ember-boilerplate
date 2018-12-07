@@ -8,7 +8,7 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     "noFallthroughCasesInSwitch": true,
     "experimentalDecorators": true,
     "noUnusedLocals": true,
