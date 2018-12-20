@@ -39,21 +39,14 @@ module.exports = function(environment) {
     'default-src': "'none'",
     'form-action': "'self'",
     'media-src': "'self'",
-    'img-src': ["'self'", 'data:', 'https://*.nr-data.net'],
+    'img-src': ["'self'", 'data:'],
     'script-src':
       environment === 'production'
-        ? ["'self'", 'https://*.newrelic.com', 'https://*.nr-data.net']
+        ? ["'self'"]
         : ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-    'font-src': ["'self'", 'fonts.gstatic.com'],
-    'connect-src': [
-      "'self'",
-      'https://www.googleapis.com',
-      'https://sentry.io',
-      'https://*.nr-data.net',
-      process.env.API_BASE_URL
-    ],
-    // Allow inline styles and loaded CSS from fonts.googleapis.com
-    'style-src': ["'self'", "'unsafe-inline'", 'fonts.googleapis.com']
+    'font-src': ["'self'"],
+    'connect-src': ["'self'", 'https://sentry.io', process.env.API_BASE_URL],
+    'style-src': ["'self'"]
   };
 
   ENV.fastboot = {
@@ -64,16 +57,6 @@ module.exports = function(environment) {
   ENV.intl = {
     ASYNC_TRANSLATIONS: process.env.ASYNC_TRANSLATIONS
   };
-
-  if (
-    process.env.NEW_RELIC_APPLICATION_ID &&
-    process.env.NEW_RELIC_LICENSE_KEY
-  ) {
-    ENV.newRelic = {
-      applicationId: process.env.NEW_RELIC_APPLICATION_ID,
-      licenseKey: process.env.NEW_RELIC_LICENSE_KEY
-    };
-  }
 
   ENV.sentry = {
     dsn: process.env.SENTRY_DSN,

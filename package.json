@@ -64,7 +64,6 @@
     "ember-inline-svg": "0.2.1",
     "ember-intl": "3.5.0",
     "ember-load-initializers": "2.0.0",
-    "ember-new-relic": "0.6.1",
     "ember-resolver": "5.0.1",
     "ember-source": "3.6.1",
     "ember-window-mock": "0.5.3",
