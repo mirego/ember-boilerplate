@@ -19,7 +19,7 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "baseUrl": ".",
-    "module": "es6",
+    "module": "esNext",
     "lib": [
       "dom",
       "es2017",
