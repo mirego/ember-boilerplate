@@ -27,7 +27,7 @@
   },
   "repository": "https://github.com/mirego/ember-boilerplate",
   "engines": {
-    "node": "10.14.1",
+    "node": "10.15.0",
     "npm": "6.4.1"
   },
   "dependencies": {
