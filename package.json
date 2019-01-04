@@ -8,18 +8,22 @@
     "test": "tests"
   },
   "scripts": {
-    "server": "NODE_PATH=$NODE_PATH:. node --optimize_for_size app/server.js",
+    "server": "npm run enforce-engine-versions && NODE_PATH=$NODE_PATH:. node --optimize_for_size app/server.js",
     "start": "ember server",
-    "build": "ember build",
+    "build": "npm run enforce-engine-versions && ember build",
     "test": "rm -rf ./coverage && COVERAGE=true ember exam --split 5 --parallel",
     "check-coverage": "./node_modules/.bin/nyc check-coverage",
     "svgo": "./node_modules/.bin/svgo --config=.svgo.yml",
     "prettier": "prettier --write ember-cli-build.js testem.js '{app,tests,config}/**/*.{ts,js,graphql,scss}'",
     "prettier-check": "prettier -l ember-cli-build.js testem.js '{app,tests,config}/**/*.{ts,js,graphql,scss}'",
-    "lint-scripts": "./node_modules/.bin/eslint ember-cli-build.js testem.js app/ tests/ config/",
+    "lint-scripts": "./node_modules/.bin/eslint ember-cli-build.js testem.js app/ tests/ config/ scripts/",
     "lint-typescript": "tslint '{app,tests,config}/**/*.ts'",
     "lint-styles": "./node_modules/.bin/stylelint './app/**/*.scss'",
-    "lint-templates": "./node_modules/.bin/ember-template-lint './app/**/*.hbs'"
+    "lint-templates": "./node_modules/.bin/ember-template-lint './app/**/*.hbs'",
+    "enforce-engine-versions": "./scripts/enforce-engine-versions.js",
+    "preinstall": "npm run enforce-engine-versions",
+    "pretest": "npm run enforce-engine-versions",
+    "prestart": "npm run enforce-engine-versions"
   },
   "repository": "https://github.com/mirego/ember-boilerplate",
   "engines": {
