@@ -18,7 +18,7 @@ _To be written_
 
 ## License
 
-Ember Boilerplate is © 2015-2019 [Mirego](https://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause). See the [`LICENSE.md`](https://github.com/mirego/phonix-boilerplate/blob/master/LICENSE.md) file.
+Ember Boilerplate is © 2015-2019 [Mirego](https://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause). See the [`LICENSE.md`](https://github.com/mirego/ember-boilerplate/blob/master/LICENSE.md) file.
 
 The glasses logo is based on [this lovely icon by Daniela Baptista](https://thenounproject.com/term/glasses/789701), from The Noun Project. Used under a [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) license.
 
