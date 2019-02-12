@@ -14,7 +14,17 @@
 
 ## Content
 
-_To be written_
+This boilerplate comes with batteries included, you’ll find:
+
+- A battle-tested production-ready [FastBoot](https://ember-fastboot.com) server
+- Tests with [mocha](https://mochajs.org), with coverage
+- Linting with [tslint](https://palantir.github.io/tslint), [eslint](https://eslint.org), [stylelint](https://stylelint.io) and [ember-template-lint](https://github.com/ember-template-lint/ember-template-lint)
+- Formatting with [Prettier](https://prettier.io)
+- A [GraphQL](https://graphql.org) setup powered by [Apollo](https://www.apollographql.com)
+- Translations powered by [ember-intl](https://github.com/ember-intl/ember-intl)
+- [TypeScript](https://www.typescriptlang.org)
+- [ember-decorators](https://ember-decorators.github.io/ember-decorators)
+- [CSS modules](https://github.com/salsify/ember-css-modules) with [Sass/SCSS](https://sass-lang.com)
 
 ## License
 
