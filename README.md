@@ -3,15 +3,6 @@
   <p><br />This repository is the stable base upon which we build our Ember.js projects at Mirego.<br />We want to share it with the world so you can build awesome Ember.js applications too.</p>
 </div>
 
-## Usage
-
-1. Clone this project (`git clone https://github.com/mirego/ember-boilerplate.git`)
-2. Delete the internal Git directory (`rm -rf .git`)
-3. Run the project renaming script (`./project-renamer.sh your-project-name`)
-4. Delete the project renaming script (`rm -rf ./project-renamer.sh`)
-5. Create a new Git repository (`git init`)
-6. Create the initial Git commit (`git commit -a -m "Initial commit"`)
-
 ## Content
 
 This boilerplate comes with batteries included, you’ll find:
@@ -25,6 +16,15 @@ This boilerplate comes with batteries included, you’ll find:
 - [TypeScript](https://www.typescriptlang.org)
 - [ember-decorators](https://ember-decorators.github.io/ember-decorators)
 - [CSS modules](https://github.com/salsify/ember-css-modules) with [Sass/SCSS](https://sass-lang.com)
+
+## Usage
+
+1. Clone this project (`git clone https://github.com/mirego/ember-boilerplate.git`)
+2. Delete the internal Git directory (`rm -rf .git`)
+3. Run the project renaming script (`./project-renamer.sh your-project-name`)
+4. Delete the project renaming script (`rm -rf ./project-renamer.sh`)
+5. Create a new Git repository (`git init`)
+6. Create the initial Git commit (`git commit -a -m "Initial commit"`)
 
 ## License
 
