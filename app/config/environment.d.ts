@@ -50,6 +50,8 @@ declare const config: {
 
   sentry: {
     dsn: string;
+    environment: string;
+    release: string;
     whitelistUrls: string[];
     development: boolean;
   };

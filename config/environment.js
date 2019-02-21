@@ -60,6 +60,8 @@ module.exports = function(environment) {
 
   ENV.sentry = {
     dsn: process.env.SENTRY_DSN,
+    environment: process.env.SENTRY_ENVIRONMENT_NAME,
+    release: PACKAGE.version,
     whitelistUrls: [process.env.ASSETS_CDN_HOST || process.env.CANONICAL_HOST],
     // If set to true, it will prevent Raven.js from being initialized.
     // Errors and logs will be logged to the console (default) instead of
