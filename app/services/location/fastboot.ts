@@ -1,5 +1,5 @@
 // Vendor
-import {service} from '@ember-decorators/service';
+import {inject as service} from '@ember-decorators/service';
 import Service from '@ember/service';
 
 // Config
