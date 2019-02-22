@@ -1,6 +1,6 @@
 // Vendor
 import {computed} from '@ember-decorators/object';
-import {service} from '@ember-decorators/service';
+import {inject as service} from '@ember-decorators/service';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import {setContext} from 'apollo-link-context';
 import ApolloService from 'ember-apollo-client/services/apollo';
