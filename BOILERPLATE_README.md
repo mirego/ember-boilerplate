@@ -22,8 +22,8 @@
 
 ## 🚧 Dependencies
 
-- Node.js (`10.12.0`)
-- NPM (`6.4.1`)
+- Node.js (`10.15.1`)
+- NPM (`6.8.0`)
 
 ## 🏎 Kickstart
 

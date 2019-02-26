@@ -13,6 +13,7 @@ module.exports = {
     '*/router.js',
     '*/server.js',
     '*/services/apollo.js',
+    '*/services/service-worker.js',
     '*/translations.js',
     '*/config/**/*',
     '*/tests/**/*',

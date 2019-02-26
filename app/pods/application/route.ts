@@ -7,6 +7,7 @@ import fetch from 'fetch';
 // Types
 import ShoeboxWriter from 'ember-boilerplate/services/apollo/shoebox-writer';
 import Location from 'ember-boilerplate/services/location';
+import ServiceWorker from 'ember-boilerplate/services/service-worker';
 import IntlService from 'ember-intl/services/intl';
 
 // Config
@@ -22,6 +23,9 @@ export default class ApplicationRoute extends Route {
   @service('location')
   location!: Location;
 
+  @service('service-worker')
+  serviceWorker!: ServiceWorker;
+
   async beforeModel() {
     const locale = this.determineLocale();
     this.intl.setLocale(locale);
@@ -31,6 +35,13 @@ export default class ApplicationRoute extends Route {
 
       this.intl.addTranslations(locale, translations);
     }
+
+    // By default whenever an update is ready, we install it immediately.
+    // Note that the `update` call could be made later. We could prompt the
+    // user to update, then install the update only when they accept.
+    this.serviceWorker.register().onUpdateReady(() => {
+      this.serviceWorker.update();
+    });
   }
 
   @action

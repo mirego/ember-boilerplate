@@ -24,6 +24,13 @@ describe('Unit | Routes | application', () => {
       ApolloShoeboxWriterStub
     );
 
+    const ServiceWorkerStub = class extends Service {
+      register = sinon.stub().returnsThis();
+      onUpdateReady = sinon.stub();
+    };
+
+    this.owner.register('service:service-worker', ServiceWorkerStub);
+
     // We need to do this because ember-intl somehow always
     // overwrites our `this.owner.register` when trying to stub it.
     const intl = this.owner.lookup('service:intl');
@@ -49,11 +56,13 @@ describe('Unit | Routes | application', () => {
       beforeEach(() => {
         config.intl.ASYNC_TRANSLATIONS = true;
 
-        route.fetchTranslations = sinon.stub().returns({});
+        route.fetchTranslations = sinon.stub().returns(Promise.resolve());
       });
 
       afterEach(() => {
         config.intl.ASYNC_TRANSLATIONS = originalConfig.intl.ASYNC_TRANSLATIONS;
+
+        route.fetchTranslations.reset();
       });
 
       it('should load translations asynchronously', async () => {

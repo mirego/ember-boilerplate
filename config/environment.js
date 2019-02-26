@@ -3,6 +3,7 @@
 'use strict';
 
 const PACKAGE = require('../package.json');
+const {asBoolean} = require('./utils');
 
 // This function is used to build an `ENV` variable from environment variables
 // when running `ember build`. This variable will be injected into the browser
@@ -55,7 +56,7 @@ module.exports = function(environment) {
   };
 
   ENV.intl = {
-    ASYNC_TRANSLATIONS: process.env.ASYNC_TRANSLATIONS
+    ASYNC_TRANSLATIONS: asBoolean(process.env.ASYNC_TRANSLATIONS)
   };
 
   ENV.sentry = {

@@ -2,6 +2,8 @@
 
 'use strict';
 
+const {asBoolean} = require('./utils');
+
 module.exports = function() {
   return {
     /**
@@ -49,7 +51,7 @@ module.exports = function() {
      * @type {Boolean}
      * @default "false"
      */
-    publicOnly: process.env.ASYNC_TRANSLATIONS,
+    publicOnly: asBoolean(process.env.ASYNC_TRANSLATIONS),
 
     /**
      * Path where translations are kept.  This is relative to the project root.
