@@ -1,11 +1,11 @@
 # ember-boilerplate
 
 | Section                                               | Description                                                     |
-| ---                                                   | ---                                                             |
+| ----------------------------------------------------- | --------------------------------------------------------------- |
 | [🎯 Objectives and context](#-objectives-and-context) | Project introduction and context                                |
 | [🚧 Dependencies](#-dependencies)                     | Technical dependencies and how to install them                  |
-| [🏎 Kickstart](#kickstart)                            | Details on how to kickstart development on the project          |
-| [🏗 Code & architecture](#-code--architecture)        | Details on the application modules and technical specifications |
+| [🏎 Kickstart](#kickstart)                             | Details on how to kickstart development on the project          |
+| [🏗 Code & architecture](#-code--architecture)         | Details on the application modules and technical specifications |
 | [🔭 Possible improvements](#-possible-improvements)   | Possible code refactors, improvements and ideas                 |
 | [🚑 Troubleshooting](#-troubleshooting)               | Recurring problems and proven solutions                         |
 | [🚀 Deploy](#-deploy)                                 | Deployment details for various enviroments                      |
@@ -17,7 +17,7 @@
 ### Browser support
 
 | Browser | OS  | Constraint |
-| ---     | --- | ---        |
+| ------- | --- | ---------- |
 | …       | …   | …          |
 
 ## 🚧 Dependencies
@@ -56,7 +56,7 @@ $ npm run build --prod
 
 ### Serve the application in production
 
-To launch a “FastBoot-enabled production-ready server” with support for canonical host, SSL and `Basic` authentication, the following command can be executed *after* a production build has been created:
+To launch a “FastBoot-enabled production-ready server” with support for canonical host, SSL and `Basic` authentication, the following command can be executed _after_ a production build has been created:
 
 ```bash
 $ npm run server
@@ -84,11 +84,11 @@ Code instrumentation results are also available in the `coverage` directory.
 
 Several linting and formatting tools can be ran to ensure coding style consistency:
 
-* `npm run prettier` ensures all code is properly formatted
-* `npm run lint-typescript` ensures TypeScript code follows our best practices
-* `npm run lint-scripts` ensures JavaScript code follows our best practices
-* `npm run lint-styles` ensures SCSS code follows our best practices
-* `npm run lint-templates` ensures Handlebars code follows our best practices
+- `npm run prettier` ensures all code is properly formatted
+- `npm run lint-typescript` ensures TypeScript code follows our best practices
+- `npm run lint-scripts` ensures JavaScript code follows our best practices
+- `npm run lint-styles` ensures SCSS code follows our best practices
+- `npm run lint-templates` ensures Handlebars code follows our best practices
 
 ### Continuous integration
 
@@ -105,7 +105,7 @@ $ ./scripts/ci-check.sh
 ## 🔭 Possible improvements
 
 | Description | Priority | Complexity | Ideas |
-| ---         | ---      | ---        | ---   |
+| ----------- | -------- | ---------- | ----- |
 | …           | …        | …          | …     |
 
 ## 🚑 Troubleshooting

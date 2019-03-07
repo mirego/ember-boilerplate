@@ -18,8 +18,8 @@ Un _instance-initializer_ comme son nom l’indique est utilisé pour modifier u
 
 Le rôle d’une instance tel que décrit par la documentation d’Ember:
 
-> The ApplicationInstance encapsulates all of the stateful aspects of a running Application. At a high-level, we break application boot into two distinct phases: 
-> 
+> The ApplicationInstance encapsulates all of the stateful aspects of a running Application. At a high-level, we break application boot into two distinct phases:
+>
 > - Definition time, where all of the classes, templates, and other dependencies are loaded (typically in the browser).
 > - Run time, where we begin executing the application once everything has loaded.
 >
@@ -39,45 +39,45 @@ La solution est donc de sortir la définition des routes de la phase de définit
 
 1. On doit assigner une locale à notre instance, ici on utilise l’URL, on pourrait aussi utiliser la langue du browser ou un cookie
 
-	```js
-	// app/instance-initializers/set-locale.js
-	
-	export const initialize = appInstance => {
-	  const intl = appInstance.lookup('service:intl');
-	  const location = appInstance.lookup('service:location');
-	
-	  const isEnglish =
-	    location.path === '/en' || location.path.startsWith('/en/');
-	  const locale = isEnglish ? 'en-ca' : 'fr-ca';
-	
-	  intl.setLocale(locale);
-	};
-	
-	export default {
-	  initialize,
-	  before: 'translated-routes'
-	};
-	```
+   ```js
+   // app/instance-initializers/set-locale.js
+
+   export const initialize = appInstance => {
+     const intl = appInstance.lookup('service:intl');
+     const location = appInstance.lookup('service:location');
+
+     const isEnglish =
+       location.path === '/en' || location.path.startsWith('/en/');
+     const locale = isEnglish ? 'en-ca' : 'fr-ca';
+
+     intl.setLocale(locale);
+   };
+
+   export default {
+     initialize,
+     before: 'translated-routes'
+   };
+   ```
 
 2. On assigne les routes à notre instance avec la langue qu’on a assigné plus haut
 
-	```js
-	// app/instance-initializers/translated-routes.js
-	
-	export const initialize = instance => {
-	  const intl = instance.lookup('service:intl');
-	  const Router = instance.router.constructor;
-	
-	  Router.map(function() {
-	    this.route('hello', {path: intl.t('routes.hello')});
-	  });
-	};
-	
-	export default {
-	  initialize
-	};
-	```
-	
+   ```js
+   // app/instance-initializers/translated-routes.js
+
+   export const initialize = instance => {
+     const intl = instance.lookup('service:intl');
+     const Router = instance.router.constructor;
+
+     Router.map(function() {
+       this.route('hello', {path: intl.t('routes.hello')});
+     });
+   };
+
+   export default {
+     initialize
+   };
+   ```
+
 ### Conclusion
 
 On a maintenant des routes multilingues qui fonctionnent sans avoir de dossier `/fr` et `/en`, sans avoir besoin de component `localized-link-to`, sans addon qui copie notre app en 2 versions. Bref, le reste de l’application reste du idiomatic Ember! 🎉
