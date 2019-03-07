@@ -3,6 +3,7 @@
 Ce document n’est en aucun cas une référence complète, il vise plutôt à expliquer les concepts de base entourant les service workers ainsi que l’utilisation que l’on en fait dans le boilerplate.
 
 ## 🎯 Objectifs
+
 ### Pourquoi utilise-t-on un service worker dans nos applications?
 
 TLDR; On utilise le service worker pour mettre en cache les assets de l’application et les charger instantannément lorsque l’utilisateur revient sur notre site.
@@ -12,6 +13,7 @@ Un service worker permet de faire plusieurs choses: souscrire à un channel de p
 Lorsque notre app est chargée par le browser, on installe un service worker. Celui-ci, pendant sa phase d’installation, télécharge les assets de notre application en background. Une fois téléchargés, ces assets seront mis en cache pour utilisation future. Dès que l’utilisateur reviendra sur notre application, on lui servira les assets qui viennent de la cache. On profite donc d’un gain de performance important puisque le browser ne fait plus de requêtes réseaux pour charger notre application! Si on y met un peu d’effort, il est possible de faire fonctionner l’application complètement hors-ligne.
 
 ## ⚙️ Fonctionnement
+
 ### Comment fonctionne l’installation du service worker dans le boilerplate
 
 #### Lors de la première visite
@@ -20,22 +22,24 @@ Le browser va d’abord télécharger le service worker puis commencer le proces
 
 1. Télécharger le fichier `asset-cache-manifest.json`
 2. Télécharger tous les assets listés dans le cache manifest. Le fichier inclut:
-	- Les fichiers JavaScript
-	- Les fichiers CSS
-	- Les fichiers d’images
-	- Les fichiers de fonts
-	- Le fichier `index.html` qui est aliasé sous `/assets/index-{app version}.html` pour éviter des problèmes de cache
-  - Les source maps pour le JavaScript et le CSS
+
+   - Les fichiers JavaScript
+   - Les fichiers CSS
+   - Les fichiers d’images
+   - Les fichiers de fonts
+   - Le fichier `index.html` qui est aliasé sous `/assets/index-{app version}.html` pour éviter des problèmes de cache
+   - Les source maps pour le JavaScript et le CSS
+
 3. Mettre en cache les fichiers téléchargés
 4. Activer le service worker pour intercepter les requêtes subséquentes
 
 ![](assets/sw-installing.gif)
 
-__À noter:__
+**À noter:**
 
- - Si une des étapes échoue, l’installation au complet est annulée et le service worker ne sera pas activé.
- - Si on dépend d’asset distant tel que Google Fonts ou autre, on peut les ajouter dans la liste d’asset à mettre en cache dans le fichier `service-worker/index.js`
- - Le fichier `index.html` doit être mis en cache puisque lorsque l’application sera servie par le worker, FastBoot sera complètement ignoré et donc on doit fournir un « shell » à notre application pour s’exécuter.
+- Si une des étapes échoue, l’installation au complet est annulée et le service worker ne sera pas activé.
+- Si on dépend d’asset distant tel que Google Fonts ou autre, on peut les ajouter dans la liste d’asset à mettre en cache dans le fichier `service-worker/index.js`
+- Le fichier `index.html` doit être mis en cache puisque lorsque l’application sera servie par le worker, FastBoot sera complètement ignoré et donc on doit fournir un « shell » à notre application pour s’exécuter.
 
 #### Lors des visites subséquentes
 
@@ -52,7 +56,7 @@ Note: "une autre page" veut dire une page qui n’est pas dans notre app Ember, 
 
 ![](assets/sw-waiting.gif)
 
-__Le setup de base du boilerplate force un refresh dès que l’installation d’un nouveau worker est terminée. Par contre, sachez que tous les outils sont à votre disposition pour afficher un message qui demande à l’utilsateur d’installer la mise à jour.__
+**Le setup de base du boilerplate force un refresh dès que l’installation d’un nouveau worker est terminée. Par contre, sachez que tous les outils sont à votre disposition pour afficher un message qui demande à l’utilsateur d’installer la mise à jour.**
 
 Lorsque le nouveau worker est activé, l’ancien devient « redundant » c’est à dire qu’il sera supprimé par le browser à un moment donné mais il ne reçoit plus aucune requête. Sa cache va aussi être supprimée pour ne pas excéder le quota d’espace disque auquel on a droit.
 
@@ -71,6 +75,7 @@ Comme en développement on veut souvent passer par-dessus le service worker pour
 Pour faciliter l’interaction avec le service worker, le boilerplate contient aussi un service nommé `service-worker` qui permet de faire les opérations de base.
 
 ## 📬 Mise à jour
+
 ### J’ai déployé une nouvelle version, comment notifier mes utilisateurs?
 
 Comme ce scénario est un peu « cas par cas » il n’est pas implémenté par défaut dans le boilerplate. Par contre, il serait assez simple à faire avec notre service.
