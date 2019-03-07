@@ -28,25 +28,25 @@ header() {
 }
 
 header "Linting scripts…"
-run npm run lint-scripts
+run make lint-eslint
 
 header "Linting TypeScript…"
-run npm run lint-typescript
+run make lint-tslint
 
 header "Linting stylesheets…"
-run npm run lint-styles
+run make lint-stylelint
 
 header "Linting templates…"
-run npm run lint-templates
+run make lint-template-lint
 
 header "Running prettier…"
-run npm run prettier-check
+run make lint-prettier
 
 header "Running tests…"
-run npm test
+run make test
 
 header "Checking test code coverage…"
-run npm run check-coverage
+run make test-coverage
 
 if [ ${error_status} -ne 0 ]; then
   echo "\n\n${YELLOW}▶▶ One of the checks ${RED_BOLD}failed${YELLOW}. Please fix it before committing.${NO_COLOR}"

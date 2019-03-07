@@ -36,7 +36,7 @@ When running scripts or `npm` commands, it is important that these variables are
 ### Initial setup
 
 1. Create `.env.dev.local` from empty values in [`.env.dev`](./.env.dev)
-2. Install NPM dependencies with `npm install`
+2. Install dependencies with `make dependencies`
 
 ### Run the application in development mode
 
@@ -67,7 +67,7 @@ $ npm run server
 Tests can be ran with the following script and do not need any environment variables as they should not create side effects (eg. they should not make any network calls, they should not read cookies, etc.)
 
 ```bash
-$ npm test
+$ make test
 ```
 
 ### Code coverage
@@ -75,20 +75,24 @@ $ npm test
 Test coverage is enforced using configuration metrics defined in `.nycrc`. To check test coverage, this command can be ran **after tests have been ran**:
 
 ```bash
-$ npm run check-coverage
+$ make test-coverage
 ```
 
 Code instrumentation results are also available in the `coverage` directory.
 
-### Linting
+### Linting & formatting
 
 Several linting and formatting tools can be ran to ensure coding style consistency:
 
-- `npm run prettier` ensures all code is properly formatted
-- `npm run lint-typescript` ensures TypeScript code follows our best practices
-- `npm run lint-scripts` ensures JavaScript code follows our best practices
-- `npm run lint-styles` ensures SCSS code follows our best practices
-- `npm run lint-templates` ensures Handlebars code follows our best practices
+- `make lint-prettier` ensures all code is properly formatted
+- `make lint-tslint` ensures TypeScript code follows our best practices
+- `make lint-eslint` ensures JavaScript code follows our best practices
+- `make lint-stylelint` ensures SCSS code follows our best practices
+- `make lint-template-lint` ensures Handlebars code follows our best practices
+- `make format-prettier` formats various code files (JavaScript, TypeScript, SCSS, Markdown, etc.) using the same style
+- `make format-svgo` formats SVG files using the same style
+
+All these commands can be ran at the same time with `make lint` or `make format`.
 
 ### Continuous integration
 
