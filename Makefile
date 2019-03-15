@@ -42,43 +42,43 @@ lint: lint-prettier lint-eslint lint-tslint lint-stylelint lint-template-lint ##
 
 .PHONY: lint-prettier
 lint-prettier:
-	./node_modules/.bin/prettier -l ember-cli-build.js testem.js '{app,tests,config,service-worker}/**/*.{ts,js,graphql,scss}' '**/*.md'
+	npx prettier -l ember-cli-build.js testem.js '{app,tests,config,service-worker}/**/*.{ts,js,graphql,scss}' '**/*.md'
 
 .PHONY: lint-eslint
 lint-eslint:
-	./node_modules/.bin/eslint ember-cli-build.js testem.js app/ tests/ config/ scripts/ service-worker/
+	npx eslint ember-cli-build.js testem.js app/ tests/ config/ scripts/ service-worker/
 
 .PHONY: lint-tslint
 lint-tslint:
-	./node_modules/.bin/tslint '{app,tests,config,service-worker}/**/*.ts'
+	npx tslint '{app,tests,config,service-worker}/**/*.ts'
 
 .PHONY: lint-stylelint
 lint-stylelint:
-	./node_modules/.bin/stylelint './app/**/*.scss'
+	npx stylelint './app/**/*.scss'
 
 .PHONY: lint-template-lint
 lint-template-lint:
-	./node_modules/.bin/ember-template-lint './app/**/*.hbs'
+	npx ember-template-lint './app/**/*.hbs'
 
 .PHONY: test
 test: ## Run the test suite
-	rm -rf ./coverage && COVERAGE=true ./node_modules/.bin/ember exam --split 5 --parallel
+	rm -rf ./coverage && COVERAGE=true npx ember exam --split 5 --parallel
 
 .PHONY: test-coverage
 test-coverage: ## Run the test suite with the code coverage report
-	./node_modules/.bin/nyc check-coverage
+	npx nyc check-coverage
 
 .PHONY: format
 format: format-prettier format-svgo ## Run formatting tools on the code
 
 .PHONY: format-prettier
 format-prettier:
-	./node_modules/.bin/prettier --write ember-cli-build.js testem.js '{app,tests,config,service-worker}/**/*.{ts,js,graphql,scss}' '**/*.md'
+	npx prettier --write ember-cli-build.js testem.js '{app,tests,config,service-worker}/**/*.{ts,js,graphql,scss}' '**/*.md'
 
 .PHONY: format-svgo
 format-svgo:
-	./node_modules/.bin/svgo --config=.svgo.yml
+	npx svgo --config=.svgo.yml
 
 .PHONY: typecheck
 typecheck:
-	./node_modules/.bin/tsc
+	npx tsc
