@@ -42,11 +42,7 @@ module.exports = function(defaults) {
 
     // JavaScript compilation
     babel: {
-      plugins: [
-        'transform-object-rest-spread',
-        'graphql-tag',
-        require('ember-auto-import/babel-plugin')
-      ],
+      plugins: ['graphql-tag', require('ember-auto-import/babel-plugin')],
       sourceMaps: 'inline'
     },
 
