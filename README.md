@@ -17,6 +17,7 @@ This boilerplate comes with batteries included, you’ll find:
 - [TypeScript](https://www.typescriptlang.org)
 - [ember-decorators](https://ember-decorators.github.io/ember-decorators)
 - [CSS modules](https://github.com/salsify/ember-css-modules) with [Sass/SCSS](https://sass-lang.com)
+- A clean and useful [`README.md`](./BOILERPLATE_README.md) template
 
 ## Usage
 
