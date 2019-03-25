@@ -26,7 +26,7 @@ content=$(find . -type f \( \
 
 # The identifiers above will be replaced in the path of the files and directories found here
 paths=$(find . -depth 2 \( \
-  -path "…" \
+  -path "./types/${kebabCaseBefore}" \
 \))
 
 # -----------------------------------------------------------------------------
