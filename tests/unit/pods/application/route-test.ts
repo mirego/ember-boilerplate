@@ -1,17 +1,20 @@
 // Vendor
-import {expect} from 'chai';
-import {describe, beforeEach, afterEach, it} from 'mocha';
-import {setupTest} from 'ember-mocha';
-import sinon from 'sinon';
 import Service from '@ember/service';
+import {expect} from 'chai';
+import {setupTest} from 'ember-mocha';
+import {afterEach, beforeEach, describe, it} from 'mocha';
+import sinon from 'sinon';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
 
+// Types
+import ApplicationRoute from 'ember-boilerplate/pods/application/route';
+
 describe('Unit | Routes | application', () => {
   setupTest();
 
-  let route;
+  let route: ApplicationRoute;
   const originalConfig = config;
 
   beforeEach(function() {
@@ -56,13 +59,15 @@ describe('Unit | Routes | application', () => {
       beforeEach(() => {
         config.intl.ASYNC_TRANSLATIONS = true;
 
-        route.fetchTranslations = sinon.stub().returns(Promise.resolve());
+        (route as any).fetchTranslations = sinon
+          .stub()
+          .returns(Promise.resolve());
       });
 
       afterEach(() => {
         config.intl.ASYNC_TRANSLATIONS = originalConfig.intl.ASYNC_TRANSLATIONS;
 
-        route.fetchTranslations.reset();
+        ((route as any).fetchTranslations as sinon.SinonStub).reset();
       });
 
       it('should load translations asynchronously', async () => {
