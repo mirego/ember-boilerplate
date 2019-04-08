@@ -17,9 +17,10 @@
     "prestart": "npm run enforce-engine-versions"
   },
   "repository": "https://github.com/mirego/ember-boilerplate",
+  "engine-strict": true,
   "engines": {
-    "node": "10.15.1",
-    "npm": "6.4.1"
+    "node": "~10.15",
+    "npm": "~6.4"
   },
   "dependencies": {
     "@ember-decorators/argument": "1.0.0-beta.2",
