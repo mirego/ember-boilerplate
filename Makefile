@@ -37,6 +37,9 @@ targets:
 dependencies:
 	npm install
 
+# CI targets
+# -------------------
+
 .PHONY: lint
 lint: lint-prettier lint-eslint lint-tslint lint-stylelint lint-template-lint ## Run lint tools on the code
 
