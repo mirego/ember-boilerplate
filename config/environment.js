@@ -52,7 +52,9 @@ module.exports = function(environment) {
 
   ENV.fastboot = {
     fastbootHeaders: true,
-    hostWhitelist: [process.env.CANONICAL_HOST]
+    hostWhitelist: process.env.CANONICAL_HOST
+      ? [process.env.CANONICAL_HOST]
+      : []
   };
 
   ENV.intl = {

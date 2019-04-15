@@ -11,6 +11,7 @@
     "server": "npm run enforce-engine-versions && NODE_PATH=$NODE_PATH:. node --optimize_for_size app/server.js",
     "start": "ember server",
     "build": "npm run enforce-engine-versions && ember build",
+    "deploy": "npm run enforce-engine-versions && ember build --prod",
     "enforce-engine-versions": "./scripts/enforce-engine-versions.js",
     "preinstall": "npm run enforce-engine-versions",
     "pretest": "npm run enforce-engine-versions",

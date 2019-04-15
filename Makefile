@@ -4,6 +4,8 @@
 APP_NAME = `grep -m1 name package.json | awk -F: '{ print $$2 }' | sed 's/[ ",]//g'`
 APP_VERSION = `grep -m1 version package.json | awk -F: '{ print $$2 }' | sed 's/[ ",]//g'`
 GIT_REVISION = `git rev-parse HEAD`
+DOCKER_IMAGE_TAG ?= latest
+DOCKER_REGISTRY ?=
 
 # Introspection targets
 # ---------------------
@@ -23,6 +25,12 @@ header:
 	@echo ""
 	@printf "\033[33m%-23s\033[0m" "GIT_REVISION"
 	@printf "\033[35m%s\033[0m" $(GIT_REVISION)
+	@echo ""
+	@printf "\033[33m%-23s\033[0m" "DOCKER_IMAGE_TAG"
+	@printf "\033[35m%s\033[0m" $(DOCKER_IMAGE_TAG)
+	@echo ""
+	@printf "\033[33m%-23s\033[0m" "DOCKER_REGISTRY"
+	@printf "\033[35m%s\033[0m" $(DOCKER_REGISTRY)
 
 .PHONY: targets
 targets:
@@ -36,6 +44,15 @@ targets:
 .PHONY: dependencies
 dependencies:
 	npm install
+
+.PHONY: build
+build: ## Build the Docker image
+	docker build --rm --tag $(APP_NAME):$(DOCKER_IMAGE_TAG) .
+
+.PHONY: push
+push: ## Push the Docker image
+	docker tag $(APP_NAME):$(DOCKER_IMAGE_TAG) $(DOCKER_REGISTRY)/$(APP_NAME):$(DOCKER_IMAGE_TAG)
+	docker push $(DOCKER_REGISTRY)/$(APP_NAME):$(DOCKER_IMAGE_TAG)
 
 # CI targets
 # -------------------
@@ -85,3 +102,18 @@ format-svgo:
 .PHONY: typecheck
 typecheck:
 	npx tsc
+
+.PHONY: build-app
+build-app:
+	npm run build
+
+# Development targets
+# -------------------
+
+.PHONY: dev-start
+dev-start: build ## Start every service of in the Docker Compose environment
+	docker-compose up
+
+.PHONY: dev-stop
+dev-stop: ## Stop every service of in the Docker Compose environment
+	docker-compose down

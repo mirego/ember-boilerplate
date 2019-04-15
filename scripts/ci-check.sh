@@ -42,11 +42,17 @@ run make lint-template-lint
 header "Running prettier…"
 run make lint-prettier
 
+header "Build application…"
+run make build-app
+
 header "Running tests…"
 run make test
 
 header "Checking test code coverage…"
 run make test-coverage
+
+header "Build Docker image…"
+run make build
 
 if [ ${error_status} -ne 0 ]; then
   echo "\n\n${YELLOW}▶▶ One of the checks ${RED_BOLD}failed${YELLOW}. Please fix it before committing.${NO_COLOR}"
