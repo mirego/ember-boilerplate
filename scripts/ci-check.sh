@@ -45,6 +45,9 @@ run make lint-prettier
 header "Build application…"
 run make build-app
 
+header "Type checking…"
+run make typecheck
+
 header "Running tests…"
 run make test
 
