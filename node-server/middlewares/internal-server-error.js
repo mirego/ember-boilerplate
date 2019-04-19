@@ -5,7 +5,8 @@
 const fs = require('fs');
 
 // Remove anything before and after the main <html> element
-const template = fs.readFileSync('app/error-pages/internal-error-page.ts', 'utf8')
+const template = fs
+  .readFileSync('app/error-pages/internal-error-page.ts', 'utf8')
   .replace(/\n/g, ' ')
   .replace(/<\/html>.*/, '</html>')
   .replace(/.*<html>/, '<html>');

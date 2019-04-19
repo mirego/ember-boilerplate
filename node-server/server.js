@@ -72,12 +72,15 @@ if (process.env.BASIC_AUTH_USERNAME && process.env.BASIC_AUTH_PASSWORD) {
 app.use(compression());
 
 // Cache headers
-app.use('/sw.js', cacheControl({
-  noCache: true,
-  private: true,
-  noStore: true,
-  mustRevalidate: true
-}));
+app.use(
+  '/sw.js',
+  cacheControl({
+    noCache: true,
+    private: true,
+    noStore: true,
+    mustRevalidate: true
+  })
+);
 
 if (process.env.PAGES_CACHE_DURATION_IN_SECONDS) {
   app.use(

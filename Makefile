@@ -62,11 +62,11 @@ lint: lint-prettier lint-eslint lint-tslint lint-stylelint lint-template-lint ##
 
 .PHONY: lint-prettier
 lint-prettier:
-	npx prettier -l ember-cli-build.js testem.js '{app,tests,config,scripts,service-worker}/**/*.{ts,js,graphql,scss}' '**/*.md'
+	npx prettier -l ember-cli-build.js testem.js '{app,tests,config,scripts,service-worker,node-server/}/**/*.{ts,js,graphql,scss}' '**/*.md'
 
 .PHONY: lint-eslint
 lint-eslint:
-	npx eslint ember-cli-build.js testem.js app/ tests/ config/ scripts/ service-worker/
+	npx eslint ember-cli-build.js testem.js app/ tests/ config/ scripts/ service-worker/ node-server/
 
 .PHONY: lint-tslint
 lint-tslint:
@@ -93,7 +93,7 @@ format: format-prettier format-svgo ## Run formatting tools on the code
 
 .PHONY: format-prettier
 format-prettier:
-	npx prettier --write ember-cli-build.js testem.js '{app,tests,config,scripts,service-worker}/**/*.{ts,js,graphql,scss}' '**/*.md'
+	npx prettier --write ember-cli-build.js testem.js '{app,tests,config,scripts,service-worker,node-server}/**/*.{ts,js,graphql,scss}' '**/*.md'
 
 .PHONY: format-svgo
 format-svgo:
