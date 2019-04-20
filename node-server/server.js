@@ -19,6 +19,7 @@ const internalServerErrorMiddleware = require('./middlewares/internal-server-err
 
 // Utils
 const {asBoolean, asInteger} = require('../config/utils');
+const PACKAGE = require('../package.json');
 
 // Constants
 const OK_HTTP_CODE = 200;
@@ -43,6 +44,7 @@ const app = httpServer.app;
 
 // Health check
 app.get('/health', (_, response) => {
+  response.send({status: 'OK', version: PACKAGE.version});
   response.sendStatus(OK_HTTP_CODE);
 });
 
