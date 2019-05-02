@@ -27,32 +27,23 @@ header() {
   echo "\n\n${YELLOW}▶ $1${NO_COLOR}"
 }
 
-header "Linting scripts…"
-run make lint-eslint
+header "Lint files…"
+run make lint
 
-header "Linting TypeScript…"
-run make lint-tslint
+header "Check code format…"
+run make check-format
 
-header "Linting stylesheets…"
-run make lint-stylelint
-
-header "Linting templates…"
-run make lint-template-lint
-
-header "Running prettier…"
-run make lint-prettier
+header "Typecheck files…"
+run make check-types
 
 header "Build application…"
 run make build-app
 
-header "Type checking…"
-run make typecheck
-
-header "Running tests…"
+header "Run tests…"
 run make test
 
-header "Checking test code coverage…"
-run make test-coverage
+header "Check test code coverage…"
+run make check-code-coverage
 
 header "Build Docker image…"
 run make build
