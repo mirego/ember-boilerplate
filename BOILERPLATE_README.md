@@ -75,7 +75,7 @@ $ make test
 Test coverage is enforced using configuration metrics defined in `.nycrc`. To check test coverage, this command can be ran **after tests have been ran**:
 
 ```bash
-$ make test-coverage
+$ make check-code-coverage
 ```
 
 Code instrumentation results are also available in the `coverage` directory.
@@ -84,15 +84,11 @@ Code instrumentation results are also available in the `coverage` directory.
 
 Several linting and formatting tools can be ran to ensure coding style consistency:
 
-- `make lint-prettier` ensures all code is properly formatted
-- `make lint-tslint` ensures TypeScript code follows our best practices
-- `make lint-eslint` ensures JavaScript code follows our best practices
-- `make lint-stylelint` ensures SCSS code follows our best practices
-- `make lint-template-lint` ensures Handlebars code follows our best practices
-- `make format-prettier` formats various code files (JavaScript, TypeScript, SCSS, Markdown, etc.) using the same style
-- `make format-svgo` formats SVG files using the same style
-
-All these commands can be ran at the same time with `make lint` or `make format`.
+- `make lint-scripts` ensures TypeScript and JavaScript code follows our best practices
+- `make lint-scripts` ensures SCSS code follows our best practices
+- `make lint-templates` ensures Handlebars code follows our best practices
+- `make check-format` ensures all code is properly formatted
+- `make format` formats files using Prettier
 
 ### Continuous integration
 
