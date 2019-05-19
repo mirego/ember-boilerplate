@@ -1,6 +1,5 @@
 // Vendor
-import {inject as service} from '@ember-decorators/service';
-import Service from '@ember/service';
+import Service, {inject as service} from '@ember/service';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
@@ -12,7 +11,7 @@ import FastBoot from 'ember-cli-fastboot/services/fastboot';
 export default class FastBootLocation extends Service
   implements LocationInterface {
   @service('fastboot')
-  fastboot!: FastBoot;
+  fastboot: FastBoot;
 
   get protocol() {
     // Our apps should always be deployed on https in production,

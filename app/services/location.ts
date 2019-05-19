@@ -1,8 +1,7 @@
 // Vendor
-import {computed} from '@ember-decorators/object';
-import {reads} from '@ember-decorators/object/computed';
-import {inject as service} from '@ember-decorators/service';
-import Service from '@ember/service';
+import {computed} from '@ember/object';
+import {reads} from '@ember/object/computed';
+import Service, {inject as service} from '@ember/service';
 
 // Types
 import BrowserLocation from 'ember-boilerplate/services/location/browser';
@@ -20,16 +19,16 @@ export interface LocationInterface {
 
 export default class Location extends Service {
   @service('fastboot')
-  fastboot!: FastBoot;
+  fastboot: FastBoot;
 
   @service('intl')
-  intl!: IntlService;
+  intl: IntlService;
 
   @service('location/browser')
-  browserLocation!: BrowserLocation;
+  browserLocation: BrowserLocation;
 
   @service('location/fastboot')
-  fastbootLocation!: FastBootLocation;
+  fastbootLocation: FastBootLocation;
 
   @computed('fastboot.isFastBoot')
   get locationService(): FastBootLocation | BrowserLocation {

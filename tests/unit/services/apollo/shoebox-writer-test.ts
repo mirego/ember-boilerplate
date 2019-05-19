@@ -1,5 +1,5 @@
 // Vendor
-import {computed} from '@ember-decorators/object';
+import {computed} from '@ember/object';
 import Service from '@ember/service';
 import {expect} from 'chai';
 import {setupTest} from 'ember-mocha';
@@ -21,7 +21,7 @@ describe('Unit | Services | Apollo | shoebox-writer', () => {
       class FastBootStub extends Service {
         isFastBoot = false;
 
-        @computed
+        @computed()
         get shoebox() {
           return {
             put: sinon.stub()
@@ -48,10 +48,13 @@ describe('Unit | Services | Apollo | shoebox-writer', () => {
     describe('with no content in the shoebox', () => {
       beforeEach(function() {
         class ApolloStub extends Service {
-          @computed
-          get cache() {
+          get client() {
             return {
-              extract: sinon.stub().returns({foo: 'bar'})
+              get cache() {
+                return {
+                  extract: sinon.stub().returns({foo: 'bar'})
+                };
+              }
             };
           }
         }
@@ -59,7 +62,7 @@ describe('Unit | Services | Apollo | shoebox-writer', () => {
         class FastBootStub extends Service {
           isFastBoot = true;
 
-          @computed
+          @computed()
           get shoebox() {
             return {
               put: sinon.stub()

@@ -1,7 +1,7 @@
 // Vendor
-import {action} from '@ember-decorators/object';
-import {inject as service} from '@ember-decorators/service';
+import {action} from '@ember/object';
 import Route from '@ember/routing/route';
+import {inject as service} from '@ember/service';
 import fetch from 'fetch';
 
 // Types
@@ -15,16 +15,16 @@ import config from 'ember-boilerplate/config/environment';
 
 export default class ApplicationRoute extends Route {
   @service('intl')
-  intl!: IntlService;
+  intl: IntlService;
 
   @service('apollo/shoebox-writer')
-  apolloShoeboxWriter!: ShoeboxWriter;
+  apolloShoeboxWriter: ShoeboxWriter;
 
   @service('location')
-  location!: Location;
+  location: Location;
 
   @service('service-worker')
-  serviceWorker!: ServiceWorker;
+  serviceWorker: ServiceWorker;
 
   async beforeModel() {
     const locale = this.determineLocale();
