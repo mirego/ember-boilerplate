@@ -1,6 +1,5 @@
 // Vendor
-import {inject as service} from '@ember-decorators/service';
-import Service from '@ember/service';
+import Service, {inject as service} from '@ember/service';
 
 // Types
 import {NormalizedCacheObject} from 'apollo-cache-inmemory';
@@ -11,7 +10,7 @@ import config from 'ember-boilerplate/config/environment';
 
 export default class ShoeboxReader extends Service {
   @service('fastboot')
-  fastboot!: FastBoot;
+  fastboot: FastBoot;
 
   read(): NormalizedCacheObject | null {
     if (this.fastboot.isFastBoot) return null;

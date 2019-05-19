@@ -92,8 +92,11 @@ check-code-coverage:
 
 .PHONY: format
 format: ## Format project files
-	npx prettier --write $(PRETTIER_FILES_PATTERN)
-	npx svgo --config=.svgo.yml
+	- npx prettier --write $(PRETTIER_FILES_PATTERN)
+	- count=`ls -1 ./public/**/*.svg 2>/dev/null | wc -l` ; \
+    if [ $$count != 0 ] ; then \
+      npx svgo --config=.svgo.yml --recursive --folder ./public ; \
+    fi;
 
 .PHONY: lint
 lint: lint-scripts lint-styles lint-templates ## Lint project files

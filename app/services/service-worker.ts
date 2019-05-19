@@ -1,6 +1,5 @@
 // Vendor
-import {inject as service} from '@ember-decorators/service';
-import Service from '@ember/service';
+import Service, {inject as service} from '@ember/service';
 
 // Types
 import FastBoot from 'ember-cli-fastboot/services/fastboot';
@@ -12,7 +11,7 @@ enum ServiceWorkerActions {
 
 export default class ServiceWorkerService extends Service {
   @service('fastboot')
-  fastboot!: FastBoot;
+  fastboot: FastBoot;
 
   registration?: ServiceWorkerRegistration;
   updateReady: boolean = false;
