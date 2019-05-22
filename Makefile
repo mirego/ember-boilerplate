@@ -113,14 +113,3 @@ lint-styles:
 .PHONY: lint-templates
 lint-templates:
 	npx ember-template-lint $(TEMPLATES_PATTERN)
-
-# Service container targets
-# -------------------------
-
-.PHONY: services-start
-services-start: build ## Start every service in the Docker Compose environment
-	docker-compose up
-
-.PHONY: services-stop
-services-stop: ## Stop every service in the Docker Compose environment
-	docker-compose down
