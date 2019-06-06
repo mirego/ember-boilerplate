@@ -85,7 +85,7 @@ Code instrumentation results are also available in the `coverage` directory.
 Several linting and formatting tools can be ran to ensure coding style consistency:
 
 - `make lint-scripts` ensures TypeScript and JavaScript code follows our best practices
-- `make lint-scripts` ensures SCSS code follows our best practices
+- `make lint-styles` ensures SCSS code follows our best practices
 - `make lint-templates` ensures Handlebars code follows our best practices
 - `make check-format` ensures all code is properly formatted
 - `make format` formats files using Prettier
