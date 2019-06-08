@@ -73,7 +73,7 @@ build-app:
 
 .PHONY: test
 test: ## Run the test suite
-	rm -rf ./coverage && COVERAGE=true npx ember exam --split 5 --parallel
+	rm -rf ./coverage && COVERAGE=true npx ember exam --split 5 --parallel --reporter dot
 
 # Check, lint and format targets
 # ------------------------------
