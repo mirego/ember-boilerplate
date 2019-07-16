@@ -15,7 +15,9 @@ const cacheControl = require('express-cache-controller');
 const HTTPServer = require('./express-http-server');
 
 // Middleware
-const internalServerErrorMiddleware = require('./middlewares/internal-server-error');
+const internalServerErrorMiddleware = require('./middleware/internal-server-error');
+const stripTrailingSlashes = require('./middleware/strip-trailing-slashes');
+const deduplicateSlashes = require('./middleware/deduplicate-slashes');
 
 // Utils
 const {asBoolean, asInteger} = require('../config/utils');
@@ -69,6 +71,10 @@ if (asBoolean(process.env.FORCE_SSL)) {
 if (process.env.BASIC_AUTH_USERNAME && process.env.BASIC_AUTH_PASSWORD) {
   app.use(basicAuth(BASIC_AUTH_OPTIONS));
 }
+
+// Remove a few slashes
+app.use(stripTrailingSlashes);
+app.use(deduplicateSlashes);
 
 // Gzip
 app.use(compression());
