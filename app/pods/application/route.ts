@@ -54,9 +54,7 @@ export default class ApplicationRoute extends Route {
   }
 
   private async fetchTranslations(locale: string): Promise<object> {
-    const translationsURL = `${
-      this.location.fullURL
-    }/translations/${locale}.json`;
+    const translationsURL = `${this.location.fullURL}/translations/${locale}.json`;
 
     try {
       const response = await fetch(translationsURL);

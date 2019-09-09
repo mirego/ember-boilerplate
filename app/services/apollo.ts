@@ -29,6 +29,7 @@ export default class Apollo extends ApolloService {
 
   clientOptions() {
     return {
+      assumeImmutableResults: true,
       cache: this.cache(),
       link: this.link(),
       ssrMode: this.fastboot.isFastBoot
@@ -43,7 +44,10 @@ export default class Apollo extends ApolloService {
   }
 
   cache() {
-    const cache = new InMemoryCache({dataIdFromObject});
+    const cache = new InMemoryCache({
+      dataIdFromObject,
+      freezeResults: true
+    });
 
     const cachedContent = this.apolloShoeboxReader.read();
 

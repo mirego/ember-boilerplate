@@ -18,3 +18,4 @@ testem.log
 
 # env
 .env
+.env.*.local
