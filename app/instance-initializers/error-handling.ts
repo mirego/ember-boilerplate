@@ -14,6 +14,9 @@ const INTERNAL_ERROR_STATUS = 500;
 
 export const initialize = (application: ApplicationInstance): void => {
   Ember.onerror = error => {
+    // tslint:disable next-line no-console
+    console.error(error);
+
     const fastboot: FastBoot = application.lookup('service:fastboot');
 
     if (fastboot.isFastBoot) {
