@@ -50,6 +50,16 @@ module.exports = function(defaults) {
       includePolyfill: true
     },
 
+    'ember-cli-babel-polyfills': {
+      evergreenTargets: [
+        'last 2 Edge versions',
+        'last 2 Chrome versions',
+        'last 2 Firefox versions',
+        'last 2 Safari versions'
+      ],
+      legacyTargets: ['node 10.15', 'ie 11']
+    },
+
     sourcemaps: {
       enabled: !IS_TEST_ENVIRONMENT
     },

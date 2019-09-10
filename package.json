@@ -39,6 +39,7 @@
     "ember-cli": "github:ember-cli/ember-cli#2ccdc17fd87d7e0cce22aa440e22c00beb72a0ad",
     "ember-cli-autoprefixer": "0.8.1",
     "ember-cli-babel": "7.11.0",
+    "ember-cli-babel-polyfills": "2.0.1",
     "ember-cli-code-coverage": "github:charlesdemers/ember-cli-code-coverage#6961be288d5666e0c8eae4d1988bbfac3773b433",
     "ember-cli-content-security-policy": "1.1.1",
     "ember-cli-dependency-checker": "3.2.0",
