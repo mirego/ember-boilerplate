@@ -2,5 +2,12 @@
   "name": "asset-cache-manifest",
   "keywords": [
     "ember-addon"
-  ]
+  ],
+  "engines": {
+    "node": "~10.15",
+    "npm": "~6.4"
+  },
+  "dependencies": {
+    "glob": "*"
+  }
 }

@@ -57,7 +57,7 @@ export default class Apollo extends ApolloService {
   }
 
   private createAuthenticationLink() {
-    return setContext(async _request => {
+    return setContext(async () => {
       const {token} = await this.sessionFetcher.fetch();
 
       return {

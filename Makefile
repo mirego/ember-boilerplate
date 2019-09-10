@@ -10,11 +10,9 @@ DOCKER_REGISTRY ?=
 # Linter and formatter configuration
 # ----------------------------------
 
-JAVASCRIPT_FILES_PATTERN = ember-cli-build.js testem.js app/ tests/ config/ scripts/ service-worker/ node-server/
-PRETTIER_FILES_PATTERN = ember-cli-build.js testem.js '{app,tests,config,scripts,service-worker,node-server/}/**/*.{ts,js,graphql,scss}' '**/*.md'
+PRETTIER_FILES_PATTERN = ember-cli-build.js testem.js '{app,config,fastboot,lib,node-server,public,scripts,service-worker,tests,translations,types,vendor}/**/*.{ts,js,graphql,scss}' '**/*.md'
 STYLES_PATTERN = './app/**/*.scss'
 TEMPLATES_PATTERN = './app/**/*.hbs'
-TYPESCRIPT_FILES_PATTERN = '{app,tests,config,service-worker}/**/*.ts'
 
 # Introspection targets
 # ---------------------
@@ -103,8 +101,7 @@ lint: lint-scripts lint-styles lint-templates ## Lint project files
 
 .PHONY: lint-scripts
 lint-scripts:
-	npx eslint $(JAVASCRIPT_FILES_PATTERN)
-	npx tslint $(TYPESCRIPT_FILES_PATTERN)
+	npx eslint --ext .js,.ts .
 
 .PHONY: lint-styles
 lint-styles:

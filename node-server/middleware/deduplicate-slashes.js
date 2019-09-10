@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 
 // Vendor
@@ -8,7 +7,7 @@ const url = require('url');
 const PERMANENT_REDIRECT_STATUS_CODE = 301;
 
 module.exports = (request, response, next) => {
-  const parsedUrl = url.parse(request.url);
+  const parsedUrl = new URL(request.url);
 
   if (!parsedUrl.pathname.match(/\/{2,}/)) return next();
 

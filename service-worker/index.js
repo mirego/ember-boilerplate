@@ -1,5 +1,4 @@
-/* eslint-env worker */
-/* eslint-disable max-nested-callbacks, no-console, ember/named-functions-in-promises */
+/* eslint-disable max-nested-callbacks, no-console */
 
 /* Warning:
     this file is compiled with Babel but doesn’t have any polyfills or

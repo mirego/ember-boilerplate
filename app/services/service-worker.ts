@@ -50,30 +50,33 @@ export default class ServiceWorkerService extends Service {
     });
   }
 
-  private async listenToUpdates() {
-    const registration = await navigator.serviceWorker.getRegistration();
+  private listenToUpdates() {
+    navigator.serviceWorker
+      .getRegistration()
+      .then(registration => {
+        if (!registration) return;
 
-    if (!registration) return;
+        this.set('registration', registration);
 
-    this.set('registration', registration);
+        // The window client isn’t currently controlled so it’s a new
+        // ServiceWorker that will activate immediately
+        if (!navigator.serviceWorker.controller) return;
 
-    // The window client isn’t currently controlled so it’s a new
-    // ServiceWorker that will activate immediately
-    if (!navigator.serviceWorker.controller) return;
+        if (registration.waiting) {
+          this.notifyUpdateReady();
 
-    if (registration.waiting) {
-      this.notifyUpdateReady();
+          return;
+        }
 
-      return;
-    }
+        if (registration.installing) {
+          this.trackInstallingWorker(registration.installing);
 
-    if (registration.installing) {
-      this.trackInstallingWorker(registration.installing);
+          return;
+        }
 
-      return;
-    }
-
-    this.listenToUpdateFound(registration);
+        this.listenToUpdateFound(registration);
+      })
+      .catch(() => {});
   }
 
   private listenToControllerChange() {
