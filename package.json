@@ -12,7 +12,7 @@
     "start": "ember server",
     "build": "npm run enforce-engine-versions && ember build",
     "deploy": "npm run enforce-engine-versions && ember build --prod",
-    "enforce-engine-versions": "./scripts/enforce-engine-versions.js",
+    "enforce-engine-versions": "node ./scripts/enforce-engine-versions.js",
     "preinstall": "npm run enforce-engine-versions",
     "pretest": "npm run enforce-engine-versions",
     "prestart": "npm run enforce-engine-versions"
@@ -64,16 +64,21 @@
     "ember-service-worker": "0.8.0",
     "ember-source": "3.13.0-beta.5",
     "ember-window-mock": "0.5.4",
+    "eslint-plugin-node": "10.0.0",
+    "express": "4.17.1",
     "express-basic-auth": "1.2.0",
     "express-cache-controller": "1.1.0",
     "express-force-ssl": "0.3.2",
     "fastboot-app-server": "2.0.0",
     "forcedomain": "2.0.0",
+    "glob": "7.1.4",
     "graphql": "14.5.4",
     "graphql-tag": "2.10.1",
     "loader.js": "4.7.0",
+    "postcss-scss": "2.0.0",
     "raven": "2.6.4",
     "sass": "1.22.10",
+    "semver": "6.3.0",
     "simple-css-reset": "3.0.0"
   },
   "devDependencies": {
@@ -88,6 +93,8 @@
     "@types/rsvp": "4.0.3",
     "@types/sinon": "7.0.13",
     "@types/sinon-chai": "3.2.3",
+    "@typescript-eslint/eslint-plugin": "2.2.0",
+    "@typescript-eslint/parser": "2.2.0",
     "babel-eslint": "10.0.3",
     "chai": "4.2.0",
     "chai-dom": "1.8.1",
@@ -109,8 +116,6 @@
     "stylelint-config-mirego": "1.0.4",
     "stylelint-order": "3.1.0",
     "svgo": "1.3.0",
-    "tslint": "5.19.0",
-    "tslint-config-prettier": "1.18.0",
     "typescript": "3.6.2"
   },
   "ember-addon": {

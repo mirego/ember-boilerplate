@@ -24,13 +24,13 @@ declare module 'ember-cli-fastboot/services/fastboot' {
   export default class FastBoot {
     isFastBoot: boolean;
     shoebox: ShoeBox;
-    request: Request
-    response: Response
+    request: Request;
+    response: Response;
   }
 }
 
 declare module '@ember/service' {
   interface Registry {
-    'fastboot': FastBoot;
+    fastboot: FastBoot;
   }
 }

@@ -1,6 +1,3 @@
-#!/usr/bin/env node
-
-/* eslint-env node */
 /* eslint-disable no-console */
 
 let exitStatus = 0;
@@ -14,6 +11,8 @@ try {
   console.info(
     'Skipping “enforce-engine-versions” script because `semver` module is not available.'
   );
+
+  // eslint-disable-next-line no-process-exit
   process.exit(exitStatus);
 }
 
@@ -48,4 +47,5 @@ if (!semver.satisfies(actualNpmVersion, expectedNpmVersion)) {
 
 console.info('');
 
+// eslint-disable-next-line no-process-exit
 process.exit(exitStatus);

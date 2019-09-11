@@ -14,7 +14,7 @@ const INTERNAL_ERROR_STATUS = 500;
 
 export const initialize = (application: ApplicationInstance): void => {
   Ember.onerror = error => {
-    // tslint:disable next-line no-console
+    // eslint-disable-next-line no-console
     console.error(error);
 
     const fastboot: FastBoot = application.lookup('service:fastboot');
@@ -22,7 +22,7 @@ export const initialize = (application: ApplicationInstance): void => {
     if (fastboot.isFastBoot) {
       fastboot.response.statusCode = INTERNAL_ERROR_STATUS;
     } else {
-      // tslint:disable-next-line no-non-null-assertion
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       document.querySelector('html')!.innerHTML = internalErrorPage(
         error.stack || error
       ).trim();

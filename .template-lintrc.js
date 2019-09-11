@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 'use strict';
 
 module.exports = {
@@ -20,7 +18,7 @@ module.exports = {
     'no-trailing-spaces': true,
     'no-triple-curlies': true,
     'no-unused-block-params': true,
-    'quotes': 'double',
+    quotes: 'double',
     'self-closing-void-elements': true,
     'simple-unless': true,
     'style-concatenation': true,
