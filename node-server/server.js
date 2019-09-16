@@ -2,7 +2,7 @@
 
 // Vendor
 const FastBootAppServer = require('fastboot-app-server');
-const Raven = require('raven');
+const Sentry = require('@sentry/node');
 const basicAuth = require('express-basic-auth');
 const compression = require('compression');
 const forceSSL = require('express-force-ssl');
@@ -35,24 +35,28 @@ const BASIC_AUTH_OPTIONS = {
 // Server
 const httpServer = new HTTPServer({
   afterMiddleware(app) {
-    if (process.env.SENTRY_SECRET_DSN) app.use(Raven.errorHandler());
+    if (process.env.SENTRY_DSN) {
+      app.use(Sentry.Handlers.errorHandler());
+    }
+
     app.use(internalServerErrorMiddleware);
   }
 });
 
 const app = httpServer.app;
 
+// Sentry
+if (process.env.SENTRY_DSN) {
+  Sentry.init({dsn: process.env.SENTRY_DSN});
+
+  app.use(Sentry.Handlers.requestHandler());
+}
+
 // Health check
 app.get('/health', (_, response) => {
   response.send({status: 'OK', version: PACKAGE.version});
   response.sendStatus(OK_HTTP_CODE);
 });
-
-// Sentry
-if (process.env.SENTRY_SECRET_DSN) {
-  Raven.config(process.env.SENTRY_SECRET_DSN).install();
-  app.use(Raven.requestHandler());
-}
 
 // Canonical host
 if (process.env.CANONICAL_HOST) {
