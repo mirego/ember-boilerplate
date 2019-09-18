@@ -54,8 +54,7 @@ if (process.env.SENTRY_DSN) {
 
 // Health check
 app.get('/health', (_, response) => {
-  response.send({status: 'OK', version: PACKAGE.version});
-  response.sendStatus(OK_HTTP_CODE);
+  response.status(OK_HTTP_CODE).send({status: 'OK', version: PACKAGE.version});
 });
 
 // Canonical host
