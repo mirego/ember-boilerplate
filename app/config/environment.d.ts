@@ -15,7 +15,6 @@ declare const config: {
   rootURL: string;
 
   APP: {
-    FORCE_SSL: boolean;
     version: string;
   };
 
@@ -43,16 +42,12 @@ declare const config: {
     ASYNC_TRANSLATIONS: boolean;
   };
 
-  newRelic?: {
-    applicationId: string;
-    licenseKey: string;
-  };
-
   sentry: {
+    enabled: boolean;
     dsn: string;
     environment: string;
     release: string;
     whitelistUrls: string[];
-    development: boolean;
+    debug: boolean;
   };
 };
