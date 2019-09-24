@@ -121,6 +121,8 @@ const cacheFirst = (request, cacheName) => {
         if (response) return response;
 
         return fetch(request).then(networkResponse => {
+          if (!networkResponse.ok) return networkResponse;
+
           cache.put(request, networkResponse.clone());
 
           return networkResponse;
@@ -140,6 +142,8 @@ const networkFirst = (
     .open(cacheName)
     .then(cache => {
       const networkPromise = fetch(request).then(response => {
+        if(!response.ok) return response;
+
         cache.put(request, response.clone());
 
         return response;
