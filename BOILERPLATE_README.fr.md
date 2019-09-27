@@ -22,8 +22,8 @@
 
 ## 🚧 Dépendances
 
-- Node.js (`~> 10.15`)
-- NPM (`~> 6.4`)
+- Node.js (`~> 10.16`)
+- NPM (`~> 6.9`)
 
 ## 🏎 Départ rapide
 
@@ -51,7 +51,7 @@ $ npm run start
 Pour créer une _build_ prête pour la production :
 
 ```bash
-$ npm run build --prod
+$ npm run build
 ```
 
 ### Servir l’application en production

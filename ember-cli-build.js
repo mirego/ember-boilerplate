@@ -55,7 +55,7 @@ module.exports = function(defaults) {
         'last 2 Firefox versions',
         'last 2 Safari versions'
       ],
-      legacyTargets: ['node 10.15', 'ie 11']
+      legacyTargets: ['node 10.16', 'ie 11']
     },
 
     sourcemaps: {

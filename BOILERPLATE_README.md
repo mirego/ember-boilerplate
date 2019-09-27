@@ -22,8 +22,8 @@
 
 ## 🚧 Dependencies
 
-- Node.js (`~> 10.15`)
-- NPM (`~> 6.4`)
+- Node.js (`~> 10.16`)
+- NPM (`~> 6.9`)
 
 ## 🏎 Kickstart
 
@@ -51,7 +51,7 @@ $ npm run start
 To create a production-ready build:
 
 ```bash
-$ npm run build --prod
+$ npm run build
 ```
 
 ### Serve the application in production

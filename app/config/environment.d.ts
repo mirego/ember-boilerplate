@@ -40,6 +40,7 @@ declare const config: {
 
   intl: {
     ASYNC_TRANSLATIONS: boolean;
+    TRANSLATIONS_CACHE_KEY: string;
   };
 
   sentry: {
