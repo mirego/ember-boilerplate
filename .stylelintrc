@@ -1,5 +1,5 @@
 {
-  "extends": "stylelint-config-mirego",
+  "extends": ["stylelint-config-mirego", "stylelint-config-prettier"],
   "rules": {
     "selector-pseudo-class-no-unknown": [true, {"ignorePseudoClasses": ["global"]}]
   }

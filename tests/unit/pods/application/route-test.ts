@@ -18,14 +18,12 @@ describe('Unit | Routes | application', () => {
   const originalConfig = config;
 
   beforeEach(function() {
-    const ApolloShoeboxWriterStub = class extends Service {
+    const ShoeboxStub = class extends Service {
+      read = sinon.stub();
       write = sinon.stub();
     };
 
-    this.owner.register(
-      'service:apollo/shoebox-writer',
-      ApolloShoeboxWriterStub
-    );
+    this.owner.register('service:shoebox', ShoeboxStub);
 
     const ServiceWorkerStub = class extends Service {
       register = sinon.stub().returnsThis();
@@ -99,7 +97,7 @@ describe('Unit | Routes | application', () => {
     it('should write the apollo cache to the shoebox', () => {
       route.actions.didTransition.call(route);
 
-      expect(route.apolloShoeboxWriter.write).to.have.been.calledOnce;
+      expect(route.shoebox.write).to.have.been.calledOnce;
     });
   });
 });

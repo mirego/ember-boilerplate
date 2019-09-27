@@ -1,13 +1,16 @@
 // Vendor
 import {inject as service} from '@ember/service';
-import {InMemoryCache} from 'apollo-cache-inmemory';
+import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory';
 import {setContext} from 'apollo-link-context';
 import ApolloService from 'ember-apollo-client/services/apollo';
 
 // Types
-import ShoeBoxReader from 'ember-boilerplate/services/apollo/shoebox-reader';
+import ShoeBox from 'ember-boilerplate/services/shoebox';
 import SessionFetcher from 'ember-boilerplate/services/session/fetcher';
 import FastBoot from 'ember-cli-fastboot/services/fastboot';
+
+// Config
+import config from 'ember-boilerplate/config/environment';
 
 const dataIdFromObject = (result: any): string | null => {
   if (result.id && result.__typename) {
@@ -18,8 +21,8 @@ const dataIdFromObject = (result: any): string | null => {
 };
 
 export default class Apollo extends ApolloService {
-  @service('apollo/shoebox-reader')
-  apolloShoeboxReader: ShoeBoxReader;
+  @service('shoebox')
+  shoebox: ShoeBox;
 
   @service('fastboot')
   fastboot: FastBoot;
@@ -49,11 +52,21 @@ export default class Apollo extends ApolloService {
       freezeResults: true
     });
 
-    const cachedContent = this.apolloShoeboxReader.read();
+    const cachedContent = this.shoebox.read(
+      config.apollo.SSR_CACHE_KEY
+    ) as NormalizedCacheObject;
 
     if (!cachedContent) return cache;
 
     return cache.restore(cachedContent);
+  }
+
+  extractCache() {
+    return this.client.cache.extract();
+  }
+
+  async clearCache() {
+    await this.client.resetStore();
   }
 
   private createAuthenticationLink() {

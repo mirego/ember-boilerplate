@@ -4,7 +4,6 @@ import {
   ApolloClient,
   OperationVariables,
   QueryOptions,
-  ApolloQueryResult,
   WatchQueryOptions,
   ObservableQuery,
   MutationOptions,
@@ -17,7 +16,7 @@ declare module 'ember-apollo-client/services/apollo' {
     query: (
       options: QueryOptions<OperationVariables>,
       resultKey?: string
-    ) => Promise<ApolloQueryResult<any>>;
+    ) => Promise<any>;
     watchQuery: (
       options: WatchQueryOptions<OperationVariables>,
       resultKey?: string

@@ -4,8 +4,8 @@
     "ember-addon"
   ],
   "engines": {
-    "node": "~10.15",
-    "npm": "~6.4"
+    "node": "~10.16",
+    "npm": "~6.9"
   },
   "dependencies": {
     "glob": "*"

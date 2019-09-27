@@ -2,22 +2,16 @@
 import Service, {inject as service} from '@ember/service';
 
 // Types
-import {NormalizedCacheObject} from 'apollo-cache-inmemory';
 import FastBoot from 'ember-cli-fastboot/services/fastboot';
 
-// Config
-import config from 'ember-boilerplate/config/environment';
-
-export default class ShoeboxReader extends Service {
+export default class Shoebox extends Service {
   @service('fastboot')
   fastboot: FastBoot;
 
-  read(): NormalizedCacheObject | null {
+  read(key: string): unknown {
     if (this.fastboot.isFastBoot) return null;
 
-    const cachedContent = this.fastboot.shoebox.retrieve(
-      config.apollo.SSR_CACHE_KEY
-    );
+    const cachedContent = this.fastboot.shoebox.retrieve(key);
 
     try {
       return JSON.parse(cachedContent || '{}');
@@ -25,10 +19,18 @@ export default class ShoeboxReader extends Service {
       return {};
     }
   }
+
+  write(key: string, rawValue: unknown) {
+    if (!this.fastboot.isFastBoot) return;
+
+    const value = JSON.stringify(rawValue);
+
+    this.fastboot.shoebox.put(key, value);
+  }
 }
 
 declare module '@ember/service' {
   interface Registry {
-    'apollo/shoebox-reader': ShoeboxReader;
+    shoebox: Shoebox;
   }
 }

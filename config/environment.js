@@ -59,7 +59,8 @@ module.exports = function(environment) {
   };
 
   ENV.intl = {
-    ASYNC_TRANSLATIONS: asBoolean(process.env.ASYNC_TRANSLATIONS)
+    ASYNC_TRANSLATIONS: asBoolean(process.env.ASYNC_TRANSLATIONS),
+    TRANSLATIONS_CACHE_KEY: 'translations'
   };
 
   ENV.sentry = {

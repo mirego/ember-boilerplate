@@ -5,20 +5,32 @@ import {inject as service} from '@ember/service';
 import fetch from 'fetch';
 
 // Types
-import ShoeboxWriter from 'ember-boilerplate/services/apollo/shoebox-writer';
+import Shoebox from 'ember-boilerplate/services/shoebox';
 import Location from 'ember-boilerplate/services/location';
 import ServiceWorker from 'ember-boilerplate/services/service-worker';
 import IntlService from 'ember-intl/services/intl';
+import FastBoot from 'ember-cli-fastboot/services/fastboot';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
+import Apollo from 'ember-boilerplate/services/apollo';
+
+const pathForLocale = {
+  'en-ca': '/assets/translations/en-ca.json'
+};
 
 export default class ApplicationRoute extends Route {
+  @service('fastboot')
+  fastboot: FastBoot;
+
   @service('intl')
   intl: IntlService;
 
-  @service('apollo/shoebox-writer')
-  apolloShoeboxWriter: ShoeboxWriter;
+  @service('apollo')
+  apollo: Apollo;
+
+  @service('shoebox')
+  shoebox: Shoebox;
 
   @service('location')
   location: Location;
@@ -46,22 +58,42 @@ export default class ApplicationRoute extends Route {
 
   @action
   didTransition() {
-    this.apolloShoeboxWriter.write();
+    this.shoebox.write(config.apollo.SSR_CACHE_KEY, this.apollo.extractCache());
   }
 
-  private determineLocale(): string {
+  private determineLocale(): keyof typeof pathForLocale {
     return 'en-ca';
   }
 
-  private async fetchTranslations(locale: string): Promise<object> {
-    const translationsURL = `${this.location.fullURL}/translations/${locale}.json`;
-
-    try {
-      const response = await fetch(translationsURL);
-
-      return response.json();
-    } catch (error) {
-      return {};
+  private async fetchTranslations(
+    locale: keyof typeof pathForLocale
+  ): Promise<object> {
+    if (this.fastboot.isFastBoot) {
+      return await this.fetchTranslationsFromFastBoot(locale);
     }
+
+    return this.fetchTranslationsFromShoebox();
+  }
+
+  private async fetchTranslationsFromFastBoot(
+    locale: keyof typeof pathForLocale
+  ): Promise<object> {
+    const translationsURL = pathForLocale[locale];
+
+    const response = await fetch(translationsURL);
+
+    const translations = await response.json();
+
+    this.shoebox.write(config.intl.TRANSLATIONS_CACHE_KEY, translations);
+
+    return translations;
+  }
+
+  private fetchTranslationsFromShoebox(): object {
+    const translations = this.shoebox.read(
+      config.intl.TRANSLATIONS_CACHE_KEY
+    ) as object;
+
+    return translations;
   }
 }

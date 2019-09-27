@@ -36,14 +36,14 @@ run make check-format
 header "Typecheck files…"
 run make check-types
 
-header "Build application…"
-run make build-app
-
 header "Run tests…"
 run make test
 
 header "Check test code coverage…"
 run make check-code-coverage
+
+header "Build application…"
+run make build-app
 
 header "Build Docker image…"
 run make build

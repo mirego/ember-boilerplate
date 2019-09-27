@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-npm run deploy
+npm run build
 
 npm run server
