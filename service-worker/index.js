@@ -78,8 +78,27 @@ self.addEventListener('message', event => {
     case 'checkForUpdates':
       self.registration.update();
       break;
+
+    case 'unregister':
+      unregister();
+      break;
   }
 });
+
+const unregister = () => {
+  self.registration
+    .unregister()
+    .then(() => {
+      return self.clients.matchAll();
+    })
+    .then(clients => {
+      clients.forEach(client => {
+        if (client.url && 'navigate' in client) {
+          client.navigate(client.url);
+        }
+      });
+    });
+};
 
 const cacheStaticAssets = () => {
   return caches.open(STATIC_CACHE_NAME).then(cache => {

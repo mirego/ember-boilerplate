@@ -6,7 +6,8 @@ import FastBoot from 'ember-cli-fastboot/services/fastboot';
 
 enum ServiceWorkerActions {
   SKIP_WAITING = 'skipWaiting',
-  CHECK_FOR_UPDATES = 'checkForUpdates'
+  CHECK_FOR_UPDATES = 'checkForUpdates',
+  UNREGISTER = 'unregister'
 }
 
 export default class ServiceWorkerService extends Service {
@@ -48,6 +49,28 @@ export default class ServiceWorkerService extends Service {
     this.registration.waiting.postMessage({
       action: ServiceWorkerActions.SKIP_WAITING
     });
+  }
+
+  /**
+   * Call this method in your client to unregister service workers.
+   * You need to set the `SW_DISABLED` environment variable to `true` for the service worker to be completely deleted.
+   */
+  async unregisterAll() {
+    if (this.fastboot.isFastBoot) return;
+    if (!navigator.serviceWorker) return;
+
+    const registrations = await navigator.serviceWorker.getRegistrations();
+
+    for (const registration of registrations) {
+      if (!registration.active) {
+        await registration.unregister();
+        return;
+      }
+
+      registration.active.postMessage({
+        action: ServiceWorkerActions.UNREGISTER
+      });
+    }
   }
 
   private listenToUpdates() {
