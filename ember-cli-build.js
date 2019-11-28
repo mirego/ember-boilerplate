@@ -56,7 +56,7 @@ module.exports = function(defaults) {
     },
 
     'ember-service-worker': {
-      enabled: !IS_TEST_ENVIRONMENT,
+      enabled: process.env.ENABLE_SERVICE_WORKER,
       // We want to handle when to update the service worker ourselves,
       // this makes sure to not claim all the clients as soon as the
       // worker gets an update

@@ -88,9 +88,7 @@ self.addEventListener('message', event => {
 const unregister = () => {
   self.registration
     .unregister()
-    .then(() => {
-      return self.clients.matchAll();
-    })
+    .then(() => self.clients.matchAll())
     .then(clients => {
       clients.forEach(client => {
         if (client.url && 'navigate' in client) {
@@ -109,7 +107,7 @@ const cacheStaticAssets = () => {
           return CACHEABLE_STATIC_ASSET_EXTENSIONS.includes(extension);
         });
 
-        console.log('Pre-cached assets:', cacheableAssets);
+        console.log('[ServiceWorker] Pre-cached assets:', cacheableAssets);
 
         return cache.addAll(cacheableAssets);
       });
@@ -137,18 +135,33 @@ const cacheFirst = (request, cacheName) => {
     .open(cacheName)
     .then(cache => {
       return cache.match(request).then(response => {
-        if (response) return response;
+        if (response) {
+          console.log('[ServiceWorker] Cache-first, cache hit:', response);
+          return response;
+        }
 
         return fetch(request).then(networkResponse => {
-          if (!networkResponse.ok) return networkResponse;
+          if (!networkResponse.ok) {
+            console.log(
+              '[ServiceWorker] Cache-first, network failed:',
+              networkResponse
+            );
+            return networkResponse;
+          }
 
           cache.put(request, networkResponse.clone());
 
+          console.log(
+            '[ServiceWorker] Cache-first, network success:',
+            networkResponse
+          );
           return networkResponse;
         });
       });
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+      console.error('[ServiceWorker] Cache-first, error:', error);
+    });
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -161,10 +174,17 @@ const networkFirst = (
     .open(cacheName)
     .then(cache => {
       const networkPromise = fetch(request).then(response => {
-        if (!response.ok) return response;
+        if (!response.ok) {
+          console.log(
+            '[ServiceWorker] Network-first, network failed:',
+            response
+          );
+          return response;
+        }
 
         cache.put(request, response.clone());
 
+        console.log('[ServiceWorker] Network-first, network failed:', response);
         return response;
       });
 
@@ -175,10 +195,11 @@ const networkFirst = (
       return Promise.race([networkPromise, timeoutPromise]).then(response => {
         if (response) return response;
 
+        console.log('[ServiceWorker] Network-first, cached response');
         return cache.match(request);
       });
     })
     .catch(error => {
-      console.error(error);
+      console.error('[ServiceWorker] Network-first, error:', error);
     });
 };

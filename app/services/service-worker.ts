@@ -64,6 +64,7 @@ export default class ServiceWorkerService extends Service {
     for (const registration of registrations) {
       if (!registration.active) {
         await registration.unregister();
+
         return;
       }
 
