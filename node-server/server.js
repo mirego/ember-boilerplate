@@ -18,7 +18,7 @@ const stripTrailingSlashes = require('./middleware/strip-trailing-slashes');
 const deduplicateSlashes = require('./middleware/deduplicate-slashes');
 
 // Utils
-const {asBoolean, asInteger} = require('../config/utils');
+const {asBoolean, asInteger, isPresent} = require('../config/utils');
 const PACKAGE = require('../package.json');
 
 // Constants
@@ -35,7 +35,7 @@ const BASIC_AUTH_OPTIONS = {
 // Server
 const httpServer = new HTTPServer({
   afterMiddleware(app) {
-    if (process.env.SENTRY_DSN) {
+    if (isPresent(process.env.SENTRY_DSN)) {
       app.use(Sentry.Handlers.errorHandler());
     }
 
@@ -46,8 +46,8 @@ const httpServer = new HTTPServer({
 const app = httpServer.app;
 
 // Sentry
-if (process.env.SENTRY_DSN) {
-  Sentry.init({dsn: process.env.SENTRY_DSN});
+if (isPresent(process.env.SENTRY_DSN)) {
+  Sentry.init(config(process.env.NODE_ENV).sentry);
 
   app.use(Sentry.Handlers.requestHandler());
 }
