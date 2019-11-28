@@ -1,7 +1,7 @@
 'use strict';
 
 const PACKAGE = require('../package.json');
-const {asBoolean} = require('./utils');
+const {asBoolean, isPresent} = require('./utils');
 
 // This function is used to build an `ENV` variable from environment variables
 // when running `ember build`. This variable will be injected into the browser
@@ -64,11 +64,15 @@ module.exports = function(environment) {
   };
 
   ENV.sentry = {
-    enabled: asBoolean(process.env.SENTRY_DSN),
+    enabled: isPresent(process.env.SENTRY_DSN),
     dsn: process.env.SENTRY_DSN,
     environment: process.env.SENTRY_ENVIRONMENT_NAME,
     release: PACKAGE.version,
-    whitelistUrls: [process.env.ASSETS_CDN_HOST || process.env.CANONICAL_HOST],
+    whitelistUrls: [
+      process.env.ASSETS_CDN_PROTOCOL && process.env.ASSETS_CDN_HOST
+        ? `${process.env.ASSETS_CDN_PROTOCOL}://${process.env.ASSETS_CDN_HOST}`
+        : process.env.CANONICAL_HOST
+    ],
     debug: process.env.NODE_ENV !== 'production'
   };
 
