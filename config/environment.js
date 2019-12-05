@@ -37,15 +37,18 @@ module.exports = function(environment) {
     SSR_CACHE_KEY: 'apollo-cache'
   };
 
+  let scriptSources = ["'self'"];
+
+  if (environment !== 'production') {
+    scriptSources = ["'unsafe-inline'", "'unsafe-eval'", ...scriptSources];
+  }
+
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'form-action': "'self'",
     'media-src': "'self'",
     'img-src': ["'self'", 'data:'],
-    'script-src':
-      environment === 'production'
-        ? ["'self'"]
-        : ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+    'script-src': scriptSources,
     'font-src': ["'self'"],
     'connect-src': ["'self'", 'https://sentry.io', process.env.API_BASE_URL],
     'style-src': ["'self'"]

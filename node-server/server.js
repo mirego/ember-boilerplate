@@ -4,6 +4,7 @@
 const FastBootAppServer = require('fastboot-app-server');
 const Sentry = require('@sentry/node');
 const basicAuth = require('express-basic-auth');
+const config = require('../config/environment');
 const compression = require('compression');
 const forceSSL = require('express-force-ssl');
 const forceDomain = require('forcedomain');
@@ -53,6 +54,16 @@ if (isPresent(process.env.SENTRY_DSN)) {
 }
 
 // Health check
+app.use(
+  '/health',
+  cacheControl({
+    noCache: true,
+    private: true,
+    noStore: true,
+    mustRevalidate: true
+  })
+);
+
 app.get('/health', (_, response) => {
   response.status(OK_HTTP_CODE).send({status: 'OK', version: PACKAGE.version});
 });
@@ -81,16 +92,6 @@ app.use(deduplicateSlashes);
 app.use(compression());
 
 // Cache headers
-app.use(
-  '/sw.js',
-  cacheControl({
-    noCache: true,
-    private: true,
-    noStore: true,
-    mustRevalidate: true
-  })
-);
-
 if (process.env.PAGES_CACHE_DURATION_IN_SECONDS) {
   app.use(
     cacheControl({
@@ -101,11 +102,23 @@ if (process.env.PAGES_CACHE_DURATION_IN_SECONDS) {
   app.use(cacheControl({noCache: true}));
 }
 
+app.use(
+  ['/robots.txt', '/sitemap.xml', '/sw.js'],
+  cacheControl({
+    noCache: true,
+    private: true,
+    noStore: true,
+    mustRevalidate: true
+  })
+);
+
 // Assets
-app.use('/assets/*', (_, response, next) => {
-  response.cacheControl = {maxAge: ASSETS_MAX_AGE};
-  next();
-});
+app.use(
+  '/assets/*',
+  cacheControl({
+    maxAge: ASSETS_MAX_AGE
+  })
+);
 
 const server = new FastBootAppServer({
   distPath: 'dist',
