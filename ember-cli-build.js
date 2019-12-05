@@ -24,6 +24,10 @@ module.exports = function(defaults) {
       'jquery.js': null
     },
 
+    autoImport: {
+      exclude: ['graphql-tag']
+    },
+
     // SCSS compilation
     autoprefixer: {
       browsers: targets.browsers,
@@ -42,10 +46,6 @@ module.exports = function(defaults) {
     babel: {
       plugins: ['graphql-tag', require('ember-auto-import/babel-plugin')],
       sourceMaps: 'inline'
-    },
-
-    'ember-cli-babel': {
-      includePolyfill: true
     },
 
     'ember-cli-babel-polyfills': {
