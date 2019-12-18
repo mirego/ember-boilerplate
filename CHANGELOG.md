@@ -8,23 +8,23 @@ Since it is a boilerplate project, there are technically no official (versioned)
 
 ## 2019-12-18
 
-### Added
+### Changed
 
-- Update `@glimmer/component` to `1.0.0`;
-- Update `@glimmer/tracking` to `1.0.0`;
-- Update `eslint` to `6.7.2`;
-- Update `eslint-config-prettier` to `6.7.0`;
-- Update `eslint-plugin-ember` to `7.7.2`. This update adds new rules;
-  * `no-actions-hash`;
-  * `require-tagless-components`;
-  * `no-classic-classes`;
-  * `no-classic-components`;
-  * `no-computed-properties-in-native-classes`;
-  * `no-test-module-for`;
-  * `no-get-with-default`;
-- Update `prettier` to `1.19.1`;
-- Update `stylelint` to `12.0.0`;
-- Update `stylelint-config-prettier` to `8.0.0`;
+- Update `@glimmer/component` to `1.0.0`
+- Update `@glimmer/tracking` to `1.0.0`
+- Update `eslint` to `6.7.2`
+- Update `eslint-config-prettier` to `6.7.0`
+- Update `eslint-plugin-ember` to `7.7.2`. This update adds new rules:
+  - `no-actions-hash`
+  - `require-tagless-components`
+  - `no-classic-classes`
+  - `no-classic-components`
+  - `no-computed-properties-in-native-classes`
+  - `no-test-module-for`
+  - `no-get-with-default`
+- Update `prettier` to `1.19.1`
+- Update `stylelint` to `12.0.0`
+- Update `stylelint-config-prettier` to `8.0.0`
 
 ## 2019-10-18
 
