@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Since it is a boilerplate project, there are technically no official (versioned) _releases_. Therefore, the `master` branch should always be stable and usable.
 
+## 2020-01-07
+
+### Added
+
+- Add option to allow/disallow site indexation
+- Add error handling in the apollo-client stack
+
+### Changed
+
+- Improve locale lazy loading
+- Improve Prettier, eslint and template-lint configurations
+- Update `ember-cli-code-coverage` to use the real repository instead of our fork
+- Improve code coverage check by replacing `nyc` with own script
+- Update typings for a few packages
+
+### Removed
+
+- Remove `<link preload>` since it didn’t play well with SRI
+
 ## 2019-12-19
 
 ### Changed

@@ -25,6 +25,12 @@ describe('Unit | Routes | application', () => {
 
     this.owner.register('service:shoebox', ShoeboxStub);
 
+    const TranslationsStub = class extends Service {
+      loadForLocale = sinon.stub();
+    };
+
+    this.owner.register('service:translations', TranslationsStub);
+
     const ServiceWorkerStub = class extends Service {
       register = sinon.stub().returnsThis();
       onUpdateReady = sinon.stub();
@@ -56,22 +62,19 @@ describe('Unit | Routes | application', () => {
     describe('when `config.intl.ASYNC_TRANSLATIONS` is true', () => {
       beforeEach(() => {
         config.intl.ASYNC_TRANSLATIONS = true;
-
-        (route as any).fetchTranslations = sinon
-          .stub()
-          .returns(Promise.resolve());
       });
 
       afterEach(() => {
         config.intl.ASYNC_TRANSLATIONS = originalConfig.intl.ASYNC_TRANSLATIONS;
-
-        ((route as any).fetchTranslations as sinon.SinonStub).reset();
       });
 
       it('should load translations asynchronously', async () => {
         await route.beforeModel();
 
-        expect(route.intl.addTranslations).to.have.been.calledOnce;
+        expect(route.translations.loadForLocale).to.have.been.calledOnce;
+        expect(route.translations.loadForLocale).to.have.been.calledWith(
+          'en-ca'
+        );
       });
     });
 

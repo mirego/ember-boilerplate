@@ -1,6 +1,7 @@
 'use strict';
 
 const {asBoolean} = require('./utils');
+const config = require('../config/environment');
 
 module.exports = function() {
   return {
@@ -17,7 +18,7 @@ module.exports = function() {
      * @type {Array?}
      * @default "null"
      */
-    locales: ['en-ca'],
+    locales: config(process.env.NODE_ENV).intl.LOCALES,
 
     /**
      * autoPolyfill, when true will automatically inject the IntlJS polyfill

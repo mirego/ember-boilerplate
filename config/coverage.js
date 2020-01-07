@@ -1,20 +1,17 @@
 'use strict';
 
 module.exports = {
-  reporters: ['html', 'json'],
-
+  reporters: ['html'],
   excludes: [
-    '*/ember-cli-build.js',
-    '*/testem.js',
+    '*.d.ts',
     '*/app.js',
+    '*/formats.js',
     '*/resolver.js',
-    '*/router.js',
+    '*/router.ts',
     '*/server.js',
-    '*/services/apollo.js',
-    '*/services/service-worker.js',
-    '*/translations.js',
-    '*/config/**/*',
-    '*/tests/**/*',
-    '*/graphql/**/*'
+    '*/graphql/**/*',
+    '*/types/**/*',
+    '*/error-pages/**/*',
+    '*/initializers/**/*'
   ]
 };
