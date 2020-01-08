@@ -32,7 +32,7 @@ describe('Unit | Routes | application', function() {
     this.owner.register('service:translations', TranslationsStub);
 
     const ServiceWorkerStub = class extends Service {
-      register = sinon.stub().returnsThis();
+      register = sinon.stub().returns(this);
       onUpdateReady = sinon.stub();
     };
 

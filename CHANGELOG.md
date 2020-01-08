@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Since it is a boilerplate project, there are technically no official (versioned) _releases_. Therefore, the `master` branch should always be stable and usable.
 
+## 2020-01-08
+
+### Changed
+
+- Improve the error page setup: now it only applies to SSR.
+  There are better and less buggy ways to handle errors in the browser.
+
 ## 2020-01-07
 
 ### Added

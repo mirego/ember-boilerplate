@@ -48,7 +48,7 @@ const pad = (string, maxLength, character = ' ') => {
 
 const valuePassesThresholds = value => {
   return ['lines', 'statements', 'branches', 'functions'].every(type => {
-    return value[type] >= CONFIG.thresholds[type];
+    return value[type].pct >= CONFIG.thresholds[type];
   });
 };
 
@@ -114,7 +114,9 @@ reports.forEach(([key, value]) => {
 
   const passes = valuePassesThresholds(value);
 
-  if (!passes) errorCode = 1;
+  if (!passes && !fileIsExcluded) {
+    errorCode = 1;
+  }
 
   console.log(
     colorText(pad(key, FILE_NAME_CELL_WIDTH), fileIsExcluded ? GRAY : WHITE),
