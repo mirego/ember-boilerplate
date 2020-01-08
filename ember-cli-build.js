@@ -51,6 +51,10 @@ module.exports = function(defaults) {
       legacyTargets: ['node 10.16', ...browsers.legacy]
     },
 
+    'ember-fetch': {
+      preferNative: true
+    },
+
     'ember-service-worker': {
       enabled: !IS_TEST_ENVIRONMENT,
       // We want to handle when to update the service worker ourselves,

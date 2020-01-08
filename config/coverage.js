@@ -11,7 +11,8 @@ module.exports = {
     '*/server.js',
     '*/graphql/**/*',
     '*/types/**/*',
-    '*/error-pages/**/*',
-    '*/initializers/**/*'
+    '*/initializers/**/*',
+    '*/services/apollo.ts',
+    '*/services/service-worker.ts'
   ]
 };

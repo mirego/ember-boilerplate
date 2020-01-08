@@ -35,7 +35,7 @@ export default class Translations extends Service {
       return await this.fetchTranslationsFromNetwork(locale);
     }
 
-    const translations = await this.fetchTranslationsFromShoebox(locale);
+    const translations = this.fetchTranslationsFromShoebox(locale);
 
     if (translations) return translations;
 
@@ -61,16 +61,12 @@ export default class Translations extends Service {
     return translations;
   }
 
-  private async fetchTranslationsFromShoebox(
-    locale: AvailableLocale
-  ): Promise<object> {
+  private fetchTranslationsFromShoebox(locale: AvailableLocale) {
     const translations = this.shoebox.read(
       `${config.intl.TRANSLATIONS_CACHE_KEY}-${locale}`
     ) as object;
 
-    if (translations) return translations;
-
-    return this.fetchTranslationsFromNetwork(locale);
+    return translations;
   }
 }
 

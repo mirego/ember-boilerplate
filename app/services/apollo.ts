@@ -91,13 +91,7 @@ export default class Apollo extends ApolloService {
   }
 
   private createErrorLink() {
-    return onError(({graphQLErrors, networkError}) => {
-      if (graphQLErrors) {
-        graphQLErrors.forEach(({message, locations, path}) => {
-          Sentry.captureMessage(`${message}\n${locations}\n${path}`);
-        });
-      }
-
+    return onError(({networkError}) => {
       if (networkError) {
         Sentry.captureException(networkError);
       }

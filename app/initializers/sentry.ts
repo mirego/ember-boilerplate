@@ -12,7 +12,10 @@ export const initialize = () => {
 
       if (typeof error !== 'object') return event;
 
-      if (error?.name === 'TransitionAborted') {
+      if (
+        error?.name === 'TransitionAborted' ||
+        error?.name === 'TaskCancelation'
+      ) {
         return null;
       }
 

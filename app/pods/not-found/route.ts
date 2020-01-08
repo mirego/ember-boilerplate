@@ -9,7 +9,8 @@ export default class NotFound extends Route {
   @service('fastboot')
   fastboot: FastBoot;
 
-  beforeModel() {
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async beforeModel() {
     if (!this.fastboot.isFastBoot) return;
 
     this.fastboot.response.statusCode = 404;

@@ -1,7 +1,7 @@
 // Vendor
-import {computed} from '@ember/object';
 import {reads} from '@ember/object/computed';
 import Service, {inject as service} from '@ember/service';
+import window from 'ember-window-mock';
 
 // Types
 import BrowserLocation from 'ember-boilerplate/services/location/browser';
@@ -30,8 +30,7 @@ export default class Location extends Service {
   @service('location/fastboot')
   fastbootLocation: FastBootLocation;
 
-  @computed('fastboot.isFastBoot')
-  get locationService(): FastBootLocation | BrowserLocation {
+  get locationService(): LocationInterface {
     return this.fastboot.isFastBoot
       ? this.fastbootLocation
       : this.browserLocation;

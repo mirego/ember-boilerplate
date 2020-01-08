@@ -113,6 +113,7 @@
     "eslint-plugin-ember": "7.7.2",
     "eslint-plugin-mirego": "0.0.1",
     "eslint-plugin-node": "11.0.0",
+    "pretender": "3.2.0",
     "prettier": "1.19.1",
     "sinon": "8.0.4",
     "sinon-chai": "3.4.0",
