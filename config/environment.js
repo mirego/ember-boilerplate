@@ -1,7 +1,7 @@
 'use strict';
 
-const PACKAGE = require('../package.json');
-const {asBoolean, isPresent} = require('./utils');
+const appPackage = require('../package.json');
+const {asArray, asBoolean, isPresent} = require('./utils');
 
 // This function is used to build an `ENV` variable from environment variables
 // when running `ember build`. This variable will be injected into the browser
@@ -29,11 +29,12 @@ module.exports = function(environment) {
   };
 
   ENV.APP = {
-    version: PACKAGE.version
+    ALLOW_SITE_INDEXATION: asBoolean(process.env.ALLOW_SITE_INDEXATION),
+    VERSION: appPackage.version
   };
 
   ENV.apollo = {
-    apiURL: `${process.env.API_BASE_URL}${process.env.API_GRAPHQL_PATH}`,
+    API_URL: `${process.env.API_BASE_URL}${process.env.API_GRAPHQL_PATH}`,
     SSR_CACHE_KEY: 'apollo-cache'
   };
 
@@ -63,6 +64,7 @@ module.exports = function(environment) {
 
   ENV.intl = {
     ASYNC_TRANSLATIONS: asBoolean(process.env.ASYNC_TRANSLATIONS),
+    LOCALES: asArray(process.env.LOCALES),
     TRANSLATIONS_CACHE_KEY: 'translations'
   };
 
@@ -70,7 +72,7 @@ module.exports = function(environment) {
     enabled: isPresent(process.env.SENTRY_DSN),
     dsn: process.env.SENTRY_DSN,
     environment: process.env.SENTRY_ENVIRONMENT_NAME,
-    release: PACKAGE.version,
+    release: appPackage.version,
     whitelistUrls: [
       process.env.ASSETS_CDN_PROTOCOL && process.env.ASSETS_CDN_HOST
         ? `${process.env.ASSETS_CDN_PROTOCOL}://${process.env.ASSETS_CDN_HOST}`
@@ -86,7 +88,7 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
 
     ENV.apollo = {
-      apiURL: 'graphql://fake/endpoint',
+      API_URL: 'graphql://fake/endpoint',
       SSR_CACHE_KEY: 'test-apollo-cache'
     };
 
@@ -96,6 +98,7 @@ module.exports = function(environment) {
     };
 
     ENV.intl.ASYNC_TRANSLATIONS = false;
+    ENV.intl.LOCALES = ['en-ca'];
   }
 
   return ENV;

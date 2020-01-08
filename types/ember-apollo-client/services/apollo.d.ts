@@ -1,11 +1,10 @@
 import {InMemoryCache} from 'apollo-cache-inmemory';
-import {ApolloLink, FetchResult, Observable} from 'apollo-link';
+import {ApolloLink, Observable} from 'apollo-link';
 import {
   ApolloClient,
   OperationVariables,
   QueryOptions,
   WatchQueryOptions,
-  ObservableQuery,
   MutationOptions,
   SubscriptionOptions
 } from 'apollo-client';
@@ -20,11 +19,11 @@ declare module 'ember-apollo-client/services/apollo' {
     watchQuery: (
       options: WatchQueryOptions<OperationVariables>,
       resultKey?: string
-    ) => ObservableQuery<any, OperationVariables>;
+    ) => Promise<any>;
     mutate: (
       options: MutationOptions<any, OperationVariables>,
       resultKey?: string
-    ) => Promise<FetchResult<any>>;
+    ) => Promise<any>;
     subscribe: (
       options: SubscriptionOptions<OperationVariables>,
       resultKey?: string

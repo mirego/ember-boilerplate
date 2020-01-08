@@ -20,7 +20,7 @@ const deduplicateSlashes = require('./middleware/deduplicate-slashes');
 
 // Utils
 const {asBoolean, asInteger, isPresent} = require('../config/utils');
-const PACKAGE = require('../package.json');
+const appPackage = require('../package.json');
 
 // Constants
 const OK_HTTP_CODE = 200;
@@ -65,7 +65,9 @@ app.use(
 );
 
 app.get('/health', (_, response) => {
-  response.status(OK_HTTP_CODE).send({status: 'OK', version: PACKAGE.version});
+  response
+    .status(OK_HTTP_CODE)
+    .send({status: 'OK', version: appPackage.version});
 });
 
 // Canonical host

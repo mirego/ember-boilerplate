@@ -26,15 +26,19 @@ export default class FastBootLocation extends Service
   get path(): string {
     const pathWithQuery = this.fastboot.request.path;
     const queryIndex = pathWithQuery.indexOf('?');
+    const hashIndex = pathWithQuery.indexOf('#', queryIndex);
 
-    return queryIndex >= 0 ? pathWithQuery.slice(0, queryIndex) : pathWithQuery;
+    const endIndex = Math.min(queryIndex, hashIndex);
+
+    return pathWithQuery.slice(0, endIndex >= 0 ? endIndex : 0);
   }
 
   get queryString(): string {
     const pathWithQuery = this.fastboot.request.path;
     const queryIndex = pathWithQuery.indexOf('?');
+    const hashIndex = pathWithQuery.indexOf('#', queryIndex);
 
-    return queryIndex >= 0 ? pathWithQuery.slice(queryIndex) : '';
+    return queryIndex >= 0 ? pathWithQuery.slice(queryIndex, hashIndex) : '';
   }
 
   get hash(): string {

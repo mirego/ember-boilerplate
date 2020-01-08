@@ -8,11 +8,14 @@ export const initialize = () => {
     integrations: [new Ember()],
 
     beforeSend(event, hint) {
-      const error = hint && hint.originalException;
+      const error = hint?.originalException;
 
       if (typeof error !== 'object') return event;
 
-      if (error && error.name === 'TransitionAborted') {
+      if (
+        error?.name === 'TransitionAborted' ||
+        error?.name === 'TaskCancelation'
+      ) {
         return null;
       }
 

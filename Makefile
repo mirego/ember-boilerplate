@@ -86,11 +86,13 @@ check-types:
 
 .PHONY: check-code-overage
 check-code-coverage:
-	npx nyc check-coverage
+	node ./scripts/check-code-coverage.js
 
 .PHONY: format
 format: ## Format project files
 	- npx prettier --write $(PRETTIER_FILES_PATTERN)
+	- npx stylelint $(STYLES_PATTERN) --fix --quiet
+	- npx eslint --ext .js,.ts . --fix --quiet
 	- count=`find ./public/ -type f -name '*.svg' | wc -l` ; \
 		if [ $$count != 0 ] ; then \
 			npx svgo --config=.svgo.yml --recursive --folder ./public ; \

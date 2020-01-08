@@ -15,11 +15,12 @@ declare const config: {
   rootURL: string;
 
   APP: {
-    version: string;
+    ALLOW_SITE_INDEXATION: boolean;
+    VERSION: string;
   };
 
   apollo: {
-    apiURL: string;
+    API_URL: string;
     SSR_CACHE_KEY: string;
   };
 
@@ -40,6 +41,7 @@ declare const config: {
 
   intl: {
     ASYNC_TRANSLATIONS: boolean;
+    LOCALES: string[];
     TRANSLATIONS_CACHE_KEY: string;
   };
 

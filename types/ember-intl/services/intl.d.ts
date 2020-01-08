@@ -2,6 +2,7 @@ import IntlService from 'ember-intl/services/intl';
 
 declare module 'ember-intl/services/intl' {
   export default class IntlService {
+    primaryLocale: string;
     locales: string[];
     t(
       translationKey: string,
@@ -11,6 +12,7 @@ declare module 'ember-intl/services/intl' {
     exists(translationKey: string, localeName: string): boolean;
     setLocale(localeName: string): void;
     addTranslations(localeName: string, translations: object): object;
+    formatRelative(dateString: string): string;
   }
 }
 

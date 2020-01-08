@@ -1,7 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-const targets = require('./config/targets');
+const browsers = require('./config/supported-browsers');
 
 const IS_TEST_ENVIRONMENT = EmberApp.env() === 'test';
 
@@ -16,25 +16,25 @@ const buildFingerPrintPrepend = ({
 
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
-    hinting: false,
-    storeConfigInMeta: false,
-    tests: IS_TEST_ENVIRONMENT,
+    'hinting': false,
+    'storeConfigInMeta': false,
+    'tests': IS_TEST_ENVIRONMENT,
 
-    vendorFiles: {
-      'jquery.js': null
-    },
-
-    autoImport: {
+    'autoImport': {
       exclude: ['graphql-tag']
     },
 
-    // SCSS compilation
-    autoprefixer: {
-      browsers: targets.browsers,
+    'autoprefixer': {
+      browsers: [...browsers.legacy, ...browsers.evergreen],
       sourcemap: false
     },
 
-    cssModules: {
+    'babel': {
+      plugins: ['graphql-tag', require('ember-auto-import/babel-plugin')],
+      sourceMaps: 'inline'
+    },
+
+    'cssModules': {
       intermediateOutputPath: 'app/styles/app.scss',
       extension: 'scss',
       postcssOptions: {
@@ -42,36 +42,17 @@ module.exports = function(defaults) {
       }
     },
 
-    // JavaScript compilation
-    babel: {
-      plugins: ['graphql-tag', require('ember-auto-import/babel-plugin')],
-      sourceMaps: 'inline'
+    'emberApolloClient': {
+      keepGraphqlFileExtension: true
     },
 
     'ember-cli-babel-polyfills': {
-      evergreenTargets: [
-        'last 2 Edge versions',
-        'last 2 Chrome versions',
-        'last 2 Firefox versions',
-        'last 2 Safari versions'
-      ],
-      legacyTargets: ['node 10.16', 'ie 11']
+      evergreenTargets: browsers.evergreen,
+      legacyTargets: ['node 10.16', ...browsers.legacy]
     },
 
-    sourcemaps: {
-      enabled: !IS_TEST_ENVIRONMENT
-    },
-
-    // Fingerprinting
-    fingerprint: {
-      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
-      generateAssetMap: true,
-      prepend: buildFingerPrintPrepend(process.env)
-    },
-
-    // Inline SVGs
-    svg: {
-      paths: ['public/assets/inline-svgs']
+    'ember-fetch': {
+      preferNative: true
     },
 
     'ember-service-worker': {
@@ -84,10 +65,26 @@ module.exports = function(defaults) {
       // (defined in package.json)
       versionStrategy: 'project-version',
       registrationStrategy: 'inline'
+    },
+
+    'fingerprint': {
+      extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
+      generateAssetMap: true,
+      prepend: buildFingerPrintPrepend(process.env)
+    },
+
+    'sourcemaps': {
+      enabled: true,
+      extensions: ['js']
+    },
+
+    'svg': {
+      paths: ['public/assets/inline-svgs']
     }
   });
 
   app.import('node_modules/simple-css-reset/reset.css');
+  app.import('node_modules/focus-visible/dist/focus-visible.js');
 
   return app.toTree();
 };
