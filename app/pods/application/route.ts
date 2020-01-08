@@ -49,6 +49,7 @@ export default class ApplicationRoute extends Route {
     // By default whenever an update is ready, we install it immediately.
     // Note that the `update` call could be made later. We could prompt the
     // user to update, then install the update only when they accept.
+    /* istanbul ignore next */
     this.serviceWorker.register().onUpdateReady(() => {
       this.serviceWorker.update();
     });

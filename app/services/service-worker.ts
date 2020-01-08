@@ -38,7 +38,7 @@ export default class ServiceWorkerService extends Service {
   }
 
   onUpdateReady(callback: () => void) {
-    this.set('updateCallbacks', [...this.updateCallbacks, callback]);
+    this.updateCallbacks = [...this.updateCallbacks, callback];
   }
 
   update() {
@@ -56,7 +56,7 @@ export default class ServiceWorkerService extends Service {
       .then(registration => {
         if (!registration) return;
 
-        this.set('registration', registration);
+        this.registration = registration;
 
         // The window client isn’t currently controlled so it’s a new
         // ServiceWorker that will activate immediately
@@ -83,7 +83,7 @@ export default class ServiceWorkerService extends Service {
     // When the user asks to refresh the UI, we’ll need to reload the window
     // but we have to make sure to refresh only once.
     // This works around a bug in “Update on reload”.
-    let preventDevToolsReloadLoop: boolean;
+    let preventDevToolsReloadLoop = false;
 
     navigator.serviceWorker.addEventListener('controllerchange', () => {
       if (preventDevToolsReloadLoop) return;
