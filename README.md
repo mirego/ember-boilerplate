@@ -8,14 +8,14 @@
 
 This boilerplate comes with batteries included, you’ll find:
 
+- Ember Octane: Glimmer Components, modifiers, etc.
 - A battle-tested production-ready [FastBoot](https://ember-fastboot.com) server
 - Tests with [mocha](https://mochajs.org), with coverage
-- Linting with [tslint](https://palantir.github.io/tslint), [eslint](https://eslint.org), [stylelint](https://stylelint.io) and [ember-template-lint](https://github.com/ember-template-lint/ember-template-lint)
+- Linting with [eslint](https://eslint.org), [stylelint](https://stylelint.io) and [ember-template-lint](https://github.com/ember-template-lint/ember-template-lint)
 - Formatting with [Prettier](https://prettier.io)
 - A [GraphQL](https://graphql.org) setup powered by [Apollo](https://www.apollographql.com)
 - Translations powered by [ember-intl](https://github.com/ember-intl/ember-intl)
 - [TypeScript](https://www.typescriptlang.org)
-- [ember-decorators](https://ember-decorators.github.io/ember-decorators)
 - [CSS modules](https://github.com/salsify/ember-css-modules) with [Sass/SCSS](https://sass-lang.com)
 - A clean and useful `README.md` template (in both [english](./BOILERPLATE_README.md) and [french](./BOILERPLATE_README.fr.md))
 
@@ -38,7 +38,7 @@ This boilerplate comes with batteries included, you’ll find:
 
 ## License
 
-Ember Boilerplate is © 2015-2019 [Mirego](https://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause). See the [`LICENSE.md`](https://github.com/mirego/ember-boilerplate/blob/master/LICENSE.md) file.
+Ember Boilerplate is © 2015-2020 [Mirego](https://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause). See the [`LICENSE.md`](https://github.com/mirego/ember-boilerplate/blob/master/LICENSE.md) file.
 
 The glasses logo is based on [this lovely icon by Daniela Baptista](https://thenounproject.com/term/glasses/789701), from The Noun Project. Used under a [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/) license.
 
