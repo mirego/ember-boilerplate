@@ -59,7 +59,7 @@ La solution est donc de sortir la définition des routes de la phase de définit
    };
    ```
 
-2. On assigne les routes à notre instance avec la langue qu’on a assigné plus haut
+2. On assigne les routes à notre instance avec la langue qu’on a assigné plus haut en s'assurant de réinitialiser l'_array_ `Router.dslCallbacks` afin d'éviter une potentielle fuite de mémoire.
 
    ```js
    // app/instance-initializers/translated-routes.js
@@ -67,6 +67,8 @@ La solution est donc de sortir la définition des routes de la phase de définit
    export const initialize = instance => {
      const intl = instance.lookup('service:intl');
      const Router = instance.router.constructor;
+
+     Router.dslCallbacks = [];
 
      Router.map(function() {
        this.route('hello', {path: intl.t('routes.hello')});
