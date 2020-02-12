@@ -8,7 +8,7 @@ import config from 'ember-boilerplate/config/environment';
 
 // Types
 import Shoebox from 'ember-boilerplate/services/shoebox';
-import ServiceWorker from 'ember-boilerplate/services/service-worker';
+import ServiceWorker from 'mirego-service-worker-plugin/services/service-worker';
 import IntlService from 'ember-intl/services/intl';
 import Apollo from 'ember-boilerplate/services/apollo';
 import HeadData from 'ember-cli-head/services/head-data';

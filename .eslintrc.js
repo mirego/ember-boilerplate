@@ -12,7 +12,14 @@ module.exports = {
         'prettier',
         'prettier/@typescript-eslint'
       ],
-      files: ['app/**/*', 'fastboot/**/*', 'tests/**/*', 'types/**/*'],
+      files: [
+        'app/**/*',
+        'fastboot/**/*',
+        'tests/**/*',
+        'types/**/*',
+        'lib/mirego-service-worker-plugin/app/**/*',
+        'lib/mirego-service-worker-plugin/addon/**/*'
+      ],
       env: {
         es6: true,
         browser: true
@@ -68,9 +75,9 @@ module.exports = {
       }
     },
     {
-      files: ['service-worker/index.js'],
+      files: ['lib/mirego-service-worker-plugin/service-worker/index.js'],
       parserOptions: {
-        sourceType: 'script',
+        sourceType: 'module',
         ecmaVersion: 2015
       },
       env: {
@@ -89,7 +96,9 @@ module.exports = {
         'config/**/*.js',
         'lib/*/index.js',
         'scripts/**/*.js',
-        'node-server/**/*.js'
+        'node-server/**/*.js',
+        'lib/mirego-service-worker-plugin/index.js',
+        'lib/mirego-service-worker-plugin/lib/config.js'
       ],
       parserOptions: {
         sourceType: 'script',
