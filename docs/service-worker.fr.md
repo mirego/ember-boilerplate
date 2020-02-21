@@ -20,26 +20,23 @@ Lorsque notre app est chargée par le browser, on installe un service worker. Ce
 
 Le browser va d’abord télécharger le service worker puis commencer le processus d’installation. Notre setup va suivre les étapes suivantes:
 
-1. Télécharger le fichier `asset-cache-manifest.json`
-2. Télécharger tous les assets listés dans le cache manifest. Le fichier inclut:
-
+1. Télécharger tous les assets qui correspondent aux extensions définies par la configuration de `mirego-service-worker-plugin`. On télécharge par défaut les types de fichiers suivants:
    - Les fichiers JavaScript
    - Les fichiers CSS
-   - Les fichiers d’images
+   - Les fichiers SVG
    - Les fichiers de fonts
-   - Le fichier `index.html` qui est aliasé sous `/assets/index-{app version}.html` pour éviter des problèmes de cache
+   - Les fichiers `.ico`
    - Les source maps pour le JavaScript et le CSS
-
-3. Mettre en cache les fichiers téléchargés
-4. Activer le service worker pour intercepter les requêtes subséquentes
+2. Mettre en cache les fichiers téléchargés
+3. Activer le service worker pour intercepter les requêtes subséquentes
 
 ![](assets/sw-installing.gif)
 
 **À noter:**
 
 - Si une des étapes échoue, l’installation au complet est annulée et le service worker ne sera pas activé.
-- Si on dépend d’asset distant tel que Google Fonts ou autre, on peut les ajouter dans la liste d’asset à mettre en cache dans le fichier `service-worker/index.js`
-- Le fichier `index.html` doit être mis en cache puisque lorsque l’application sera servie par le worker, FastBoot sera complètement ignoré et donc on doit fournir un « shell » à notre application pour s’exécuter.
+- Si on dépend d’assets distants tel que Google Fonts ou autre, on peut les ajouter dans la liste d’asset à mettre en cache dans le fichier `lib/mirego-service-worker-plugin/service-worker/index.js`
+- Si on active le page caching, le fichier `index.html` sera aussi téléchargé et mis en cache. Toutes les requêtes de document subséquentes seront servies par le worker, FastBoot sera complètement ignoré. Le fichier index servira donc de « shell » à notre application.
 
 #### Lors des visites subséquentes
 

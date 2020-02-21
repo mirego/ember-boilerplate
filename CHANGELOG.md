@@ -6,9 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Since it is a boilerplate project, there are technically no official (versioned) _releases_. Therefore, the `master` branch should always be stable and usable.
 
+## 2020-02-21
+
+### Added
+
+- Add environment variables to better control the ServiceWorker integration:
+  - `SERVICE_WORKER_ENABLED`
+  - `SERVICE_WORKER_ENABLE_DEBUGGING`
+  - `SERVICE_WORKER_ENABLE_PAGE_CACHING`
+
+### Changed
+
+- Completely rewritte the ServiceWorker with [Workbox](https://developers.google.com/web/tools/workbox)
+- Replaced the `asset-cache-manifest` in-repo addon with `mirego-service-worker-plugin` which achieves the same thing but also encapsulates all the logic for dealing with a ServiceWorker
+- Update ServiceWorker documentation to better reflect the changes mentionned above
+
 ## 2020-01-22
 
-### Updated
+### Changed
 
 - Improve Docker-related environment variables in Makefile (#44)
 
