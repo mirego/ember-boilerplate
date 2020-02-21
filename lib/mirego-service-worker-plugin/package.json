@@ -1,0 +1,14 @@
+{
+  "name": "mirego-service-worker-plugin",
+  "keywords": [
+    "ember-addon",
+    "ember-service-worker-plugin"
+  ],
+  "dependencies": {
+    "broccoli-merge-trees": "*",
+    "broccoli-plugin": "*",
+    "ember-cli-babel": "*",
+    "ember-cli-typescript": "*",
+    "glob": "*"
+  }
+}
