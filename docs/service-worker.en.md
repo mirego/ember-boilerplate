@@ -20,26 +20,23 @@ When our app is loaded by the browser, it installs the service worker. This serv
 
 The browser downloads the service worker then starts the installation process. Our setup will follow these steps:
 
-1. Download the `asset-cache-manifest.json` file
-2. Download all assets listed in the manifest. It includes:
-
+1. Download all the assets matching the extensions defined in the `mirego-service-worker-plugin` config. We download these types of file by default:
    - JavaScript files
    - CSS files
-   - Images
+   - SVG files
    - Fonts
-   - The `index.html` file which is aliased as `/assets/index-{app version}.html` to avoid caching issues
+   - `.ico` files
    - Source maps for JavaScript and CSS files
-
-3. Cache downloaded files
-4. Activate the service worker to intercept following requests
+2. Cache downloaded files
+3. Activate the service worker to intercept following requests
 
 ![](assets/sw-installing.gif)
 
 **Note:**
 
 - If one of these steps fails, the installation is cancelled and the service worker will not be activated.
-- If the app depends on third party static assets like Google Fonts or similar, we can add them to the list of assets to be cached in the `service-worker/index.js` file.
-- The `index.html` file must be cached since when the app is served by the service worker, FastBoot will be completely skipped so we must provide a shell for our app to boot.
+- If the app depends on third party static assets like Google Fonts or similar, we can add them to the list of assets to be cached in the `lib/mirego-service-worker-plugin/service-worker/index.js` file.
+- If page caching is activated, the `index.html` file will also be downloaded and cached. All following requests will be served by the service worker, FastBoot will be completely skipped. The index file will serve as a shell for our application.
 
 #### On subsequent visits
 
