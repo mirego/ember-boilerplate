@@ -84,6 +84,9 @@ test: ## Run the test suite
 # Check, lint and format targets
 # ------------------------------
 
+.PHONY: check
+check: check-format check-types
+
 .PHONY: check-format
 check-format:
 	npx prettier --check $(PRETTIER_FILES_PATTERN)
