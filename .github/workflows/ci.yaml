@@ -1,6 +1,6 @@
 name: CI
 
-on: push
+on: [push, pull_request]
 
 jobs:
   ci:
@@ -30,4 +30,3 @@ jobs:
       - run: make test
       - run: make check-code-coverage # Running coverage depends on the running the tests first
       - run: make build-app
-      - run: make build
