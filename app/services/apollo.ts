@@ -91,7 +91,17 @@ export default class Apollo extends ApolloService {
   }
 
   private createErrorLink() {
-    return onError(({networkError}) => {
+    return onError(({networkError, operation}) => {
+      Sentry.addBreadcrumb({
+        category: 'GraphQL',
+        data: {
+          name: operation.operationName,
+          type: operation.query.definitions.find(
+            definition => definition.operation
+          ).operation
+        }
+      });
+
       if (networkError) {
         Sentry.captureException(networkError);
       }
