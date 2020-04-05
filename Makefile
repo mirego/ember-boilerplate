@@ -74,7 +74,7 @@ dependencies: ## Install dependencies required by the application
 	npm install
 
 .PHONY: build-app
-build-app:
+build-app: ## Build the application
 	npm run build
 
 .PHONY: test
@@ -85,7 +85,7 @@ test: ## Run the test suite
 # ------------------------------
 
 .PHONY: check
-check: check-format check-types
+check: check-format check-types ## Run various checks on project files
 
 .PHONY: check-format
 check-format:
