@@ -86,6 +86,7 @@
   },
   "devDependencies": {
     "@types/chai": "4.2.7",
+    "@types/chai-dom": "0.0.10",
     "@types/ember": "3.1.1",
     "@types/ember-mocha": "0.14.8",
     "@types/ember-test-helpers": "1.0.6",
