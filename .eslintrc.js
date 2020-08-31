@@ -71,7 +71,10 @@ module.exports = {
         '@typescript-eslint/type-annotation-spacing': 2,
         '@typescript-eslint/unified-signatures': 2,
         'no-unused-vars': 0,
-        '@typescript-eslint/no-unused-vars': 2
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          {argsIgnorePattern: '^_', varsIgnorePattern: '^_'}
+        ]
       }
     },
     {
