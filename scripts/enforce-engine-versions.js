@@ -8,24 +8,16 @@ try {
 } catch (_) {
   // The `semver` might not be available since we run this
   // script as a `preinstall` hook.
-  console.info(
-    'Skipping “enforce-engine-versions” script because `semver` module is not available.'
-  );
+  console.info('Skipping “enforce-engine-versions” script because `semver` module is not available.');
 
   // eslint-disable-next-line no-process-exit
   process.exit(exitStatus);
 }
 
-const {
-  node: expectedNodeVersion,
-  npm: expectedNpmVersion
-} = require('../package.json').engines;
+const {node: expectedNodeVersion, npm: expectedNpmVersion} = require('../package.json').engines;
 const actualNodeVersion = process.versions.node;
 
-const actualNpmVersion = require('child_process')
-  .execSync('npm -v')
-  .toString()
-  .replace(/\n/, '');
+const actualNpmVersion = require('child_process').execSync('npm -v').toString().replace(/\n/, '');
 
 console.info(`Node.js ${actualNodeVersion}`);
 console.info(`NPM ${actualNpmVersion}`);

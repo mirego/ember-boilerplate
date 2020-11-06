@@ -73,6 +73,10 @@ push: ## Push the Docker image to the registry
 dependencies: ## Install dependencies required by the application
 	npm install
 
+.PHONY: dependencies
+ci-dependencies: ## Install dependencies required by the application in CI
+	npm ci
+
 .PHONY: build-app
 build-app: ## Build the application
 	npm run build

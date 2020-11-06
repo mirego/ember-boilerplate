@@ -6,9 +6,7 @@ try {
   //eslint-disable-next-line node/no-missing-require
   COVERAGE_REPORT = require('../coverage/coverage-summary.json');
 } catch (_error) {
-  console.error(
-    'Coverage file not found, try running tests with coverage before running this script.'
-  );
+  console.error('Coverage file not found, try running tests with coverage before running this script.');
 }
 
 const GREEN = '\033[0;32m';
@@ -39,9 +37,7 @@ const colorText = (string, color) => {
 const pad = (string, maxLength, character = ' ') => {
   const paddingLength = maxLength - string.length;
 
-  const padding = Array(paddingLength)
-    .fill(character)
-    .join('');
+  const padding = Array(paddingLength).fill(character).join('');
 
   return `${string}${padding}`;
 };
@@ -54,10 +50,7 @@ const valuePassesThresholds = value => {
 
 const isExcluded = value => {
   return (
-    value.lines.total === 0 &&
-    value.statements.total === 0 &&
-    value.branches.total === 0 &&
-    value.functions.total === 0
+    value.lines.total === 0 && value.statements.total === 0 && value.branches.total === 0 && value.functions.total === 0
   );
 };
 
@@ -91,26 +84,10 @@ let errorCode = 0;
 reports.forEach(([key, value]) => {
   const fileIsExcluded = isExcluded(value);
 
-  const colorForStatements = colorForPercent(
-    value.statements.pct,
-    'statements',
-    fileIsExcluded
-  );
-  const colorForBranches = colorForPercent(
-    value.branches.pct,
-    'branches',
-    fileIsExcluded
-  );
-  const colorForFunctions = colorForPercent(
-    value.functions.pct,
-    'functions',
-    fileIsExcluded
-  );
-  const colorForLines = colorForPercent(
-    value.lines.pct,
-    'lines',
-    fileIsExcluded
-  );
+  const colorForStatements = colorForPercent(value.statements.pct, 'statements', fileIsExcluded);
+  const colorForBranches = colorForPercent(value.branches.pct, 'branches', fileIsExcluded);
+  const colorForFunctions = colorForPercent(value.functions.pct, 'functions', fileIsExcluded);
+  const colorForLines = colorForPercent(value.lines.pct, 'lines', fileIsExcluded);
 
   const passes = valuePassesThresholds(value);
 
@@ -136,9 +113,7 @@ console.log(pad('', TABLE_WITH, '-'));
 if (errorCode === 0) {
   console.log(`\n${colorText('▶▶ Code coverage passed!', GREEN)}\n`);
 } else {
-  console.log(
-    `\n${colorText('▶▶ Code coverage didn’t meet the thresholds', RED)}\n`
-  );
+  console.log(`\n${colorText('▶▶ Code coverage didn’t meet the thresholds', RED)}\n`);
 }
 
 // eslint-disable-next-line no-process-exit

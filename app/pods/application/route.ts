@@ -12,9 +12,7 @@ import ServiceWorker from 'mirego-service-worker-plugin/services/service-worker'
 import IntlService from 'ember-intl/services/intl';
 import Apollo from 'ember-boilerplate/services/apollo';
 import HeadData from 'ember-cli-head/services/head-data';
-import Translations, {
-  AvailableLocale
-} from 'ember-boilerplate/services/translations';
+import Translations, {AvailableLocale} from 'ember-boilerplate/services/translations';
 
 export default class ApplicationRoute extends Route {
   @service('apollo')
@@ -35,6 +33,11 @@ export default class ApplicationRoute extends Route {
   @service('translations')
   translations: Translations;
 
+  @action
+  didTransition() {
+    this.shoebox.write(config.apollo.SSR_CACHE_KEY, this.apollo.extractCache());
+  }
+
   async beforeModel() {
     const locale = this.determineLocale();
 
@@ -53,11 +56,6 @@ export default class ApplicationRoute extends Route {
     this.serviceWorker.register().onUpdateReady(() => {
       this.serviceWorker.update();
     });
-  }
-
-  @action
-  didTransition() {
-    this.shoebox.write(config.apollo.SSR_CACHE_KEY, this.apollo.extractCache());
   }
 
   private determineLocale(): AvailableLocale {

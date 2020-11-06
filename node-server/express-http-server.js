@@ -29,19 +29,15 @@ class HTTPServer extends ExpressHTTPServer {
     this.afterMiddleware(app);
 
     return new Promise(resolve => {
-      const listener = app.listen(
-        this.port || process.env.PORT || DEFAULT_PORT,
-        this.host || process.env.HOST,
-        () => {
-          const host = listener.address().address;
-          const port = listener.address().port;
+      const listener = app.listen(this.port || process.env.PORT || DEFAULT_PORT, this.host || process.env.HOST, () => {
+        const host = listener.address().address;
+        const port = listener.address().port;
 
-          // eslint-disable-next-line no-console
-          console.log('HTTP server started; url=http://%s:%s', host, port);
+        // eslint-disable-next-line no-console
+        console.log('HTTP server started; url=http://%s:%s', host, port);
 
-          resolve();
-        }
-      );
+        resolve();
+      });
     });
   }
 }

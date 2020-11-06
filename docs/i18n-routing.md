@@ -46,8 +46,7 @@ La solution est donc de sortir la définition des routes de la phase de définit
      const intl = appInstance.lookup('service:intl');
      const location = appInstance.lookup('service:location');
 
-     const isEnglish =
-       location.path === '/en' || location.path.startsWith('/en/');
+     const isEnglish = location.path === '/en' || location.path.startsWith('/en/');
      const locale = isEnglish ? 'en-ca' : 'fr-ca';
 
      intl.setLocale(locale);
@@ -55,7 +54,7 @@ La solution est donc de sortir la définition des routes de la phase de définit
 
    export default {
      initialize,
-     before: 'translated-routes'
+     before: 'translated-routes',
    };
    ```
 
@@ -70,13 +69,13 @@ La solution est donc de sortir la définition des routes de la phase de définit
 
      Router.dslCallbacks = [];
 
-     Router.map(function() {
+     Router.map(function () {
        this.route('hello', {path: intl.t('routes.hello')});
      });
    };
 
    export default {
-     initialize
+     initialize,
    };
    ```
 

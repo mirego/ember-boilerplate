@@ -11,7 +11,7 @@ import config from 'ember-boilerplate/config/environment';
 export type AvailableLocale = 'en-ca';
 
 const pathForLocale: Record<AvailableLocale, string> = {
-  'en-ca': '/assets/translations/en-ca.json'
+  'en-ca': '/assets/translations/en-ca.json',
 };
 
 export default class Translations extends Service {
@@ -42,9 +42,7 @@ export default class Translations extends Service {
     return this.fetchTranslationsFromNetwork(locale);
   }
 
-  private async fetchTranslationsFromNetwork(
-    locale: AvailableLocale
-  ): Promise<object> {
+  private async fetchTranslationsFromNetwork(locale: AvailableLocale): Promise<object> {
     const translationsURL = pathForLocale[locale];
 
     const response = await fetch(translationsURL);
@@ -52,19 +50,14 @@ export default class Translations extends Service {
     const translations = await response.json();
 
     if (this.fastboot.isFastBoot) {
-      this.shoebox.write(
-        `${config.intl.TRANSLATIONS_CACHE_KEY}-${locale}`,
-        translations
-      );
+      this.shoebox.write(`${config.intl.TRANSLATIONS_CACHE_KEY}-${locale}`, translations);
     }
 
     return translations;
   }
 
   private fetchTranslationsFromShoebox(locale: AvailableLocale) {
-    const translations = this.shoebox.read(
-      `${config.intl.TRANSLATIONS_CACHE_KEY}-${locale}`
-    ) as object;
+    const translations = this.shoebox.read(`${config.intl.TRANSLATIONS_CACHE_KEY}-${locale}`) as object;
 
     return translations;
   }

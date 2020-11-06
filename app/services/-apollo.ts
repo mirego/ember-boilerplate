@@ -1,27 +1,27 @@
 // Vendor
+import {InMemoryCache, NormalizedCacheObject} from '@apollo/client/cache';
+import {setContext} from '@apollo/client/link/context';
+import {createHttpLink} from '@apollo/client/core';
+import {onError} from '@apollo/client/link/error';
 import {inject as service} from '@ember/service';
-import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory';
-import {setContext} from 'apollo-link-context';
-import {createHttpLink} from 'apollo-link-http';
-import {onError} from 'apollo-link-error';
 import ApolloService from 'ember-apollo-client/services/apollo';
 import * as Sentry from '@sentry/browser';
 import fetch from 'fetch';
 
 // Types
 import ShoeBox from 'ember-boilerplate/services/shoebox';
-import SessionFetcher from 'ember-boilerplate/services/session/fetcher';
+import Session from 'ember-boilerplate/services/session';
 import FastBoot from 'ember-cli-fastboot/services/fastboot';
 
 // Config
 import config from 'ember-boilerplate/config/environment';
 
-const dataIdFromObject = (result: any): string | null => {
+const dataIdFromObject = (result: any) => {
   if (result.id && result.__typename) {
     return `${result.__typename}${result.id}`;
   }
 
-  return null;
+  return;
 };
 
 export default class Apollo extends ApolloService {
@@ -31,22 +31,22 @@ export default class Apollo extends ApolloService {
   @service('fastboot')
   fastboot: FastBoot;
 
-  @service('session/fetcher')
-  sessionFetcher: SessionFetcher;
+  @service('session')
+  session: Session;
 
   clientOptions() {
     return {
       assumeImmutableResults: true,
       cache: this.cache(),
       link: this.link(),
-      ssrMode: this.fastboot.isFastBoot
+      ssrMode: this.fastboot.isFastBoot,
     };
   }
 
   link() {
     const httpLink = createHttpLink({
       uri: config.apollo.API_URL,
-      fetch
+      fetch,
     });
 
     const authenticationLink = this.createAuthenticationLink();
@@ -58,12 +58,9 @@ export default class Apollo extends ApolloService {
   cache() {
     const cache = new InMemoryCache({
       dataIdFromObject,
-      freezeResults: false
     });
 
-    const cachedContent = this.shoebox.read(
-      config.apollo.SSR_CACHE_KEY
-    ) as NormalizedCacheObject;
+    const cachedContent = this.shoebox.read(config.apollo.SSR_CACHE_KEY) as NormalizedCacheObject;
 
     if (!cachedContent) return cache;
 
@@ -80,12 +77,12 @@ export default class Apollo extends ApolloService {
 
   private createAuthenticationLink() {
     return setContext(async () => {
-      const {token} = await this.sessionFetcher.fetch();
+      const token = await this.session.fetchAccessToken();
 
       return {
         headers: {
-          authorization: `Bearer ${token}`
-        }
+          authorization: `Bearer ${token}`,
+        },
       };
     });
   }

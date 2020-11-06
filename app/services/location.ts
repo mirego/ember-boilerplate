@@ -31,9 +31,7 @@ export default class Location extends Service {
   fastbootLocation: FastBootLocation;
 
   get locationService(): LocationInterface {
-    return this.fastboot.isFastBoot
-      ? this.fastbootLocation
-      : this.browserLocation;
+    return this.fastboot.isFastBoot ? this.fastbootLocation : this.browserLocation;
   }
 
   @reads('locationService.protocol')
