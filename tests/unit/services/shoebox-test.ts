@@ -22,7 +22,7 @@ describe('Unit | Services | Shoebox', function () {
 
           get shoebox() {
             return {
-              put: sinon.stub().withArgs('foo')
+              put: sinon.stub().withArgs('foo'),
             };
           }
         }
@@ -45,7 +45,7 @@ describe('Unit | Services | Shoebox', function () {
 
             get shoebox() {
               return {
-                retrieve: sinon.stub().withArgs('foo').returns('{"foo": "bar"}')
+                retrieve: sinon.stub().withArgs('foo').returns('{"foo": "bar"}'),
               };
             }
           }
@@ -68,7 +68,7 @@ describe('Unit | Services | Shoebox', function () {
 
           get shoebox() {
             return {
-              retrieve: sinon.stub().withArgs('foo').returns(undefined)
+              retrieve: sinon.stub().withArgs('foo').returns(undefined),
             };
           }
         }
@@ -92,7 +92,7 @@ describe('Unit | Services | Shoebox', function () {
 
           get shoebox() {
             return {
-              retrieve: sinon.stub().withArgs('foo').returns("{invalid_json: 'bar'}")
+              retrieve: sinon.stub().withArgs('foo').returns("{invalid_json: 'bar'}"),
             };
           }
         }
@@ -121,7 +121,7 @@ describe('Unit | Services | Shoebox', function () {
           @computed()
           get shoebox() {
             return {
-              put: sinon.stub()
+              put: sinon.stub(),
             };
           }
         }
@@ -149,7 +149,7 @@ describe('Unit | Services | Shoebox', function () {
             @computed()
             get shoebox() {
               return {
-                put: sinon.stub()
+                put: sinon.stub(),
               };
             }
           }

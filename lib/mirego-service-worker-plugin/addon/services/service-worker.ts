@@ -7,7 +7,7 @@ import FastBoot from 'ember-cli-fastboot/services/fastboot';
 enum ServiceWorkerActions {
   SKIP_WAITING = 'skipWaiting',
   CHECK_FOR_UPDATES = 'checkForUpdates',
-  UNREGISTER = 'unregister'
+  UNREGISTER = 'unregister',
 }
 
 export default class ServiceWorkerService extends Service {
@@ -34,7 +34,7 @@ export default class ServiceWorkerService extends Service {
     if (!this.registration.active) return;
 
     this.registration.active.postMessage({
-      action: ServiceWorkerActions.CHECK_FOR_UPDATES
+      action: ServiceWorkerActions.CHECK_FOR_UPDATES,
     });
   }
 
@@ -47,7 +47,7 @@ export default class ServiceWorkerService extends Service {
     if (!this.registration.waiting) return;
 
     this.registration.waiting.postMessage({
-      action: ServiceWorkerActions.SKIP_WAITING
+      action: ServiceWorkerActions.SKIP_WAITING,
     });
   }
 
@@ -69,7 +69,7 @@ export default class ServiceWorkerService extends Service {
       }
 
       registration.active.postMessage({
-        action: ServiceWorkerActions.UNREGISTER
+        action: ServiceWorkerActions.UNREGISTER,
       });
     }
   }

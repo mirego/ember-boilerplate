@@ -19,37 +19,37 @@ module.exports = function (defaults) {
     'tests': IS_TEST_ENVIRONMENT,
 
     'autoImport': {
-      exclude: ['graphql-tag']
+      exclude: ['graphql-tag'],
     },
 
     'autoprefixer': {
-      sourcemap: false
+      sourcemap: false,
     },
 
     'babel': {
       plugins: ['graphql-tag', require('ember-auto-import/babel-plugin')],
-      sourceMaps: 'inline'
+      sourceMaps: 'inline',
     },
 
     'cssModules': {
       intermediateOutputPath: 'app/styles/app.scss',
       extension: 'scss',
       postcssOptions: {
-        syntax: require('postcss-scss')
-      }
+        syntax: require('postcss-scss'),
+      },
     },
 
     'emberApolloClient': {
-      keepGraphqlFileExtension: true
+      keepGraphqlFileExtension: true,
     },
 
     'ember-cli-babel-polyfills': {
       evergreenTargets: browsers.evergreen,
-      legacyTargets: ['node 14.15', ...browsers.legacy]
+      legacyTargets: ['node 14.15', ...browsers.legacy],
     },
 
     'ember-fetch': {
-      preferNative: true
+      preferNative: true,
     },
 
     'ember-service-worker': {
@@ -61,29 +61,29 @@ module.exports = function (defaults) {
       // Version service-worker and cached assets with every app version
       // (defined in package.json) in production
       versionStrategy: IS_PRODUCTION_ENVIRONMENT ? 'project-version' : 'every-build',
-      registrationStrategy: 'inline'
+      registrationStrategy: 'inline',
     },
 
     'mirego-service-worker-plugin': {
       enableDebugging: asBoolean(process.env.SERVICE_WORKER_ENABLE_DEBUGGING),
       enablePageCaching: asBoolean(process.env.SERVICE_WORKER_ENABLE_PAGE_CACHING),
-      precacheExtensions: ['js', 'css', 'map', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']
+      precacheExtensions: ['js', 'css', 'map', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
     },
 
     'fingerprint': {
       extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
       generateAssetMap: true,
-      prepend: buildFingerPrintPrepend(process.env)
+      prepend: buildFingerPrintPrepend(process.env),
     },
 
     'sourcemaps': {
       enabled: true,
-      extensions: ['js']
+      extensions: ['js'],
     },
 
     'svg': {
-      paths: ['public/assets/inline-svgs']
-    }
+      paths: ['public/assets/inline-svgs'],
+    },
   });
 
   app.import('node_modules/simple-css-reset/reset.css');

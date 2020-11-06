@@ -28,9 +28,9 @@ const FORCE_SSL_OPTIONS = {trustXFPHeader: true, httpsPort: 443};
 const ASSETS_MAX_AGE = 2592000; // 1 month
 const BASIC_AUTH_OPTIONS = {
   users: {
-    [process.env.BASIC_AUTH_USERNAME]: process.env.BASIC_AUTH_PASSWORD
+    [process.env.BASIC_AUTH_USERNAME]: process.env.BASIC_AUTH_PASSWORD,
   },
-  challenge: true
+  challenge: true,
 };
 
 // Server
@@ -41,7 +41,7 @@ const httpServer = new HTTPServer({
     }
 
     app.use(internalServerErrorMiddleware);
-  }
+  },
 });
 
 const app = httpServer.app;
@@ -60,7 +60,7 @@ app.use(
     noCache: true,
     private: true,
     noStore: true,
-    mustRevalidate: true
+    mustRevalidate: true,
   })
 );
 
@@ -95,7 +95,7 @@ app.use(compression());
 if (process.env.PAGES_CACHE_DURATION_IN_SECONDS) {
   app.use(
     cacheControl({
-      maxAge: asInteger(process.env.PAGES_CACHE_DURATION_IN_SECONDS)
+      maxAge: asInteger(process.env.PAGES_CACHE_DURATION_IN_SECONDS),
     })
   );
 } else {
@@ -108,7 +108,7 @@ app.use(
     noCache: true,
     private: true,
     noStore: true,
-    mustRevalidate: true
+    mustRevalidate: true,
   })
 );
 
@@ -116,7 +116,7 @@ app.use(
 app.use(
   '/assets/*',
   cacheControl({
-    maxAge: ASSETS_MAX_AGE
+    maxAge: ASSETS_MAX_AGE,
   })
 );
 
@@ -124,7 +124,7 @@ const server = new FastBootAppServer({
   distPath: 'dist',
   workerCount: asInteger(process.env.WORKER_COUNT),
   httpServer,
-  chunkedResponse: true
+  chunkedResponse: true,
 });
 
 server.start();

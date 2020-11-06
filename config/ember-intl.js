@@ -26,6 +26,6 @@ module.exports = function () {
      * @type {String}
      * @default "translations"
      */
-    inputPath: 'translations'
+    inputPath: 'translations',
   };
 };

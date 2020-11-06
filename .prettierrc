@@ -5,6 +5,5 @@
   "quoteProps": "consistent",
   "semi": true,
   "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "none"
+  "tabWidth": 2
 }

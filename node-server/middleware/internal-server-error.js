@@ -11,7 +11,7 @@ module.exports = (error, _request, response, _next) => {
   const responseHTML = internalServerError(error);
 
   response.writeHead(response.statusCode, {
-    'Content-Type': 'text/html; charset=UTF-8'
+    'Content-Type': 'text/html; charset=UTF-8',
   });
 
   response.end(responseHTML);

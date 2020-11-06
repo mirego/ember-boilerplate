@@ -7,7 +7,7 @@ import {
   QueryOptions,
   WatchQueryOptions,
   MutationOptions,
-  SubscriptionOptions
+  SubscriptionOptions,
 } from '@apollo/client/core';
 
 declare module 'ember-apollo-client/services/apollo' {

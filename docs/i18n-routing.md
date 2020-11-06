@@ -54,7 +54,7 @@ La solution est donc de sortir la définition des routes de la phase de définit
 
    export default {
      initialize,
-     before: 'translated-routes'
+     before: 'translated-routes',
    };
    ```
 
@@ -75,7 +75,7 @@ La solution est donc de sortir la définition des routes de la phase de définit
    };
 
    export default {
-     initialize
+     initialize,
    };
    ```
 

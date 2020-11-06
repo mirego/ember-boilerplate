@@ -39,14 +39,14 @@ export default class Apollo extends ApolloService {
       assumeImmutableResults: true,
       cache: this.cache(),
       link: this.link(),
-      ssrMode: this.fastboot.isFastBoot
+      ssrMode: this.fastboot.isFastBoot,
     };
   }
 
   link() {
     const httpLink = createHttpLink({
       uri: config.apollo.API_URL,
-      fetch
+      fetch,
     });
 
     const authenticationLink = this.createAuthenticationLink();
@@ -57,7 +57,7 @@ export default class Apollo extends ApolloService {
 
   cache() {
     const cache = new InMemoryCache({
-      dataIdFromObject
+      dataIdFromObject,
     });
 
     const cachedContent = this.shoebox.read(config.apollo.SSR_CACHE_KEY) as NormalizedCacheObject;
@@ -81,8 +81,8 @@ export default class Apollo extends ApolloService {
 
       return {
         headers: {
-          authorization: `Bearer ${token}`
-        }
+          authorization: `Bearer ${token}`,
+        },
       };
     });
   }

@@ -13,6 +13,6 @@ module.exports = {
     '*/types/**/*',
     '*/initializers/**/*',
     '*/services/-apollo.ts',
-    '*/services/service-worker.ts'
-  ]
+    '*/services/service-worker.ts',
+  ],
 };

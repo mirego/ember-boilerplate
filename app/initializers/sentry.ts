@@ -17,10 +17,10 @@ export const initialize = () => {
       }
 
       return event;
-    }
+    },
   });
 };
 
 export default {
-  initialize
+  initialize,
 };

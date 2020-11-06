@@ -11,7 +11,7 @@ import config from 'ember-boilerplate/config/environment';
 export type AvailableLocale = 'en-ca';
 
 const pathForLocale: Record<AvailableLocale, string> = {
-  'en-ca': '/assets/translations/en-ca.json'
+  'en-ca': '/assets/translations/en-ca.json',
 };
 
 export default class Translations extends Service {

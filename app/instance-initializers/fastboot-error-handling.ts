@@ -21,5 +21,5 @@ export const initialize = (application: ApplicationInstance): void => {
 
 export default {
   initialize,
-  name: 'fastboot-error-handling'
+  name: 'fastboot-error-handling',
 };

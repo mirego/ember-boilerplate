@@ -25,7 +25,7 @@ describe('Unit | Services | Location | Fastboot', function () {
         isFastBoot = true;
         request = {
           host: 'www.mirego.com',
-          path: '/foo-bar?foo=bar#foo'
+          path: '/foo-bar?foo=bar#foo',
         };
       }
 
@@ -55,7 +55,7 @@ describe('Unit | Services | Location | Fastboot', function () {
         isFastBoot = true;
         request = {
           host: 'www.mirego.com',
-          path: '/foo-bar?foo=bar#foo'
+          path: '/foo-bar?foo=bar#foo',
         };
       }
 
@@ -74,7 +74,7 @@ describe('Unit | Services | Location | Fastboot', function () {
           isFastBoot = true;
           request = {
             host: 'www.mirego.com',
-            path: '/foo-bar?foo=bar#foo'
+            path: '/foo-bar?foo=bar#foo',
           };
         }
 
@@ -92,7 +92,7 @@ describe('Unit | Services | Location | Fastboot', function () {
           isFastBoot = true;
           request = {
             host: 'www.mirego.com',
-            path: '#foo'
+            path: '#foo',
           };
         }
 
@@ -112,7 +112,7 @@ describe('Unit | Services | Location | Fastboot', function () {
           isFastBoot = true;
           request = {
             host: 'www.mirego.com',
-            path: '/foo-bar?foo=bar#foo'
+            path: '/foo-bar?foo=bar#foo',
           };
         }
 
@@ -130,7 +130,7 @@ describe('Unit | Services | Location | Fastboot', function () {
           isFastBoot = true;
           request = {
             host: 'www.mirego.com',
-            path: '/foo-bar?foo=bar'
+            path: '/foo-bar?foo=bar',
           };
         }
 
@@ -150,7 +150,7 @@ describe('Unit | Services | Location | Fastboot', function () {
           isFastBoot = true;
           request = {
             host: 'www.mirego.com',
-            path: '/foo-bar?foo=bar#foo'
+            path: '/foo-bar?foo=bar#foo',
           };
         }
 
@@ -168,7 +168,7 @@ describe('Unit | Services | Location | Fastboot', function () {
           isFastBoot = true;
           request = {
             host: 'www.mirego.com',
-            path: '/foo-bar#foo'
+            path: '/foo-bar#foo',
           };
         }
 

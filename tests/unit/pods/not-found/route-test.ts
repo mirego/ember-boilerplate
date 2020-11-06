@@ -22,7 +22,7 @@ describe('Unit | Routes | not-found', function () {
         const FastbootStub = class extends Service {
           isFastBoot = true;
           response = {
-            statusCode: 200
+            statusCode: 200,
           };
         };
 
