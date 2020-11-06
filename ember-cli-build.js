@@ -7,16 +7,12 @@ const {asBoolean} = require('./config/utils');
 const IS_TEST_ENVIRONMENT = EmberApp.env() === 'test';
 const IS_PRODUCTION_ENVIRONMENT = EmberApp.env() === 'production';
 
-const buildFingerPrintPrepend = ({
-  ASSETS_CDN_HOST,
-  ASSETS_CDN_PROTOCOL,
-  ASSETS_CDN_PATH
-}) => {
+const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_CDN_PATH}) => {
   if (!ASSETS_CDN_HOST || !ASSETS_CDN_PROTOCOL) return '';
   return `${ASSETS_CDN_PROTOCOL}://${ASSETS_CDN_HOST}/${ASSETS_CDN_PATH}`;
 };
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     'hinting': false,
     'storeConfigInMeta': false,
@@ -27,7 +23,6 @@ module.exports = function(defaults) {
     },
 
     'autoprefixer': {
-      browsers: [...browsers.legacy, ...browsers.evergreen],
       sourcemap: false
     },
 
@@ -50,7 +45,7 @@ module.exports = function(defaults) {
 
     'ember-cli-babel-polyfills': {
       evergreenTargets: browsers.evergreen,
-      legacyTargets: ['node 10.16', ...browsers.legacy]
+      legacyTargets: ['node 14.15', ...browsers.legacy]
     },
 
     'ember-fetch': {
@@ -58,36 +53,21 @@ module.exports = function(defaults) {
     },
 
     'ember-service-worker': {
-      enabled:
-        !IS_TEST_ENVIRONMENT && asBoolean(process.env.SERVICE_WORKER_ENABLED),
+      enabled: !IS_TEST_ENVIRONMENT && asBoolean(process.env.SERVICE_WORKER_ENABLED),
       // We want to handle when to update the service worker ourselves,
       // this makes sure to not claim all the clients as soon as the
       // worker gets an update
       immediateClaim: false,
       // Version service-worker and cached assets with every app version
       // (defined in package.json) in production
-      versionStrategy: IS_PRODUCTION_ENVIRONMENT
-        ? 'project-version'
-        : 'every-build',
+      versionStrategy: IS_PRODUCTION_ENVIRONMENT ? 'project-version' : 'every-build',
       registrationStrategy: 'inline'
     },
 
     'mirego-service-worker-plugin': {
       enableDebugging: asBoolean(process.env.SERVICE_WORKER_ENABLE_DEBUGGING),
-      enablePageCaching: asBoolean(
-        process.env.SERVICE_WORKER_ENABLE_PAGE_CACHING
-      ),
-      precacheExtensions: [
-        'js',
-        'css',
-        'map',
-        'ico',
-        'svg',
-        'eot',
-        'ttf',
-        'woff',
-        'woff2'
-      ]
+      enablePageCaching: asBoolean(process.env.SERVICE_WORKER_ENABLE_PAGE_CACHING),
+      precacheExtensions: ['js', 'css', 'map', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']
     },
 
     'fingerprint': {

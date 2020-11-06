@@ -1,44 +1,9 @@
 'use strict';
 
 const {asBoolean} = require('./utils');
-const config = require('../config/environment');
 
-module.exports = function() {
+module.exports = function () {
   return {
-    /**
-     * The locales that our application supports.
-     *
-     * This is optional and is automatically set if project stores translations
-     * where ember-intl is able to look them up (<project root>/translations/).
-     *
-     * If the project relies on side-loading translations, then you must explicitly
-     * list out the locales. i.e: ['en-us', 'en-gb', 'fr-fr']
-     *
-     * @property locales
-     * @type {Array?}
-     * @default "null"
-     */
-    locales: config(process.env.NODE_ENV).intl.LOCALES,
-
-    /**
-     * autoPolyfill, when true will automatically inject the IntlJS polyfill
-     * into index.html
-     *
-     * @property autoPolyfill
-     * @type {Boolean}
-     * @default "false"
-     */
-    autoPolyfill: false,
-
-    /**
-     * disablePolyfill prevents the polyfill from being bundled in the asset folder of the build
-     *
-     * @property disablePolyfill
-     * @type {Boolean}
-     * @default "false"
-     */
-    disablePolyfill: false,
-
     /**
      * prevents the translations from being bundled with the application code.
      * This enables asynchronously loading the translations for the active locale

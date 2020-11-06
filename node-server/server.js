@@ -65,9 +65,7 @@ app.use(
 );
 
 app.get('/health', (_, response) => {
-  response
-    .status(OK_HTTP_CODE)
-    .send({status: 'OK', version: appPackage.version});
+  response.status(OK_HTTP_CODE).send({status: 'OK', version: appPackage.version});
 });
 
 // Canonical host

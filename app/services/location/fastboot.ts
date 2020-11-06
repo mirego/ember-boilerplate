@@ -8,8 +8,7 @@ import config from 'ember-boilerplate/config/environment';
 import {LocationInterface} from 'ember-boilerplate/services/location';
 import FastBoot from 'ember-cli-fastboot/services/fastboot';
 
-export default class FastBootLocation extends Service
-  implements LocationInterface {
+export default class FastBootLocation extends Service implements LocationInterface {
   @service('fastboot')
   fastboot: FastBoot;
 

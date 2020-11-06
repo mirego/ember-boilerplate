@@ -11,7 +11,7 @@ const {asArray, asBoolean, isPresent} = require('./utils');
 // Therefore, it MUST NOT be used to store secret keys and values.
 
 // eslint-disable-next-line complexity
-module.exports = function(environment) {
+module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'ember-boilerplate',
     podModulePrefix: 'ember-boilerplate/pods',
@@ -57,9 +57,7 @@ module.exports = function(environment) {
 
   ENV.fastboot = {
     fastbootHeaders: true,
-    hostWhitelist: process.env.CANONICAL_HOST
-      ? [process.env.CANONICAL_HOST]
-      : []
+    hostWhitelist: process.env.CANONICAL_HOST ? [process.env.CANONICAL_HOST] : []
   };
 
   ENV.intl = {

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es2020",
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -10,7 +10,6 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": false,
     "noFallthroughCasesInSwitch": true,
-    "experimentalDecorators": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
@@ -19,12 +18,8 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "baseUrl": ".",
-    "module": "esNext",
-    "lib": [
-      "dom",
-      "es2017",
-      "esnext.asynciterable"
-    ],
+    "module": "es6",
+    "experimentalDecorators": true,
     "paths": {
       "ember-boilerplate/tests/*": [
         "tests/*"
@@ -35,9 +30,6 @@
       ],
       "fetch": [
         "node_modules/ember-fetch"
-      ],
-      "*": [
-        "types/*"
       ],
       "mirego-service-worker-plugin": [
         "lib/mirego-service-worker-plugin/addon"
@@ -50,19 +42,17 @@
       ],
       "mirego-service-worker-plugin/test-support/*": [
         "lib/mirego-service-worker-plugin/addon-test-support/*"
+      ],
+      "*": [
+        "types/*"
       ]
     }
   },
   "include": [
-    "ember-cli-build.js",
-    "testem.js",
     "app/**/*",
-    "config/**/*",
     "fastboot/**/*",
-    "scripts/**/*",
-    "service-worker/**/*",
     "tests/**/*",
     "types/**/*",
-    "lib/mirego-service-worker-plugin"
+    "lib/mirego-service-worker-plugin/**/*"
   ]
 }

@@ -5,8 +5,7 @@ import window from 'ember-window-mock';
 // Types
 import {LocationInterface} from 'ember-boilerplate/services/location';
 
-export default class BrowserLocation extends Service
-  implements LocationInterface {
+export default class BrowserLocation extends Service implements LocationInterface {
   get protocol(): string {
     return window.location.protocol;
   }

@@ -10,17 +10,17 @@ import config from 'ember-boilerplate/config/environment';
 // Types
 import Location from 'ember-boilerplate/services/location';
 
-describe('Unit | Services | Location | fastboot', function() {
+describe('Unit | Services | Location | Fastboot', function () {
   setupTest();
 
   let service: Location;
 
-  beforeEach(function() {
+  beforeEach(function () {
     service = this.owner.lookup('service:location/fastboot');
   });
 
-  describe('protocol', function() {
-    beforeEach(function() {
+  describe('protocol', function () {
+    beforeEach(function () {
       class FastBootStub extends Service {
         isFastBoot = true;
         request = {
@@ -32,25 +32,25 @@ describe('Unit | Services | Location | fastboot', function() {
       this.owner.register('service:fastboot', FastBootStub);
     });
 
-    afterEach(function() {
+    afterEach(function () {
       config.environment = 'test';
     });
 
-    it('should return "https:" when the app is running in production', function() {
+    it('should return "https:" when the app is running in production', function () {
       config.environment = 'production';
 
       expect(service.protocol).to.equal('https:');
     });
 
-    it('should return "http:" when the app is running in development', function() {
+    it('should return "http:" when the app is running in development', function () {
       config.environment = 'development';
 
       expect(service.protocol).to.equal('http:');
     });
   });
 
-  describe('host', function() {
-    beforeEach(function() {
+  describe('host', function () {
+    beforeEach(function () {
       class FastBootStub extends Service {
         isFastBoot = true;
         request = {
@@ -62,14 +62,14 @@ describe('Unit | Services | Location | fastboot', function() {
       this.owner.register('service:fastboot', FastBootStub);
     });
 
-    it('`host` should return the request host', function() {
+    it('`host` should return the request host', function () {
       expect(service.host).to.equal('www.mirego.com');
     });
   });
 
-  describe('path', function() {
-    describe('when a path is present', function() {
-      beforeEach(function() {
+  describe('path', function () {
+    describe('when a path is present', function () {
+      beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
           request = {
@@ -81,13 +81,13 @@ describe('Unit | Services | Location | fastboot', function() {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return the request path', function() {
+      it('should return the request path', function () {
         expect(service.path).to.equal('/foo-bar');
       });
     });
 
-    describe('when no path is present', function() {
-      beforeEach(function() {
+    describe('when no path is present', function () {
+      beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
           request = {
@@ -99,15 +99,15 @@ describe('Unit | Services | Location | fastboot', function() {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return an empty string', function() {
+      it('should return an empty string', function () {
         expect(service.path).to.equal('');
       });
     });
   });
 
-  describe('hash', function() {
-    describe('when a hash is present', function() {
-      beforeEach(function() {
+  describe('hash', function () {
+    describe('when a hash is present', function () {
+      beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
           request = {
@@ -119,13 +119,13 @@ describe('Unit | Services | Location | fastboot', function() {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return the request hash', function() {
+      it('should return the request hash', function () {
         expect(service.hash).to.equal('#foo');
       });
     });
 
-    describe('when no hash is present', function() {
-      beforeEach(function() {
+    describe('when no hash is present', function () {
+      beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
           request = {
@@ -137,15 +137,15 @@ describe('Unit | Services | Location | fastboot', function() {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return an empty string', function() {
+      it('should return an empty string', function () {
         expect(service.hash).to.equal('');
       });
     });
   });
 
-  describe('queryString', function() {
-    describe('when a queryString is present', function() {
-      beforeEach(function() {
+  describe('queryString', function () {
+    describe('when a queryString is present', function () {
+      beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
           request = {
@@ -157,13 +157,13 @@ describe('Unit | Services | Location | fastboot', function() {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return the queryString', function() {
+      it('should return the queryString', function () {
         expect(service.queryString).to.equal('?foo=bar');
       });
     });
 
-    describe('when no queryString is present', function() {
-      beforeEach(function() {
+    describe('when no queryString is present', function () {
+      beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
           request = {
@@ -175,7 +175,7 @@ describe('Unit | Services | Location | fastboot', function() {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return an empty string', function() {
+      it('should return an empty string', function () {
         expect(service.queryString).to.equal('');
       });
     });

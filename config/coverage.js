@@ -12,7 +12,7 @@ module.exports = {
     '*/graphql/**/*',
     '*/types/**/*',
     '*/initializers/**/*',
-    '*/services/apollo.ts',
+    '*/services/-apollo.ts',
     '*/services/service-worker.ts'
   ]
 };
