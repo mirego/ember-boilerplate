@@ -60,6 +60,7 @@
     "ember-intl": "5.5.0",
     "ember-load-initializers": "2.1.1",
     "ember-modifier": "2.1.1",
+    "ember-page-title": "6.0.3",
     "ember-resolver": "8.0.2",
     "ember-service-worker": "9.0.1",
     "ember-source": "3.22.0",
