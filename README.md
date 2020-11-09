@@ -40,6 +40,27 @@ This boilerplate comes with batteries included, you’ll find:
 4. Create a new Git repository (`git init`)
 5. Create the initial Git commit (`git commit -a -m "Initial commit"`)
 
+## Preferred libraries
+
+Some batteries aren’t included since all projects have their own needs and requirements. Here’s a list of our preferred libraries to help you get started:
+
+| Category                     | Libraries                                                                        |
+| ---------------------------- | -------------------------------------------------------------------------------- |
+| Animations                   | [`ember-animated`](https://www.npmjs.com/package/ember-animated)                 |
+| Click outside event          | [`ember-click-outside`](https://www.npmjs.com/package/ember-click-outside)       |
+| Custom calendar              | [`ember-power-calendar`](https://www.npmjs.com/package/ember-power-calendar)     |
+| Custom datepicker            | [`ember-power-datepicker`](https://www.npmjs.com/package/ember-power-datepicker) |
+| Custom select                | [`ember-power-select`](https://www.npmjs.com/package/ember-power-select)         |
+| File upload                  | [`ember-file-upload`](https://www.npmjs.com/package/ember-file-upload)           |
+| Flash messages               | [`ember-cli-flash`](https://www.npmjs.com/package/ember-cli-flash)               |
+| Isomorphic cookie management | [`ember-cookies`](https://www.npmjs.com/package/ember-cookies)                   |
+| Isomorphic locale detection  | [`ember-best-language`](https://www.npmjs.com/package/ember-best-language)       |
+| List sorting                 | [`ember-sortable`](https://www.npmjs.com/package/ember-sortable)                 |
+| Modal dialog                 | [`ember-modal-dialog`](https://www.npmjs.com/package/ember-modal-dialog)         |
+| Permissions management       | [`ember-can`](https://www.npmjs.com/package/ember-can)                           |
+| Sticky element               | [`ember-sticky-element`](https://www.npmjs.com/package/ember-sticky-element)     |
+| CSS transitions              | [`ember-css-transitions`](https://www.npmjs.com/package/ember-css-transitions)   |
+
 ## License
 
 Ember Boilerplate is © 2015-2020 [Mirego](https://www.mirego.com) and may be freely distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause). See the [`LICENSE.md`](https://github.com/mirego/ember-boilerplate/blob/master/LICENSE.md) file.
