@@ -14,6 +14,10 @@
     "build": "ember build --environment production"
   },
   "repository": "https://github.com/mirego/ember-boilerplate",
+  "engines": {
+    "node": "~14.15",
+    "npm": "~6.14"
+  },
   "dependencies": {
     "@apollo/client": "3.2.5",
     "@ember/optional-features": "2.0.0",
