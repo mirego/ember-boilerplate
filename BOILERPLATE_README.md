@@ -22,8 +22,10 @@
 
 ## 🚧 Dependencies
 
-- Node.js (`~> 14.15`)
-- NPM (`~> 6.14`)
+- Node.js
+- NPM
+
+Canonical versions of dependencies are located in `Dockerfile` and `.tool-versions`.
 
 ## 🏎 Kickstart
 

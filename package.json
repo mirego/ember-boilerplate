@@ -8,17 +8,12 @@
     "test": "tests"
   },
   "scripts": {
-    "server": "npm run enforce-engine-versions && NODE_PATH=$NODE_PATH:. node --optimize_for_size app/server.js",
+    "server": "NODE_PATH=$NODE_PATH:. node --optimize_for_size app/server.js",
     "start": "ember server",
-    "build-dev": "npm run enforce-engine-versions && ember build",
-    "build": "npm run enforce-engine-versions && ember build --environment production",
-    "enforce-engine-versions": "node ./scripts/enforce-engine-versions.js",
-    "preinstall": "npm run enforce-engine-versions",
-    "pretest": "npm run enforce-engine-versions",
-    "prestart": "npm run enforce-engine-versions"
+    "build-dev": "ember build",
+    "build": "ember build --environment production"
   },
   "repository": "https://github.com/mirego/ember-boilerplate",
-  "engine-strict": true,
   "engines": {
     "node": "~14.15",
     "npm": "~6.14"
