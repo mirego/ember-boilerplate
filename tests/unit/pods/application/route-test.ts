@@ -11,7 +11,7 @@ import config from 'ember-boilerplate/config/environment';
 // Types
 import ApplicationRoute from 'ember-boilerplate/pods/application/route';
 
-describe('Unit | Routes | application', function () {
+describe('Unit | Routes | application', () => {
   setupTest();
 
   let route: ApplicationRoute;
@@ -47,28 +47,28 @@ describe('Unit | Routes | application', function () {
     route = this.owner.lookup('route:application');
   });
 
-  it('should exist', function () {
+  it('should exist', () => {
     expect(route).to.be.ok;
   });
 
-  describe('beforeModel', function () {
-    it('should set the locale of the app', async function () {
+  describe('beforeModel', () => {
+    it('should set the locale of the app', async () => {
       await route.beforeModel();
 
       expect(route.intl.setLocale).to.have.been.calledOnce;
       expect(route.intl.setLocale).to.have.been.calledWith('en-ca');
     });
 
-    describe('when `config.intl.ASYNC_TRANSLATIONS` is true', function () {
-      beforeEach(function () {
+    describe('when `config.intl.ASYNC_TRANSLATIONS` is true', () => {
+      beforeEach(() => {
         config.intl.ASYNC_TRANSLATIONS = true;
       });
 
-      afterEach(function () {
+      afterEach(() => {
         config.intl.ASYNC_TRANSLATIONS = originalConfig.intl.ASYNC_TRANSLATIONS;
       });
 
-      it('should load translations asynchronously', async function () {
+      it('should load translations asynchronously', async () => {
         await route.beforeModel();
 
         expect(route.translations.loadForLocale).to.have.been.calledOnce;
@@ -76,17 +76,17 @@ describe('Unit | Routes | application', function () {
       });
     });
 
-    describe('when `config.intl.ASYNC_TRANSLATIONS` is false', function () {
-      beforeEach(function () {
+    describe('when `config.intl.ASYNC_TRANSLATIONS` is false', () => {
+      beforeEach(() => {
         config.intl.ASYNC_TRANSLATIONS = false;
         route.intl.setLocale('en-ca');
       });
 
-      afterEach(function () {
+      afterEach(() => {
         config.intl.ASYNC_TRANSLATIONS = originalConfig.intl.ASYNC_TRANSLATIONS;
       });
 
-      it('should have translations bundled in the build', async function () {
+      it('should have translations bundled in the build', async () => {
         await route.beforeModel();
 
         expect(route.intl.addTranslations).to.not.have.been.called;
@@ -94,8 +94,8 @@ describe('Unit | Routes | application', function () {
     });
   });
 
-  describe('didTransition', function () {
-    it('should write the apollo cache to the shoebox', function () {
+  describe('didTransition', () => {
+    it('should write the apollo cache to the shoebox', () => {
       route.actions.didTransition.call(route);
 
       expect(route.shoebox.write).to.have.been.calledOnce;

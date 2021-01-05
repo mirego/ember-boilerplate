@@ -27,18 +27,18 @@ describe('Unit | Services | Translations', function () {
     service = this.owner.lookup('service:translations');
 
     server = new Pretender(function () {
-      this.get('/assets/translations/en-ca.json', function () {
+      this.get('/assets/translations/en-ca.json', () => {
         return [200, {'Content-Type': 'application/json'}, '{"foo":"bar"}'];
       });
     }) as PretenderWithHandlers;
   });
 
-  afterEach(function () {
+  afterEach(() => {
     server.shutdown();
   });
 
-  describe('loadForLocale', function () {
-    describe('when executing inside FastBoot', function () {
+  describe('loadForLocale', () => {
+    describe('when executing inside FastBoot', () => {
       beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
@@ -54,7 +54,7 @@ describe('Unit | Services | Translations', function () {
         this.owner.register('service:shoebox', ShoeboxStub);
       });
 
-      it('should return the translations and write them to the shoebox', async function () {
+      it('should return the translations and write them to the shoebox', async () => {
         await service.loadForLocale('en-ca');
 
         expect(server.handlers[0].numberOfCalls).to.equal(1);
@@ -68,7 +68,7 @@ describe('Unit | Services | Translations', function () {
     });
 
     describe('when executing inside the browser', () => {
-      describe('when there are translations in the shoebox', function () {
+      describe('when there are translations in the shoebox', () => {
         beforeEach(function () {
           class FastBootStub extends Service {
             isFastBoot = false;
@@ -84,7 +84,7 @@ describe('Unit | Services | Translations', function () {
           this.owner.register('service:shoebox', ShoeboxStub);
         });
 
-        it('should return the translations from the shoebox', async function () {
+        it('should return the translations from the shoebox', async () => {
           await service.loadForLocale('en-ca');
 
           expect(server.handlers[0].numberOfCalls).to.equal(0);
@@ -95,7 +95,7 @@ describe('Unit | Services | Translations', function () {
         });
       });
 
-      describe('when there are no translations in the shoebox', function () {
+      describe('when there are no translations in the shoebox', () => {
         beforeEach(function () {
           class FastBootStub extends Service {
             isFastBoot = false;
@@ -111,7 +111,7 @@ describe('Unit | Services | Translations', function () {
           this.owner.register('service:shoebox', ShoeboxStub);
         });
 
-        it('should return the translations from the network', async function () {
+        it('should return the translations from the network', async () => {
           await service.loadForLocale('en-ca');
 
           expect(server.handlers[0].numberOfCalls).to.equal(1);
