@@ -19,12 +19,12 @@ describe('Unit | Services | Location', function () {
     service = this.owner.lookup('service:location');
   });
 
-  afterEach(function () {
+  afterEach(() => {
     windowMockReset();
   });
 
-  describe('locationService', function () {
-    describe('when executing inside FastBoot', function () {
+  describe('locationService', () => {
+    describe('when executing inside FastBoot', () => {
       beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = true;
@@ -33,12 +33,12 @@ describe('Unit | Services | Location', function () {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return a FastBootLocation service', function () {
+      it('should return a FastBootLocation service', () => {
         expect(service.locationService).to.equal(service.fastbootLocation);
       });
     });
 
-    describe('when executing inside the browser', function () {
+    describe('when executing inside the browser', () => {
       beforeEach(function () {
         class FastBootStub extends Service {
           isFastBoot = false;
@@ -47,13 +47,13 @@ describe('Unit | Services | Location', function () {
         this.owner.register('service:fastboot', FastBootStub);
       });
 
-      it('should return a BrowserLocation service', function () {
+      it('should return a BrowserLocation service', () => {
         expect(service.locationService).to.equal(service.browserLocation);
       });
     });
   });
 
-  describe('fullURL', function () {
+  describe('fullURL', () => {
     beforeEach(function () {
       class BrowserLocationStub extends Service {
         protocol = 'https:';
@@ -65,13 +65,13 @@ describe('Unit | Services | Location', function () {
       this.owner.register('service:location/browser', BrowserLocationStub);
     });
 
-    it('should return a URL made of the different parts returned by the locationService', function () {
+    it('should return a URL made of the different parts returned by the locationService', () => {
       expect(service.fullURL).to.equal('https://mirego.com/foo-bar?baz=quux');
     });
   });
 
-  describe('assign', function () {
-    it('should set `window.location.href` to the URL provided', function () {
+  describe('assign', () => {
+    it('should set `window.location.href` to the URL provided', () => {
       service.assign('https://mirego.com');
 
       expect(window.location.href).to.equal('https://mirego.com/');

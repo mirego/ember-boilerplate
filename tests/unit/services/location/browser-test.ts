@@ -18,36 +18,36 @@ describe('Unit | Services | Location | Browser', function () {
     service = this.owner.lookup('service:location/browser');
   });
 
-  afterEach(function () {
+  afterEach(() => {
     windowMockReset();
   });
 
-  it('`protocol` should return `window.location.protocol`', function () {
+  it('`protocol` should return `window.location.protocol`', () => {
     window.location.protocol = 'https:';
 
     expect(service.protocol).to.equal('https:');
   });
 
-  it('`host` should return `window.location.host`', function () {
+  it('`host` should return `window.location.host`', () => {
     window.location.hostname = 'www.mirego.com';
     window.location.port = '';
 
     expect(service.host).to.equal('www.mirego.com');
   });
 
-  it('`path` should return `window.location.path`', function () {
+  it('`path` should return `window.location.path`', () => {
     window.location.pathname = '/foo-bar';
 
     expect(service.path).to.equal('/foo-bar');
   });
 
-  it('`hash` should return `window.location.hash`', function () {
+  it('`hash` should return `window.location.hash`', () => {
     window.location.hash = '#foo';
 
     expect(service.hash).to.equal('#foo');
   });
 
-  it('`queryString` should return `window.location.queryString`', function () {
+  it('`queryString` should return `window.location.queryString`', () => {
     window.location.search = '?foo=bar';
 
     expect(service.queryString).to.equal('?foo=bar');

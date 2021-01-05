@@ -6,7 +6,7 @@ import {beforeEach, describe, it} from 'mocha';
 // Types
 import Session from 'ember-boilerplate/services/session';
 
-describe('Unit | Services | Session', function () {
+describe('Unit | Services | Session', () => {
   setupTest();
 
   let service: Session;
@@ -15,14 +15,14 @@ describe('Unit | Services | Session', function () {
     service = this.owner.lookup('service:session');
   });
 
-  describe('fetchAccessToken', function () {
-    it('should exist as an async method', function () {
+  describe('fetchAccessToken', () => {
+    it('should exist as an async method', () => {
       expect(service).to.respondTo('fetchAccessToken');
 
       expect(service.fetchAccessToken()).to.be.an.instanceOf(Promise);
     });
 
-    it('should return an error because it has no implementation', async function () {
+    it('should return an error because it has no implementation', async () => {
       try {
         await service.fetchAccessToken();
       } catch (error) {
