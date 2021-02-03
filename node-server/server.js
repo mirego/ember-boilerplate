@@ -7,7 +7,7 @@ const basicAuth = require('express-basic-auth');
 const config = require('../config/environment');
 const compression = require('compression');
 const forceSSL = require('express-force-ssl');
-const forceDomain = require('forcedomain');
+const {forceDomain} = require('forcedomain');
 const cacheControl = require('express-cache-controller');
 
 // Custom HTTP Server
