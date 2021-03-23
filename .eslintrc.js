@@ -7,7 +7,7 @@ module.exports = {
         project: './tsconfig.json',
       },
       plugins: ['@typescript-eslint', 'ember', 'mirego'],
-      extends: ['plugin:mirego/recommended', 'prettier', 'prettier/@typescript-eslint'],
+      extends: ['plugin:mirego/recommended', 'prettier'],
       files: [
         'app/**/*',
         'fastboot/**/*',
