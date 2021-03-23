@@ -83,7 +83,7 @@ build-app: ## Build the application
 
 .PHONY: test
 test: ## Run the test suite
-	rm -rf ./coverage && COVERAGE=true npx ember exam --reporter dot
+	rm -rf ./coverage && COVERAGE=true npx ember test --reporter dot
 
 # Check, lint and format targets
 # ------------------------------
@@ -110,7 +110,7 @@ format: ## Format project files
 	- npx eslint --ext .js,.ts . --fix --quiet
 	- count=`find ./public/ -type f -name '*.svg' | wc -l` ; \
 		if [ $$count != 0 ] ; then \
-			npx svgo --config=.svgo.yml --recursive --folder ./public ; \
+			npx svgo --config=svgo.config.js --recursive --folder ./public ; \
 		fi;
 
 .PHONY: lint

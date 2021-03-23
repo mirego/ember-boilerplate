@@ -23,9 +23,7 @@ module.exports = function (environment) {
   ENV.EmberENV = {
     LOG_VERSION: false,
     EXTEND_PROTOTYPES: false,
-    FEATURES: {
-      EMBER_METAL_TRACKED_PROPERTIES: true,
-    },
+    FEATURES: {},
   };
 
   ENV.APP = {
