@@ -31,13 +31,6 @@ describe('Unit | Routes | application', () => {
 
     this.owner.register('service:translations', TranslationsStub);
 
-    const ServiceWorkerStub = class extends Service {
-      register = sinon.stub().returns(this);
-      onUpdateReady = sinon.stub();
-    };
-
-    this.owner.register('service:service-worker', ServiceWorkerStub);
-
     // We need to do this because ember-intl somehow always
     // overwrites our `this.owner.register` when trying to stub it.
     const intl = this.owner.lookup('service:intl');
