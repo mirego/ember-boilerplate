@@ -21,7 +21,7 @@ content=$(find . -type f \( \
   -name "Makefile" \
 \) \
   -and ! -path "./boilerplate-setup.sh" \
-  -and ! -path "./assets/node_modules/*" \
+  -and ! -path "./node_modules/*" \
 )
 
 # The identifiers above will be replaced in the path of the files and directories found here
