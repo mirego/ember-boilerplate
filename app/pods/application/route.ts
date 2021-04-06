@@ -8,7 +8,6 @@ import config from 'ember-boilerplate/config/environment';
 
 // Types
 import Shoebox from 'ember-boilerplate/services/shoebox';
-import ServiceWorker from 'mirego-service-worker-plugin/services/service-worker';
 import IntlService from 'ember-intl/services/intl';
 import Apollo from 'ember-boilerplate/services/apollo';
 import HeadData from 'ember-cli-head/services/head-data';
@@ -26,9 +25,6 @@ export default class ApplicationRoute extends Route {
 
   @service('shoebox')
   shoebox: Shoebox;
-
-  @service('service-worker')
-  serviceWorker: ServiceWorker;
 
   @service('translations')
   translations: Translations;
@@ -48,14 +44,6 @@ export default class ApplicationRoute extends Route {
     }
 
     this.headData.disallowSiteIndexation = !config.APP.ALLOW_SITE_INDEXATION;
-
-    // By default whenever an update is ready, we install it immediately.
-    // Note that the `update` call could be made later. We could prompt the
-    // user to update, then install the update only when they accept.
-    /* istanbul ignore next */
-    this.serviceWorker.register().onUpdateReady(() => {
-      this.serviceWorker.update();
-    });
   }
 
   private determineLocale(): AvailableLocale {

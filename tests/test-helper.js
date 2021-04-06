@@ -1,5 +1,5 @@
-import Application from '../app';
-import config from '../config/environment';
+import Application from 'ember-boilerplate/app';
+import config from 'ember-boilerplate/config/environment';
 import {setApplication} from '@ember/test-helpers';
 import {start} from 'ember-mocha';
 import chai from 'chai';
