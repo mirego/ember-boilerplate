@@ -1,13 +1,9 @@
-import * as Sentry from '@sentry/browser';
-import {Ember} from '@sentry/integrations/esm/ember';
-import config from 'ember-boilerplate/config/environment';
+import {InitSentryForEmber} from '@sentry/ember';
+import {Event, EventHint} from '@sentry/types';
 
 export const initialize = () => {
-  Sentry.init({
-    ...config.sentry,
-    integrations: [new Ember()],
-
-    beforeSend(event, hint) {
+  InitSentryForEmber({
+    beforeSend(event: Event, hint: EventHint) {
       const error = hint?.originalException;
 
       if (typeof error !== 'object') return event;
