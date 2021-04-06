@@ -64,17 +64,22 @@ module.exports = function (environment) {
     TRANSLATIONS_CACHE_KEY: 'translations',
   };
 
-  ENV.sentry = {
-    enabled: isPresent(process.env.SENTRY_DSN),
-    dsn: process.env.SENTRY_DSN,
-    environment: process.env.SENTRY_ENVIRONMENT_NAME,
-    release: appPackage.version,
-    whitelistUrls: [
-      process.env.ASSETS_CDN_PROTOCOL && process.env.ASSETS_CDN_HOST
-        ? `${process.env.ASSETS_CDN_PROTOCOL}://${process.env.ASSETS_CDN_HOST}`
-        : process.env.CANONICAL_HOST,
-    ],
-    debug: process.env.NODE_ENV !== 'production',
+  ENV['@sentry/ember'] = {
+    ignoreEmberOnErrorWarning: true,
+    disablePerformance: true,
+    disableInstrumentComponents: true,
+    disableRunloopPerformance: true,
+    sentry: {
+      allowUrls: [
+        process.env.ASSETS_CDN_PROTOCOL && process.env.ASSETS_CDN_HOST
+          ? `${process.env.ASSETS_CDN_PROTOCOL}://${process.env.ASSETS_CDN_HOST}`
+          : process.env.CANONICAL_HOST,
+      ],
+      debug: process.env.NODE_ENV !== 'production',
+      dsn: process.env.SENTRY_DSN,
+      environment: process.env.SENTRY_ENVIRONMENT_NAME,
+      release: `ember-boilerplate@${appPackage.version}`,
+    },
   };
 
   if (environment === 'test') {

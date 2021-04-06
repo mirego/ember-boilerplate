@@ -5,7 +5,7 @@ import {createHttpLink} from '@apollo/client/core';
 import {onError} from '@apollo/client/link/error';
 import {inject as service} from '@ember/service';
 import ApolloService from 'ember-apollo-client/services/apollo';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/ember';
 import fetch from 'fetch';
 
 // Types
