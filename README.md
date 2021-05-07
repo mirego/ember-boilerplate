@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://user-images.githubusercontent.com/11348/51911477-f2b17880-239f-11e9-89aa-8cf94e957155.png" width="600" />
   <p><br />This repository is the stable base upon which we build our Ember.js projects at Mirego.<br />We want to share it with the world so you can build awesome Ember.js applications too.</p>
-  <a href="https://travis-ci.com/mirego/ember-boilerplate"><img src="https://travis-ci.com/mirego/ember-boilerplate.svg?branch=master" /></a>
+  <a href="https://github.com/mirego/ember-boilerplate/actions/workflows/ci.yaml"><img src="https://github.com/mirego/ember-boilerplate/actions/workflows/ci.yaml/badge.svg" /></a>
 </div>
 
 ## Introduction
