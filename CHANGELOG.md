@@ -6,6 +6,65 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Since it is a boilerplate project, there are technically no official (versioned) _releases_. Therefore, the `master` branch should always be stable and usable.
 
+# 2021-05-06
+
+### Fixed
+
+- Fix Sentry integration in tests by adding webpack to the dependencies
+
+### Added
+
+- Add GitHub Actions badge in the README
+
+# 2021-04-06
+
+### Changed
+
+- Refactor FastBoot server to remove our custom server class and better use middleware
+- Change the build pipeline to use Embroider
+- Update the Sentry setup to use the latest version of the addon
+
+# 2021-01-05
+
+### Changed
+
+- Update dependencies and Ember
+
+# 2020-11-27
+
+### Added
+
+- Add .tool-versions file
+
+### Removed
+
+- Custom engine version check script
+
+# 2020-11-25
+
+### Changed
+
+- Change pull request template to explicitely include the Dispatch stack
+
+# 2020-11-09
+
+### Added
+
+- Documentation on preferred libraries
+- Add the ember-page-title addon
+
+## 2020-11-06
+
+### Changed
+
+- Update dependencies and Ember
+
+## 2020-08-31
+
+### Added
+
+- Add eslint rule to escape unused variable
+
 ## 2020-08-05
 
 ### Fixed
