@@ -24,6 +24,10 @@ Since it is a boilerplate project, there are technically no official (versioned)
 - Change the build pipeline to use Embroider
 - Update the Sentry setup to use the latest version of the addon
 
+### Removed
+
+- Everything related to service workers was removed since it didn’t work anymore with Embroider
+
 # 2021-01-05
 
 ### Changed
