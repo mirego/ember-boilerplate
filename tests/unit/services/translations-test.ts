@@ -27,7 +27,7 @@ describe('Unit | Services | Translations', function () {
     service = this.owner.lookup('service:translations');
 
     server = new Pretender(function () {
-      this.get('/assets/translations/en-ca.json', () => {
+      this.get('/translations/en-ca.json', () => {
         return [200, {'Content-Type': 'application/json'}, '{"foo":"bar"}'];
       });
     }) as PretenderWithHandlers;
@@ -104,7 +104,7 @@ describe('Unit | Services | Translations', function () {
           this.owner.register('service:fastboot', FastBootStub);
 
           class ShoeboxStub extends Service {
-            read = sinon.stub().returns(null);
+            read = sinon.stub().returns({});
             write = sinon.stub();
           }
 

@@ -11,7 +11,7 @@ import config from 'ember-boilerplate/config/environment';
 export type AvailableLocale = 'en-ca';
 
 const pathForLocale: Record<AvailableLocale, string> = {
-  'en-ca': '/assets/translations/en-ca.json',
+  'en-ca': '/translations/en-ca.json',
 };
 
 export default class Translations extends Service {
@@ -37,7 +37,7 @@ export default class Translations extends Service {
 
     const translations = this.fetchTranslationsFromShoebox(locale);
 
-    if (translations) return translations;
+    if (Object.keys(translations).length > 0) return translations;
 
     return this.fetchTranslationsFromNetwork(locale);
   }
@@ -65,6 +65,6 @@ export default class Translations extends Service {
 
 declare module '@ember/service' {
   interface Registry {
-    translations: Account;
+    translations: Translations;
   }
 }
