@@ -82,8 +82,9 @@ module.exports = function (defaults) {
       extensions: ['js'],
     },
 
-    'svg': {
-      paths: ['public/assets/inline-svgs'],
+    'svgJar': {
+      optimizer: false,
+      persist: false,
     },
   });
 
