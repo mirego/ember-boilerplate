@@ -14,7 +14,6 @@ module.exports = {
     'cleanupAttrs',
     'inlineStyles',
     'minifyStyles',
-    'cleanupIDs',
     'removeRasterImages',
     'removeUselessDefs',
     'cleanupNumericValues',
@@ -40,6 +39,16 @@ module.exports = {
     'sortDefsChildren',
     'removeTitle',
     'removeDesc',
+    {
+      name: 'cleanupIDs',
+      params: {
+        prefix: {
+          toString: function () {
+            return Math.random().toString(36).substr(2, 9) + '';
+          },
+        },
+      },
+    },
     {
       name: 'removeAttrs',
       params: {
