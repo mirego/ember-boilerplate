@@ -25,23 +25,10 @@
         "tests/*"
       ],
       "ember-boilerplate/*": [
-        "app/*",
-        "lib/mirego-service-worker-plugin/app/*"
+        "app/*"
       ],
       "fetch": [
         "node_modules/ember-fetch"
-      ],
-      "mirego-service-worker-plugin": [
-        "lib/mirego-service-worker-plugin/addon"
-      ],
-      "mirego-service-worker-plugin/*": [
-        "lib/mirego-service-worker-plugin/addon/*"
-      ],
-      "mirego-service-worker-plugin/test-support": [
-        "lib/mirego-service-worker-plugin/addon-test-support"
-      ],
-      "mirego-service-worker-plugin/test-support/*": [
-        "lib/mirego-service-worker-plugin/addon-test-support/*"
       ],
       "*": [
         "types/*"
@@ -52,7 +39,6 @@
     "app/**/*",
     "fastboot/**/*",
     "tests/**/*",
-    "types/**/*",
-    "lib/mirego-service-worker-plugin/**/*"
+    "types/**/*"
   ]
 }

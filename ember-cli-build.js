@@ -50,24 +50,6 @@ module.exports = function (defaults) {
       preferNative: true,
     },
 
-    'ember-service-worker': {
-      enabled: !IS_TEST_ENVIRONMENT && asBoolean(process.env.SERVICE_WORKER_ENABLED),
-      // We want to handle when to update the service worker ourselves,
-      // this makes sure to not claim all the clients as soon as the
-      // worker gets an update
-      immediateClaim: false,
-      // Version service-worker and cached assets with every app version
-      // (defined in package.json) in production
-      versionStrategy: IS_PRODUCTION_ENVIRONMENT ? 'project-version' : 'every-build',
-      registrationStrategy: 'inline',
-    },
-
-    'mirego-service-worker-plugin': {
-      enableDebugging: asBoolean(process.env.SERVICE_WORKER_ENABLE_DEBUGGING),
-      enablePageCaching: asBoolean(process.env.SERVICE_WORKER_ENABLE_PAGE_CACHING),
-      precacheExtensions: ['js', 'css', 'map', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
-    },
-
     'fingerprint': {
       extensions: ['js', 'css', 'png', 'jpg', 'gif', 'map', 'svg'],
       generateAssetMap: true,

@@ -8,14 +8,7 @@ module.exports = {
       },
       plugins: ['@typescript-eslint', 'ember', 'mirego'],
       extends: ['plugin:mirego/recommended', 'prettier'],
-      files: [
-        'app/**/*',
-        'fastboot/**/*',
-        'tests/**/*',
-        'types/**/*',
-        'lib/mirego-service-worker-plugin/app/**/*',
-        'lib/mirego-service-worker-plugin/addon/**/*',
-      ],
+      files: ['app/**/*', 'fastboot/**/*', 'tests/**/*', 'types/**/*'],
       env: {
         es6: true,
         browser: true,
@@ -66,18 +59,6 @@ module.exports = {
       },
     },
     {
-      files: ['lib/mirego-service-worker-plugin/service-worker/index.js'],
-      parserOptions: {
-        sourceType: 'module',
-        ecmaVersion: 2015,
-      },
-      env: {
-        browser: false,
-        worker: true,
-      },
-      extends: ['plugin:mirego/recommended', 'prettier'],
-    },
-    {
       files: [
         '.ember-cli.js',
         '.eslintrc.js',
@@ -88,8 +69,6 @@ module.exports = {
         'lib/*/index.js',
         'scripts/**/*.js',
         'node-server/**/*.js',
-        'lib/mirego-service-worker-plugin/index.js',
-        'lib/mirego-service-worker-plugin/lib/config.js',
       ],
       parserOptions: {
         sourceType: 'script',

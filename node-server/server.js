@@ -90,7 +90,7 @@ const setupCacheHeaders = app => {
   }
 
   app.use(
-    ['/robots.txt', '/sitemap.xml', '/sw.js'],
+    ['/robots.txt', '/sitemap.xml'],
     cacheControl({
       noCache: true,
       private: true,
@@ -117,8 +117,8 @@ const fastbootServer = new FastBootAppServer({
     setupHealthCheck(app);
     setupCanonicalHost(app);
     setupForceSSL(app);
-    setupBasicAuthentication(app);
     setupURLCorrection(app);
+    setupBasicAuthentication(app);
     setupCompression(app);
     setupCacheHeaders(app);
   },
