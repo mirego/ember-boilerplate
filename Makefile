@@ -12,7 +12,7 @@ DOCKER_REMOTE_IMAGE = $(DOCKER_REGISTRY)/$(DOCKER_LOCAL_IMAGE)
 # Linter and formatter configuration
 # ----------------------------------
 
-PRETTIER_FILES_PATTERN = ember-cli-build.js testem.js '{app,config,fastboot,lib,node-server,public,scripts,service-worker,tests,translations,types,vendor}/**/*.{ts,js,graphql,scss}' '**/*.md'
+PRETTIER_FILES_PATTERN = ember-cli-build.js testem.js '{app,config,fastboot,lib,node-server,public,scripts,tests,translations,types,vendor}/**/*.{ts,js,graphql,scss}' '**/*.md'
 STYLES_PATTERN = './app/**/*.scss'
 TEMPLATES_PATTERN = './app/**/*.hbs'
 

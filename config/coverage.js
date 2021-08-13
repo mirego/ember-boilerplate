@@ -13,6 +13,5 @@ module.exports = {
     '*/types/**/*',
     '*/initializers/**/*',
     '*/services/-apollo.ts',
-    '*/services/service-worker.ts',
   ],
 };
