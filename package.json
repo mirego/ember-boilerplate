@@ -73,7 +73,7 @@
     "graphql": "15.5.0",
     "graphql-tag": "2.11.0",
     "loader.js": "4.7.0",
-    "node-sass": "5.0.0",
+    "node-sass": "7.0.0",
     "postcss-scss": "3.0.5",
     "simple-css-reset": "3.0.0",
     "webpack": "5.36.2"
