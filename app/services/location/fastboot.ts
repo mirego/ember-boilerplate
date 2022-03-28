@@ -29,7 +29,7 @@ export default class FastBootLocation extends Service implements LocationInterfa
 
     const endIndex = Math.min(queryIndex, hashIndex);
 
-    return pathWithQuery.slice(0, endIndex >= 0 ? endIndex : 0);
+    return queryIndex >= 0 ? pathWithQuery.slice(0, endIndex >= 0 ? endIndex : 0) : pathWithQuery;
   }
 
   get queryString(): string {

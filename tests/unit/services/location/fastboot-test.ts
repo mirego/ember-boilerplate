@@ -92,7 +92,7 @@ describe('Unit | Services | Location | Fastboot', () => {
           isFastBoot = true;
           request = {
             host: 'www.mirego.com',
-            path: '#foo',
+            path: '',
           };
         }
 
