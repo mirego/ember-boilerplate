@@ -9,6 +9,7 @@ const compression = require('compression');
 const forceSSL = require('express-force-ssl');
 const {forceDomain} = require('forcedomain');
 const cacheControl = require('express-cache-controller');
+const replace = require('replace-in-file');
 
 // Middleware
 const internalServerErrorMiddleware = require('./middleware/internal-server-error');
@@ -16,6 +17,7 @@ const stripTrailingSlashes = require('./middleware/strip-trailing-slashes');
 const deduplicateSlashes = require('./middleware/deduplicate-slashes');
 
 // Utils
+const runtimeEnvironment = require('../config/runtime-environment');
 const {asBoolean, asInteger, isPresent} = require('../config/utils');
 const appPackage = require('../package.json');
 
@@ -107,10 +109,20 @@ const setupCacheHeaders = app => {
   );
 };
 
+replace.sync({
+  files: './dist/index.html',
+  from: /<!-- ENV -->[\s\S]+<!-- ENV -->/m,
+  to: `<!-- ENV --><script data-fastboot-ignore="">window.ENV = ${runtimeEnvironment.json()}</script><!-- ENV -->`,
+});
+
 const fastbootServer = new FastBootAppServer({
   distPath: 'dist',
   workerCount: asInteger(process.env.WORKER_COUNT),
   chunkedResponse: true,
+
+  buildSandboxGlobals(defaultGlobals) {
+    return Object.assign({}, defaultGlobals, {RUNTIME_ENVIRONMENT_VARIABLES: runtimeEnvironment.variables});
+  },
 
   beforeMiddleware(app) {
     setupSentry(app);

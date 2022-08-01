@@ -15,10 +15,18 @@ const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_C
   return `${ASSETS_CDN_PROTOCOL}://${ASSETS_CDN_HOST}/${ASSETS_CDN_PATH}/`;
 };
 
+const runtimeEnvironment = require('./config/runtime-environment');
+
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     'hinting': false,
     'tests': IS_TEST_ENVIRONMENT,
+
+    'inlineContent': {
+      'environment-variables': {
+        content: `<!-- ENV --><script>window.ENV = ${runtimeEnvironment.json()}</script><!-- ENV -->`,
+      },
+    },
 
     'autoImport': {
       exclude: ['graphql-tag'],
