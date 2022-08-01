@@ -25,7 +25,7 @@ export default class FastBootLocation extends Service implements LocationInterfa
   get path(): string {
     const pathWithQuery = this.fastboot.request.path;
     const queryIndex = pathWithQuery.indexOf('?');
-    const hashIndex = pathWithQuery.indexOf('#', queryIndex);
+    const hashIndex = pathWithQuery.includes('#') ? pathWithQuery.indexOf('#') : queryIndex;
 
     const endIndex = Math.min(queryIndex, hashIndex);
 
@@ -35,7 +35,7 @@ export default class FastBootLocation extends Service implements LocationInterfa
   get queryString(): string {
     const pathWithQuery = this.fastboot.request.path;
     const queryIndex = pathWithQuery.indexOf('?');
-    const hashIndex = pathWithQuery.indexOf('#', queryIndex);
+    const hashIndex = pathWithQuery.includes('#') ? pathWithQuery.indexOf('#') : Infinity;
 
     return queryIndex >= 0 ? pathWithQuery.slice(queryIndex, hashIndex) : '';
   }
