@@ -86,6 +86,24 @@ describe('Unit | Services | Location | Fastboot', () => {
       });
     });
 
+    describe('when a path is present but no hash', () => {
+      beforeEach(function () {
+        class FastBootStub extends Service {
+          isFastBoot = true;
+          request = {
+            host: 'www.mirego.com',
+            path: '/foo-bar?foo=bar',
+          };
+        }
+
+        this.owner.register('service:fastboot', FastBootStub);
+      });
+
+      it('should return the request path', () => {
+        expect(service.path).to.equal('/foo-bar');
+      });
+    });
+
     describe('when no path is present', () => {
       beforeEach(function () {
         class FastBootStub extends Service {
@@ -151,6 +169,24 @@ describe('Unit | Services | Location | Fastboot', () => {
           request = {
             host: 'www.mirego.com',
             path: '/foo-bar?foo=bar#foo',
+          };
+        }
+
+        this.owner.register('service:fastboot', FastBootStub);
+      });
+
+      it('should return the queryString', () => {
+        expect(service.queryString).to.equal('?foo=bar');
+      });
+    });
+
+    describe('when a queryString is present but no hash', () => {
+      beforeEach(function () {
+        class FastBootStub extends Service {
+          isFastBoot = true;
+          request = {
+            host: 'www.mirego.com',
+            path: '/foo-bar?foo=bar',
           };
         }
 
