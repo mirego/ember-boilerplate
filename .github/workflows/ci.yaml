@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - test/runtime-environment-variables
+      - master
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 jobs:
   ci:
