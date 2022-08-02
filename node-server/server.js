@@ -24,7 +24,7 @@ const appPackage = require('../package.json');
 const setupSentry = app => {
   if (!isPresent(process.env.SENTRY_DSN)) return;
 
-  Sentry.init(config(process.env.NODE_ENV).sentry);
+  Sentry.init(config['@sentry/ember']);
 
   app.use(Sentry.Handlers.requestHandler());
 };

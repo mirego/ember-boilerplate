@@ -6,3 +6,8 @@ dist
 docs
 tmp
 tests
+.*
+Dockerfile
+docker-compose.yml
+Makefile
+README.md

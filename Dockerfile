@@ -8,7 +8,7 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -f /var/lib/apt/lists/*_*
 
-WORKDIR /app
+WORKDIR /build
 
 COPY package.json package-lock.json ./
 
@@ -25,6 +25,10 @@ FROM node:16.16 as runner
 
 WORKDIR /app
 
-COPY --from=builder . .
+COPY --from=builder /build/config ./config
+COPY --from=builder /build/dist ./dist
+COPY --from=builder /build/node-server ./node-server
+COPY --from=builder /build/node_modules ./node_modules
+COPY --from=builder /build/package.json /app/package-lock.json ./
 
-CMD ["npm", "run", "server", "--prefix", "app"]
+CMD ["npm", "run", "server"]
