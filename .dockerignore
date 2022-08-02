@@ -6,6 +6,3 @@ dist
 docs
 tmp
 tests
-.*
-Makefile
-README.md
