@@ -24,7 +24,7 @@ module.exports = function (defaults) {
 
     'inlineContent': {
       'environment-variables': {
-        content: `<!-- ENV --><script>window.ENV = ${runtimeEnvironment.json()}</script><!-- ENV -->`,
+        content: runtimeEnvironment.html,
       },
     },
 

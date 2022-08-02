@@ -111,18 +111,15 @@ const setupCacheHeaders = app => {
 
 replace.sync({
   files: './dist/index.html',
-  from: /<!-- ENV -->[\s\S]+<!-- ENV -->/m,
-  to: `<!-- ENV --><script data-fastboot-ignore="">window.ENV = ${runtimeEnvironment.json()}</script><!-- ENV -->`,
+  from: runtimeEnvironment.htmlPattern,
+  to: runtimeEnvironment.html,
 });
 
 const fastbootServer = new FastBootAppServer({
   distPath: 'dist',
   workerCount: asInteger(process.env.WORKER_COUNT),
   chunkedResponse: true,
-
-  buildSandboxGlobals(defaultGlobals) {
-    return Object.assign({}, defaultGlobals, {RUNTIME_ENVIRONMENT_VARIABLES: runtimeEnvironment.variables});
-  },
+  buildSandboxGlobals: runtimeEnvironment.fastBootBuildSandboxGlobals,
 
   beforeMiddleware(app) {
     setupSentry(app);
