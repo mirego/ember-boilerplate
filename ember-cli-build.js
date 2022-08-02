@@ -22,6 +22,10 @@ module.exports = function (defaults) {
     'hinting': false,
     'tests': IS_TEST_ENVIRONMENT,
 
+    // NOTE: This is where `{{content-for "environment-variables"}}` in
+    // `app/index.html` is replaced with the runtime environment. We have to do
+    // this so that Ember.js default FastBoot server (`ember server`) has a
+    // runtime environment.
     'inlineContent': {
       'environment-variables': {
         content: runtimeEnvironment.html,

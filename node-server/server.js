@@ -109,6 +109,7 @@ const setupCacheHeaders = app => {
   );
 };
 
+// NOTE: This is where we replace the HTML with the up-to-date runtime environment.
 replace.sync({
   files: './dist/index.html',
   from: runtimeEnvironment.htmlPattern,
