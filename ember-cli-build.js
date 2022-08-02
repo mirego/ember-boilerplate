@@ -26,6 +26,8 @@ module.exports = function (defaults) {
     // `app/index.html` is replaced with the runtime environment. We have to do
     // this so that Ember.js default FastBoot server (`ember server`) has a
     // runtime environment.
+    //
+    // This requires the `ember-cli-inline-content` NPM package.
     'inlineContent': {
       'environment-variables': {
         content: runtimeEnvironment.html,

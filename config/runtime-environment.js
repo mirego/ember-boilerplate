@@ -9,11 +9,9 @@ const variables = Object.keys(process.env)
   }, {});
 
 // NOTE: This is the HTML injected into `dist/index.html` to make the runtime environment available to the browser.
-const html = `
-  <!-- RUNTIME_ENVIRONMENT -->
-  <script data-fastboot-ignore="">window.RUNTIME_ENVIRONMENT = ${JSON.stringify(variables)}</script>
-  <!-- \/RUNTIME_ENVIRONMENT -->
-`;
+const html = `<!-- RUNTIME_ENVIRONMENT --><script data-fastboot-ignore="">window.RUNTIME_ENVIRONMENT = ${JSON.stringify(
+  variables
+)}</script><!-- \/RUNTIME_ENVIRONMENT -->`;
 
 // NOTE: This is the pattern to look for when injecting the HTML above.
 const htmlPattern = /<!-- RUNTIME_ENVIRONMENT -->[\s\S]+<!-- \/RUNTIME_ENVIRONMENT -->/m;
