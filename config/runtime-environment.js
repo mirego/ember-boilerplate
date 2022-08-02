@@ -1,9 +1,12 @@
 'use strict';
 
-// NOTE: This is where all runtime environment variables are read from `process.env`, nowhere else.
-const variables = {
-  HELLO_WORLD: process.env.HELLO_WORLD,
-};
+// NOTE: This is where all runtime environment variables (`EMBER_APP_*`) are read from `process.env`, nowhere else.
+const variables = Object.keys(process.env)
+  .filter(key => key.startsWith('EMBER_APP_'))
+  .reduce((acc, key) => {
+    acc[key.replace(/^EMBER_APP_/, '')] = process.env[key];
+    return acc;
+  }, {});
 
 // NOTE: This is the HTML injected into `dist/index.html` to make the runtime environment available to the browser.
 const html = `
