@@ -29,6 +29,6 @@ COPY --from=builder /build/config ./config
 COPY --from=builder /build/dist ./dist
 COPY --from=builder /build/node-server ./node-server
 COPY --from=builder /build/node_modules ./node_modules
-COPY --from=builder /build/package.json /app/package-lock.json ./
+COPY --from=builder /build/package.json /build/package-lock.json ./
 
 CMD ["npm", "run", "server"]
