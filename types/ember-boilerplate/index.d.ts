@@ -13,6 +13,8 @@ declare global {
   interface Window {
     RUNTIME_ENVIRONMENT: Record<string, string>;
   }
+
+  const RUNTIME_ENVIRONMENT: Record<string, string>;
 }
 
 export {};
