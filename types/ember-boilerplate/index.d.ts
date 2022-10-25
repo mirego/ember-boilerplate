@@ -9,6 +9,12 @@ declare global {
     request: Request;
     respondWith(response: Promise<Response> | Response): Promise<Response>;
   }
+
+  interface Window {
+    RUNTIME_ENVIRONMENT: Record<string, string>;
+  }
+
+  const RUNTIME_ENVIRONMENT: Record<string, string>;
 }
 
 export {};

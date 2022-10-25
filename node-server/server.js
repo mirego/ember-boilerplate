@@ -9,6 +9,7 @@ const compression = require('compression');
 const forceSSL = require('express-force-ssl');
 const {forceDomain} = require('forcedomain');
 const cacheControl = require('express-cache-controller');
+const replace = require('replace-in-file');
 
 // Middleware
 const internalServerErrorMiddleware = require('./middleware/internal-server-error');
@@ -16,6 +17,7 @@ const stripTrailingSlashes = require('./middleware/strip-trailing-slashes');
 const deduplicateSlashes = require('./middleware/deduplicate-slashes');
 
 // Utils
+const runtimeEnvironment = require('../config/runtime-environment');
 const {asBoolean, asInteger, isPresent} = require('../config/utils');
 const appPackage = require('../package.json');
 
@@ -107,10 +109,20 @@ const setupCacheHeaders = app => {
   );
 };
 
+// NOTE: This is where we replace the HTML with the up-to-date runtime environment.
+//
+// This requires the `replace-in-file` NPM package.
+replace.sync({
+  files: './dist/index.html',
+  from: runtimeEnvironment.htmlPattern,
+  to: runtimeEnvironment.html,
+});
+
 const fastbootServer = new FastBootAppServer({
   distPath: 'dist',
   workerCount: asInteger(process.env.WORKER_COUNT),
   chunkedResponse: true,
+  buildSandboxGlobals: runtimeEnvironment.fastBootBuildSandboxGlobals,
 
   beforeMiddleware(app) {
     setupSentry(app);

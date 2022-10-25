@@ -15,10 +15,24 @@ const buildFingerPrintPrepend = ({ASSETS_CDN_HOST, ASSETS_CDN_PROTOCOL, ASSETS_C
   return `${ASSETS_CDN_PROTOCOL}://${ASSETS_CDN_HOST}/${ASSETS_CDN_PATH}/`;
 };
 
+const runtimeEnvironment = require('./config/runtime-environment');
+
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
     'hinting': false,
     'tests': IS_TEST_ENVIRONMENT,
+
+    // NOTE: This is where `{{content-for "environment-variables"}}` in
+    // `app/index.html` is replaced with the runtime environment. We have to do
+    // this so that Ember.js default FastBoot server (`ember server`) has a
+    // runtime environment.
+    //
+    // This requires the `ember-cli-inline-content` NPM package.
+    'inlineContent': {
+      'environment-variables': {
+        content: runtimeEnvironment.html,
+      },
+    },
 
     'autoImport': {
       exclude: ['graphql-tag'],

@@ -13,6 +13,9 @@ module.exports = {
         es6: true,
         browser: true,
       },
+      globals: {
+        RUNTIME_ENVIRONMENT: 'readonly',
+      },
       rules: {
         'ember/closure-actions': 2,
         'ember/named-functions-in-promises': 0,

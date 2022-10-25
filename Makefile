@@ -59,7 +59,7 @@ targets:
 
 .PHONY: build
 build: ## Build the Docker image
-	docker build --build-arg APP_NAME=$(APP_NAME) --build-arg APP_VERSION=$(APP_VERSION) --rm --tag $(DOCKER_LOCAL_IMAGE) .
+	docker build --rm --tag $(DOCKER_LOCAL_IMAGE) .
 
 .PHONY: push
 push: ## Push the Docker image to the registry
